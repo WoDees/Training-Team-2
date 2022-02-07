@@ -26,4 +26,8 @@ class InMemoryUserRepository implements UserRepository {
         }
         return false;
     }
+
+    public List<User> getUserList() {
+        return userList;
+    }
 }
