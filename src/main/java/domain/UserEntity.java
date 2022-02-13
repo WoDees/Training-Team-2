@@ -1,19 +1,21 @@
+package domain;
+
 import java.util.Objects;
 
-class User {
+public class UserEntity {
 
     private int userId;
     private String nickName;
     private String password;
     private String mail;
 
-    public User(String nickName, String password, String mail) {
+    public UserEntity(String nickName, String password, String mail) {
         this.nickName = nickName;
         this.password = password;
         this.mail = mail;
     }
 
-    public User(int userId, String nickName, String password, String mail) {
+    public UserEntity(int userId, String nickName, String password, String mail) {
         this.userId = userId;
         this.nickName = nickName;
         this.password = password;
@@ -48,7 +50,7 @@ class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User that = (User) o;
+        UserEntity that = (UserEntity) o;
         return userId == that.userId && Objects.equals(nickName, that.nickName) && Objects.equals(password, that.password) && Objects.equals(mail, that.mail);
     }
 
@@ -56,4 +58,6 @@ class User {
     public int hashCode() {
         return Objects.hash(userId, nickName, password, mail);
     }
+
+
 }

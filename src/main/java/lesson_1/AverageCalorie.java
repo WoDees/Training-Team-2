@@ -1,3 +1,4 @@
+package lesson_1;
 
 class AverageCalorie {
 

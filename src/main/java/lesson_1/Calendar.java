@@ -1,3 +1,5 @@
+package lesson_1;
+
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.Scanner;
@@ -17,12 +19,12 @@ class Calendar {
 
     static void printMonth(int year, int month) {
         YearMonth ym = YearMonth.of(year, month);
-        System.out.println("Sun Mon Tue Wed Thu Fri Sat");
+        System.out.println("Mon Tue Wed Thu Fri Sat Sun");
         int counter = 1;
 
         int dayValue = LocalDate.of(year, month, 1).getDayOfWeek().getValue();
         if (dayValue != 7)
-            for (int i = 0; i < dayValue; i++, counter++) {
+            for (int i = 1; i < dayValue; i++, counter++) {
                 System.out.printf("%-4s", "");
             }
 

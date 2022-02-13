@@ -1,8 +1,9 @@
-package firstlesson;
+package lesson_1;
 
 import java.util.Scanner;
 
-public class ActivitiesCcal {
+public class ActivitiesCalories {
+
     public static void main(String[] args) {
         System.out.println("1 - Running (8km/h)" + "\n" +
                 "2 - Running (10km/h)" + "\n" +

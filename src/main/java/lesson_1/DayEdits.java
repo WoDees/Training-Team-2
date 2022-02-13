@@ -1,3 +1,5 @@
+package lesson_1;
+
 import java.util.Scanner;
 
 class DayEdits {
