@@ -1,5 +1,3 @@
-package lesson_1;
-
 import console.ActivitiesCaloriesUserUIAction;
 import console.CalendarUserUIAction;
 import console.RegistrationUserUIAction;
