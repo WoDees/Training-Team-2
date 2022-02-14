@@ -1,13 +1,11 @@
-package lesson_1;
-
-import console.ActivitiesCaloriesUserUIAction;
-import console.CalendarUserUIAction;
+import console.LogInUIAction;
 import console.RegistrationUserUIAction;
-import console.UIMenu;
+import console.*;
 import core.ActivitiesCaloriesService;
 import core.CalendarService;
+import core.LogInService;
 import core.RegistrationService;
-import repository.FileUserRepository;
+import repository.ArrayListUserRepository;
 
 import java.util.Arrays;
 
@@ -15,7 +13,7 @@ public class TrainingApplication {
 
     public static void main(String[] args) {
 
-        var repository = new FileUserRepository();
+        var repository = new ArrayListUserRepository();
 
         var activitiesCaloriesService = new ActivitiesCaloriesService(repository);
 
@@ -23,10 +21,13 @@ public class TrainingApplication {
 
         var registrationService = new RegistrationService(repository);
 
-        var actions =Arrays.asList(
+        var logInService = new LogInService(repository);
+
+        var actions = Arrays.asList(
                 new ActivitiesCaloriesUserUIAction(activitiesCaloriesService),
                 new CalendarUserUIAction(calendarService),
-                new RegistrationUserUIAction(registrationService)
+                new RegistrationUserUIAction(registrationService),
+                new LogInUIAction(logInService)
         );
 
         var uiMenu = new UIMenu(actions);

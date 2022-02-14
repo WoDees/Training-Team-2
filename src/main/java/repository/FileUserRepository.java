@@ -15,4 +15,9 @@ public class FileUserRepository implements UserRepository {
     public List<UserEntity> findAll() {
         return null;
     }
+
+    @Override
+    public boolean logIn(String nickName, String password) {
+        return false;
+    }
 }
