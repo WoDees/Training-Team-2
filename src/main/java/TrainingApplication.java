@@ -1,3 +1,4 @@
+
 import console.ActivitiesCaloriesUserUIAction;
 import console.CalendarUserUIAction;
 import console.RegistrationUserUIAction;
@@ -31,5 +32,4 @@ public class TrainingApplication {
         uiMenu.startUI();
 
     }
-
 }

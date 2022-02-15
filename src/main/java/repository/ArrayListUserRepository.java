@@ -23,4 +23,17 @@ public class ArrayListUserRepository implements UserRepository {
     public List<UserEntity> findAll() {
         return database;
     }
+
+    @Override
+    public boolean logIn(String nickName, String password) {
+
+        for (UserEntity entity : database) {
+            if (entity.getNickName().equals(nickName) && entity.getPassword().equals(password)) {
+                System.out.println("Login successful");
+                return true;
+            }
+        }
+        System.out.println("Wrong nickname or password or user does not exist!");
+        return false;
+    }
 }
