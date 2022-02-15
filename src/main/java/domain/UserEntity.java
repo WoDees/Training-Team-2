@@ -8,18 +8,17 @@ public class UserEntity {
     private String nickName;
     private String password;
     private String mail;
+    private int addDays;
 
-    public UserEntity(String nickName, String password, String mail) {
-        this.nickName = nickName;
-        this.password = password;
-        this.mail = mail;
+    public int getAddDays() {
+        return addDays;
     }
 
-    public UserEntity(int userId, String nickName, String password, String mail) {
-        this.userId = userId;
-        this.nickName = nickName;
-        this.password = password;
-        this.mail = mail;
+    public void setAddDays(int addDays) {
+        this.addDays = addDays;
+    }
+
+    public UserEntity() {
     }
 
     public int getUserId() {
@@ -42,8 +41,16 @@ public class UserEntity {
         this.userId = userId;
     }
 
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     @Override
@@ -56,8 +63,17 @@ public class UserEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, nickName, password, mail);
+        return Objects.hash(userId, nickName, password, mail, addDays);
     }
 
-
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "userId=" + userId +
+                ", nickName='" + nickName + '\'' +
+                ", password='" + password + '\'' +
+                ", mail='" + mail + '\'' +
+                ", addDays=" + addDays +
+                '}';
+    }
 }
