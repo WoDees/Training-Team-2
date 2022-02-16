@@ -12,4 +12,6 @@ public interface UserRepository {
 
     boolean logIn(String nickName, String password);
 
+    boolean remove(String login, String password);
+
 }

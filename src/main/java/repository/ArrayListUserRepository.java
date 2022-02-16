@@ -36,4 +36,15 @@ public class ArrayListUserRepository implements UserRepository {
         System.out.println("Wrong nickname or password or user does not exist!");
         return false;
     }
+
+    @Override
+    public boolean remove(String login, String password) {
+        for (int i = 0; i < database.size(); i++) {
+            if (database.get(i).getNickName().equals(login) && database.get(i).getPassword().equals(password)) {
+                database.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -1,10 +1,7 @@
 import console.LogInUIAction;
 import console.RegistrationUserUIAction;
 import console.*;
-import core.ActivitiesCaloriesService;
-import core.CalendarService;
-import core.LogInService;
-import core.RegistrationService;
+import core.*;
 import repository.ArrayListUserRepository;
 
 import java.util.Arrays;
@@ -16,18 +13,17 @@ public class TrainingApplication {
         var repository = new ArrayListUserRepository();
 
         var activitiesCaloriesService = new ActivitiesCaloriesService(repository);
-
         var calendarService = new CalendarService(repository);
-
         var registrationService = new RegistrationService(repository);
-
         var logInService = new LogInService(repository);
+        var deleteService = new RemoveUserService(repository);
 
         var actions = Arrays.asList(
                 new ActivitiesCaloriesUserUIAction(activitiesCaloriesService),
                 new CalendarUserUIAction(calendarService),
                 new RegistrationUserUIAction(registrationService),
-                new LogInUIAction(logInService)
+                new LogInUIAction(logInService),
+                new RemoveUserUIAction(deleteService)
         );
 
         var uiMenu = new UIMenu(actions);

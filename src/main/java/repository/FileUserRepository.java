@@ -20,4 +20,10 @@ public class FileUserRepository implements UserRepository {
     public boolean logIn(String nickName, String password) {
         return false;
     }
+
+
+    @Override
+    public boolean remove(String login, String password) {
+        return false;
+    }
 }
