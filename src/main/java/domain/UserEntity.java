@@ -8,14 +8,14 @@ public class UserEntity {
     private String nickName;
     private String password;
     private String mail;
-    private int trainingDay;
+    private int trainingDayAmount;
 
-    public int getTrainingDay() {
-        return trainingDay;
+    public int getTrainingDayAmount() {
+        return trainingDayAmount;
     }
 
-    public void setTrainingDay(int trainingDay) {
-        this.trainingDay = trainingDay;
+    public void setTrainingDayAmount(int trainingDayAmount) {
+        this.trainingDayAmount = trainingDayAmount;
     }
 
     public int getUserId() {
@@ -60,7 +60,7 @@ public class UserEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, nickName, password, mail, trainingDay);
+        return Objects.hash(userId, nickName, password, mail, trainingDayAmount);
     }
 
     @Override
@@ -70,7 +70,7 @@ public class UserEntity {
                 ", nickName='" + nickName + '\'' +
                 ", password='" + password + '\'' +
                 ", mail='" + mail + '\'' +
-                ", trainingDay=" + trainingDay +
+                ", trainingDay=" + trainingDayAmount +
                 '}';
     }
 }

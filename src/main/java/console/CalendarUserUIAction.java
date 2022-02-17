@@ -15,29 +15,29 @@ public class CalendarUserUIAction implements UIAction {
 
     @Override
     public void execute() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter a training days when you want to practice : ");
-        System.out.println("1) Monday to Wednesday");
-        System.out.println("2) Thursday to Saturday");
-        System.out.println("3) Friday to Sunday");
-        System.out.println("4) All week");
-        int trainingDays = scanner.nextInt();
 
-        if (trainingDays == 1) {
-            System.out.println("Monday,Tuesday,Wednesday");
-        } else if (trainingDays == 2) {
-            System.out.println("Thursday,Friday,Saturday");
-        } else if (trainingDays == 3) {
-            System.out.println("Friday,Saturday,Sunday");
-        } else if (trainingDays == 4) {
-            System.out.println("Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday");
-        } else {
-            System.out.println("Invalid Data");
-        }
+        Scanner scanner = new Scanner(System.in);
+        int trainingDays;
+        do {
+            System.out.println("Enter the number of the day of the week (1-7) to select training days, if you wanna Finish selection press number(8): ");
+            trainingDays = scanner.nextInt();
+
+            switch (trainingDays) {
+                case 1 -> System.out.println("Monday");
+                case 2 -> System.out.println("Tuesday");
+                case 3 -> System.out.println("Wednesday");
+                case 4 -> System.out.println("Thursday");
+                case 5 -> System.out.println("Friday");
+                case 6 -> System.out.println("Saturday");
+                case 7 -> System.out.println("Sunday");
+                case 8 -> System.out.println("Finish selection");
+                default -> System.out.println("Invalid Day");
+            }
+        } while (trainingDays != 8);
 
         UserEntity userTrainingDays = new UserEntity();
-        userTrainingDays.setTrainingDay(trainingDays);
-        calendarService.add(userTrainingDays);
+        userTrainingDays.setTrainingDayAmount(trainingDays);
+        calendarService.saveTrainingDays(userTrainingDays);
         calendarService.findAll()
                 .forEach(System.out::println);
     }

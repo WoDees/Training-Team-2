@@ -13,7 +13,7 @@ public class CalendarService {
         this.repository = repository;
     }
 
-    public void add(UserEntity userEntity) {
+    public void saveTrainingDays(UserEntity userEntity) {
         repository.save(userEntity);
     }
 

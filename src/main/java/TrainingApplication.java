@@ -5,6 +5,7 @@ import core.ActivitiesCaloriesService;
 import core.CalendarService;
 import core.LogInService;
 import core.RegistrationService;
+import repository.ArrayListTrainingDaysRepository;
 import repository.ArrayListUserRepository;
 
 import java.util.Arrays;
@@ -14,10 +15,11 @@ public class TrainingApplication {
     public static void main(String[] args) {
 
         var repository = new ArrayListUserRepository();
+        var repositorySecond = new ArrayListTrainingDaysRepository();
 
         var activitiesCaloriesService = new ActivitiesCaloriesService(repository);
 
-        var calendarService = new CalendarService(repository);
+        var calendarService = new CalendarService(repositorySecond);
 
         var registrationService = new RegistrationService(repository);
 
@@ -32,6 +34,5 @@ public class TrainingApplication {
 
         var uiMenu = new UIMenu(actions);
         uiMenu.startUI();
-
     }
 }
