@@ -3,7 +3,7 @@ import console.RegistrationUserUIAction;
 import console.*;
 import core.ActivitiesCaloriesService;
 import core.CalendarService;
-import core.LogInService;
+import core.VerifyService;
 import core.RegistrationService;
 import repository.ArrayListUserRepository;
 
@@ -21,7 +21,7 @@ public class TrainingApplication {
 
         var registrationService = new RegistrationService(repository);
 
-        var logInService = new LogInService(repository);
+        var logInService = new VerifyService(repository);
 
         var actions = Arrays.asList(
                 new ActivitiesCaloriesUserUIAction(activitiesCaloriesService),

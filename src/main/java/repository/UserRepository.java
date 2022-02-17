@@ -10,6 +10,6 @@ public interface UserRepository {
 
     List<UserEntity> findAll();
 
-    boolean logIn(String nickName, String password);
+    boolean verify(String nickName, String password);
 
 }
