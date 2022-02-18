@@ -1,15 +1,15 @@
 package console;
 
-import core.LogInService;
+import core.VerifyService;
 
 import java.util.Scanner;
 
-public class LogInUIAction implements UIAction {
+public class VerifyUIAction implements UIAction {
 
-    private final LogInService logInService;
+    private final VerifyService verifyService;
 
-    public LogInUIAction(LogInService logInService) {
-        this.logInService = logInService;
+    public VerifyUIAction(VerifyService verifyService) {
+        this.verifyService = verifyService;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class LogInUIAction implements UIAction {
         System.out.println("Please enter your password: ");
         String password = scanner.nextLine();
 
-        logInService.entrance(nickName, password);
+        verifyService.entrance(nickName, password);
     }
 
     @Override

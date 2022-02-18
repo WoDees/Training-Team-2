@@ -15,7 +15,7 @@ public class RemoveUserService {
         if (repository.remove(login, password)) {
             System.out.println("Account was successful deleted!");
         } else {
-            System.out.println("That account does not exist!");
+            System.out.println("Account does not exist!");
         }
     }
 }
