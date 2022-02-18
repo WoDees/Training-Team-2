@@ -1,12 +1,12 @@
 package core;
 
-import repository.UserRepository;
+import repository.Repository;
 
 public class RemoveUserService {
 
-    private final UserRepository repository;
+    private final Repository repository;
 
-    public RemoveUserService(UserRepository repository) {
+    public RemoveUserService(Repository repository) {
         this.repository = repository;
     }
 

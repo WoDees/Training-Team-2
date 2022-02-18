@@ -13,7 +13,7 @@ public class RemoveUserUIAction implements UIAction {
     }
 
     @Override
-    public void execute() {
+    public void execute(Long userId) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your login:");
         String login = scanner.nextLine();

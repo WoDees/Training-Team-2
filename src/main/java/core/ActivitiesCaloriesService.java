@@ -1,13 +1,12 @@
 package core;
 
-import repository.FileUserRepository;
-import repository.UserRepository;
+import repository.Repository;
 
 public class ActivitiesCaloriesService {
 
-    private final UserRepository repository;
+    private final Repository repository;
 
-    public ActivitiesCaloriesService(UserRepository repository) {
+    public ActivitiesCaloriesService(Repository repository) {
         this.repository = repository;
     }
 }

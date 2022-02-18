@@ -1,11 +1,12 @@
 package console;
 
 import core.CalendarService;
-import domain.UserEntity;
+import domain.CalendarEntity;
 
 import java.util.Scanner;
 
 public class CalendarUserUIAction implements UIAction {
+
 
     private final CalendarService calendarService;
 
@@ -14,21 +15,18 @@ public class CalendarUserUIAction implements UIAction {
     }
 
     @Override
-    public void execute() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter a weekdays when you want to practice : ");
-        System.out.println("1) Monday to Wednesday");
-        System.out.println("2) Thursday to Saturday");
-        System.out.println("3) Friday to Sunday");
-        System.out.println("4) All week");
-        int weekdays = scanner.nextInt();
-        calendarService.days(weekdays);
+    public void execute(Long userId) {
+        CalendarEntity calendar = new CalendarEntity();
 
-        UserEntity newDays = new UserEntity();
-        newDays.setAddDays(weekdays);
-        calendarService.add(newDays);
-        calendarService.findAll()
-                .forEach(System.out::println);
+        System.out.println("Enter date (format dd.mm.yyyy): ");
+        Scanner scanner = new Scanner(System.in);
+        calendar.setEventDate(scanner.nextLine());
+        System.out.println("Enter description: ");
+        calendar.setDescription(scanner.nextLine());
+
+        calendar.setUserId(userId);
+        calendarService.add(calendar);
+        System.out.println(calendarService.findAll());
     }
 
     @Override

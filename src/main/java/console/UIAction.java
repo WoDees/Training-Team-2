@@ -2,7 +2,8 @@ package console;
 
 public interface UIAction {
 
-    void execute();
+    void execute(Long userId);
 
     String getActionName();
+
 }

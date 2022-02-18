@@ -4,7 +4,7 @@ import domain.UserEntity;
 
 import java.util.List;
 
-public interface UserRepository {
+public interface Repository {
 
     UserEntity save(UserEntity userEntity);
 
@@ -13,5 +13,7 @@ public interface UserRepository {
     boolean verify(String nickName, String password);
 
     boolean remove(String login, String password);
+
+    UserEntity getUserEntity(String nickName, String password);
 
 }

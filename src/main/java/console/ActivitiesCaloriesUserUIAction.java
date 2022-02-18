@@ -11,12 +11,12 @@ public class ActivitiesCaloriesUserUIAction implements UIAction {
     }
 
     @Override
-    public void execute() {
+    public void execute(Long userId) {
         throw new UnsupportedOperationException("Activities");
     }
 
     @Override
     public String getActionName() {
-        return null;
+        return "ActivitiesCalories";
     }
 }

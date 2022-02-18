@@ -1,13 +1,13 @@
 package core;
 
 import domain.UserEntity;
-import repository.UserRepository;
+import repository.Repository;
 
 public class RegistrationService {
 
-    private final UserRepository repository;
+    private final Repository repository;
 
-    public RegistrationService(UserRepository repository) {
+    public RegistrationService(Repository repository) {
         this.repository = repository;
     }
 
