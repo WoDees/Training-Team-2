@@ -1,21 +1,28 @@
 package core;
 
-import repository.UserRepository;
+import domain.UserEntity;
+import repository.Repository;
+
+import java.util.List;
 
 public class VerifyService {
 
-    private final UserRepository repository;
+    private final Repository repository;
 
-    public VerifyService(UserRepository repository) {
+    public VerifyService(Repository repository) {
         this.repository = repository;
     }
 
-    public void entrance(String nickName, String password) {
+    public UserEntity entrance(String nickName, String password) {
 
         if (repository.verify(nickName, password)) {
             System.out.println("Log in successful");
-        } else {
-            System.out.println("Wrong password or nickname!");
+            repository.getUserEntity(nickName, password);
         }
+        return null;
+    }
+
+    public List<UserEntity> findAll() {
+        return repository.findAll();
     }
 }

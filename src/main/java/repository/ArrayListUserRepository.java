@@ -5,28 +5,28 @@ import domain.UserEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArrayListUserRepository implements UserRepository {
+public class ArrayListUserRepository implements Repository {
 
-    private List<UserEntity> database = new ArrayList<>();
-    private int idSequence = 0;
+    private List<UserEntity> dataBase = new ArrayList<>();
+    private Long idSequence = 0L;
 
     @Override
     public UserEntity save(UserEntity userEntity) {
         userEntity.setUserId(idSequence);
         idSequence++;
-        database.add(userEntity);
+        dataBase.add(userEntity);
         return userEntity;
 
     }
 
     @Override
     public List<UserEntity> findAll() {
-        return database;
+        return dataBase;
     }
 
     @Override
     public boolean verify(String nickName, String password) {
-        for (UserEntity entity : database) {
+        for (UserEntity entity : dataBase) {
             if (entity.getNickName().equals(nickName) && entity.getPassword().equals(password)) {
                 return true;
             }
@@ -36,12 +36,22 @@ public class ArrayListUserRepository implements UserRepository {
 
     @Override
     public boolean remove(String login, String password) {
-        for (int i = 0; i < database.size(); i++) {
-            if (database.get(i).getNickName().equals(login) && database.get(i).getPassword().equals(password)) {
-                database.remove(i);
+        for (int i = 0; i < dataBase.size(); i++) {
+            if (dataBase.get(i).getNickName().equals(login) && dataBase.get(i).getPassword().equals(password)) {
+                dataBase.remove(i);
                 return true;
             }
         }
         return false;
+    }
+
+    @Override
+    public UserEntity getUserEntity(String nickName, String password) {
+        for (UserEntity entity : dataBase) {
+            if (entity.getNickName().equals(nickName) && entity.getPassword().equals(password)) {
+                return entity;
+            }
+        }
+        return null;
     }
 }

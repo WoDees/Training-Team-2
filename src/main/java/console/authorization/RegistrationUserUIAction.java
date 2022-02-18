@@ -1,5 +1,6 @@
-package console;
+package console.authorization;
 
+import console.UIAction;
 import core.RegistrationService;
 import domain.UserEntity;
 
@@ -14,7 +15,7 @@ public class RegistrationUserUIAction implements UIAction {
     }
 
     @Override
-    public void execute() {
+    public void execute(Long userId) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter your nickname: ");
         String nickName = scanner.nextLine();
@@ -34,5 +35,24 @@ public class RegistrationUserUIAction implements UIAction {
     @Override
     public String getActionName() {
         return "Registration";
+    }
+
+    public Long registration() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter your nickname: ");
+        String nickName = scanner.nextLine();
+        System.out.println("Please enter your e-mail: ");
+        String mail = scanner.nextLine();
+        System.out.println("Please enter your password: ");
+        String password = scanner.nextLine();
+        System.out.println("Registration successful!");
+
+        UserEntity newUser = new UserEntity();
+        newUser.setNickName(nickName);
+        newUser.setMail(mail);
+        newUser.setPassword(password);
+
+        registrationService.add(newUser);
+        return newUser.getUserId();
     }
 }
