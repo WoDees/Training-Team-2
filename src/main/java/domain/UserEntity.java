@@ -8,15 +8,6 @@ public class UserEntity {
     private String nickName;
     private String password;
     private String mail;
-    private int addDays;
-
-    public int getAddDays() {
-        return addDays;
-    }
-
-    public void setAddDays(int addDays) {
-        this.addDays = addDays;
-    }
 
     public Long getUserId() {
         return userId;
@@ -55,12 +46,12 @@ public class UserEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserEntity that = (UserEntity) o;
-        return userId == that.userId && Objects.equals(nickName, that.nickName) && Objects.equals(password, that.password) && Objects.equals(mail, that.mail);
+        return Objects.equals(userId, that.userId) && Objects.equals(nickName, that.nickName) && Objects.equals(password, that.password) && Objects.equals(mail, that.mail);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, nickName, password, mail, addDays);
+        return Objects.hash(userId, nickName, password, mail);
     }
 
     @Override
@@ -70,7 +61,6 @@ public class UserEntity {
                 ", nickName='" + nickName + '\'' +
                 ", password='" + password + '\'' +
                 ", mail='" + mail + '\'' +
-                ", addDays=" + addDays +
                 '}';
     }
 }
