@@ -17,7 +17,7 @@ public class FileUserRepository implements UserRepository {
     }
 
     @Override
-    public boolean logIn(String nickName, String password) {
+    public boolean verify(String nickName, String password) {
         return false;
     }
 
