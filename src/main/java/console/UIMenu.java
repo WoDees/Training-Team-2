@@ -26,7 +26,6 @@ public class UIMenu {
                         }
                     }
                 }
-
                 System.out.println("Please make your choice: ");
                 for (int i = 0; i < uiActions.size(); i++) {
                     var uiAction = uiActions.get(i);
