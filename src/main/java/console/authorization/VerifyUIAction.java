@@ -32,7 +32,7 @@ public class VerifyUIAction implements UIAction {
         return "LogIn";
     }
 
-    public Long login() {
+    public Long logIn() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter your nickName: ");
         String nickName = scanner.nextLine();

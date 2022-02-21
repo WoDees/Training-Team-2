@@ -19,10 +19,12 @@ public class UIMenu {
         Long userId = null;
         while (true) {
             try {
-                while (userId == null) {
+                boolean onlineStatus = false;
+                while (!onlineStatus) {
                     for (AuthorizationUIAction action : authorizationActions) {
                         if (action.getActionName().equals("Authorization")) {
                             userId = action.authorization();
+                            onlineStatus = true;
                         }
                     }
                 }
