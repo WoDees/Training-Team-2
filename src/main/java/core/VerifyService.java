@@ -17,8 +17,9 @@ public class VerifyService {
 
         if (repository.verify(nickName, password)) {
             System.out.println("Log in successful");
-            repository.getUserEntity(nickName, password);
+            return repository.getUserEntity(nickName, password);
         }
+        System.out.println("Wrong nick name or password!");
         return null;
     }
 

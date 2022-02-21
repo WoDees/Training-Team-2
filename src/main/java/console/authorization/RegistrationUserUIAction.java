@@ -51,6 +51,7 @@ public class RegistrationUserUIAction implements UIAction {
         newUser.setNickName(nickName);
         newUser.setMail(mail);
         newUser.setPassword(password);
+        newUser.setOnlineStatus(true);
 
         registrationService.add(newUser);
         return newUser.getUserId();

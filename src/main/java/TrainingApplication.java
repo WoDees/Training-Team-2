@@ -20,11 +20,13 @@ public class TrainingApplication {
         var registrationService = new RegistrationService(repository);
         var verifyService = new VerifyService(repository);
         var removeUserService = new RemoveUserService(repository);
+        var logOutUserService = new LogOutUserService(repository);
 
         var actions = Arrays.asList(
                 new ActivitiesCaloriesUserUIAction(activitiesCaloriesService),
                 new CalendarUserUIAction(calendarService),
-                new RemoveUserUIAction(removeUserService)
+                new RemoveUserUIAction(removeUserService),
+                new LogOutUserUIAction(logOutUserService)
         );
 
         var authorizationActions = Arrays.asList(
@@ -33,6 +35,5 @@ public class TrainingApplication {
 
         var uiMenu = new UIMenu(actions, authorizationActions);
         uiMenu.startUI();
-
     }
 }

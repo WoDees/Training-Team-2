@@ -24,7 +24,7 @@ public class AuthorizationUIAction {
         if (authorizationMethod == 1) {
             return registrationUserUIAction.registration();
         } else {
-            return verifyUIAction.login();
+            return verifyUIAction.logIn();
         }
     }
 }

@@ -8,6 +8,7 @@ public class UserEntity {
     private String nickName;
     private String password;
     private String mail;
+    private boolean onlineStatus;
 
     public Long getUserId() {
         return userId;
@@ -41,17 +42,25 @@ public class UserEntity {
         this.mail = mail;
     }
 
+    public boolean isOnlineStatus() {
+        return onlineStatus;
+    }
+
+    public void setOnlineStatus(boolean onlineStatus) {
+        this.onlineStatus = onlineStatus;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserEntity that = (UserEntity) o;
-        return Objects.equals(userId, that.userId) && Objects.equals(nickName, that.nickName) && Objects.equals(password, that.password) && Objects.equals(mail, that.mail);
+        return onlineStatus == that.onlineStatus && Objects.equals(userId, that.userId) && Objects.equals(nickName, that.nickName) && Objects.equals(password, that.password) && Objects.equals(mail, that.mail);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, nickName, password, mail);
+        return Objects.hash(userId, nickName, password, mail, onlineStatus);
     }
 
     @Override
@@ -61,6 +70,7 @@ public class UserEntity {
                 ", nickName='" + nickName + '\'' +
                 ", password='" + password + '\'' +
                 ", mail='" + mail + '\'' +
+                ", onlineStatus=" + onlineStatus +
                 '}';
     }
 }

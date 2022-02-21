@@ -16,4 +16,8 @@ public interface Repository {
 
     UserEntity getUserEntity(String nickName, String password);
 
+    boolean logOut(Long userId);
+
+    UserEntity getUserById(Long userId);
+
 }

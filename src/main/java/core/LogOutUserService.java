@@ -1,0 +1,23 @@
+package core;
+
+import domain.UserEntity;
+import repository.Repository;
+
+import java.util.List;
+
+public class LogOutUserService {
+
+    private final Repository repository;
+
+    public LogOutUserService(Repository repository) {
+        this.repository = repository;
+    }
+
+    public void logOut(Long userId) {
+        repository.logOut(userId);
+    }
+
+    public List<UserEntity> findAll() {
+        return repository.findAll();
+    }
+}

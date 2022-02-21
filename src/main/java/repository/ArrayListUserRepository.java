@@ -54,4 +54,20 @@ public class ArrayListUserRepository implements Repository {
         }
         return null;
     }
+
+    @Override
+    public UserEntity getUserById(Long userId) {
+        for (int i = 0; i < dataBase.size(); i++) {
+            if (dataBase.get(i).getUserId().equals(userId)) {
+                return dataBase.get(i);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public boolean logOut(Long userId) {
+        getUserById(userId).setOnlineStatus(false);
+        return false;
+    }
 }
