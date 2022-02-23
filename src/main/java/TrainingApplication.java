@@ -41,7 +41,7 @@ public class TrainingApplication {
                 new LogOutUserUIAction(logOutUserService)
         );
 
-        var authorizationActions = Arrays.asList(
+        var authorizationActions = List.of(
                 new AuthorizationUIAction(new AddUserUIAction(registrationService), new VerifyUIAction(verifyService))
         );
 
