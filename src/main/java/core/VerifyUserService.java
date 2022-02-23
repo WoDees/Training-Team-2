@@ -5,21 +5,19 @@ import repository.Repository;
 
 import java.util.List;
 
-public class VerifyService {
+public class VerifyUserService {
 
     private final Repository repository;
 
-    public VerifyService(Repository repository) {
+    public VerifyUserService(Repository repository) {
         this.repository = repository;
     }
 
     public UserEntity entrance(String nickName, String password) {
 
         if (repository.verify(nickName, password)) {
-            System.out.println("Log in successful");
             return repository.getUserEntity(nickName, password);
         }
-        System.out.println("Wrong nick name or password!");
         return null;
     }
 

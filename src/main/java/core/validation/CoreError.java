@@ -14,7 +14,7 @@ public class CoreError {
 
     @Override
     public String toString() {
-        return "ToDoError{" +
+        return "UserError{" +
                 "message='" + message + '\'' +
                 '}';
     }

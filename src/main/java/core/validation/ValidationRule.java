@@ -8,7 +8,7 @@ public interface ValidationRule {
 
     default void checkNotNull(UserEntity entity) {
         if (entity == null) {
-            throw new ValidationException("ToDo must not be null.");
+            throw new ValidationException("User must not be null.");
         }
     }
 }

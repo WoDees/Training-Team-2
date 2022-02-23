@@ -15,15 +15,15 @@ public class ValidationService {
         this.validationRules = validationRules;
     }
 
-    public List<CoreError> validate(UserEntity toDoEntity) {
+    public List<CoreError> validate(UserEntity entity) {
         List<CoreError> errors = new ArrayList<>();
-        if (toDoEntity == null) {
-            errors.add(new CoreError("ToDo must not be null"));
+        if (entity == null) {
+            errors.add(new CoreError("User must not be null"));
             return errors;
         }
 
         return validationRules.stream()
-                .map(rule -> mapError(rule, toDoEntity))
+                .map(rule -> mapError(rule, entity))
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }

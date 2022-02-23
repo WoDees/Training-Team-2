@@ -1,16 +1,16 @@
 package console.authorization;
 
 import console.UIAction;
-import core.VerifyService;
+import core.VerifyUserService;
 import domain.UserEntity;
 
 import java.util.Scanner;
 
 public class VerifyUIAction implements UIAction {
 
-    private final VerifyService verifyService;
+    private final VerifyUserService verifyService;
 
-    public VerifyUIAction(VerifyService verifyService) {
+    public VerifyUIAction(VerifyUserService verifyService) {
         this.verifyService = verifyService;
     }
 
@@ -43,6 +43,11 @@ public class VerifyUIAction implements UIAction {
                 .forEach(System.out::println);
         UserEntity entity = verifyService.entrance(nickName, password);
 
-        return entity.getUserId();
+        if (entity.getUserId() != null) {
+            System.out.println("Log in successful!");
+            return entity.getUserId();
+        }
+        System.out.println("Wrong user name or password!");
+        return null;
     }
 }
