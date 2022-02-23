@@ -23,11 +23,8 @@ public class TrainingApplication {
         var calendarRepository = new ArrayListCalendarRepository();
 
         var calendarValidationRules = List.of(
-                new CalendarNameNullValidationRule(),
-                new CalendarDescriptionNullValidationRule(),
-                new CalendarDescriptionMaxLengthValidationRule(),
-                new CalendarDescriptionMinLengthValidationRule(),
-                new CalendarCorrectDateFormatValidationRule()
+                new CalendarDescriptionLengthValidationRule(),
+                new CalendarDateFormatValidationRule()
         );
         var calendarValidationService = new CalendarValidationService(calendarValidationRules);
 

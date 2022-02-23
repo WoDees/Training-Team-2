@@ -33,7 +33,6 @@ public class CalendarService {
         System.out.println("Successfully saved: " + createdEntity);
         var response = new AddCalendarResponse();
         response.setCreatedCalendarId((int) createdEntity.getId());
-        System.out.println("Sending response: " + response);
         return response;
     }
 
