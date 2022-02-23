@@ -3,10 +3,8 @@ import console.authorization.AddUserUIAction;
 import console.*;
 import console.authorization.VerifyUIAction;
 import core.*;
-import core.validation.ValidationService;
-import core.validation.authorization.AddUserMailValidationRule;
-import core.validation.authorization.AddUserNickNameValidationRule;
-import core.validation.authorization.AddUserPasswordValidationRule;
+import core.validation.CalendarValidationService;
+import core.validation.calendar.*;
 import repository.ArrayListUserRepository;
 import repository.ArrayListCalendarRepository;
 
@@ -20,19 +18,22 @@ public class TrainingApplication {
         var repository = new ArrayListUserRepository();
         var calendarRepository = new ArrayListCalendarRepository();
 
-        var validationRules = List.of(
-                new AddUserNickNameValidationRule(),
-                new AddUserPasswordValidationRule(),
-                new AddUserMailValidationRule()
+        var calendarValidationRules = List.of(
+                new CalendarNameNullValidationRule(),
+                new CalendarDescriptionNullValidationRule(),
+                new CalendarDescriptionMaxLengthValidationRule(),
+                new CalendarDescriptionMinLengthValidationRule(),
+                new CalendarCorrectDateFormatValidationRule()
         );
-        var validationService = new ValidationService(validationRules);
+        var calendarValidationService = new CalendarValidationService(calendarValidationRules);
 
         var activitiesCaloriesService = new ActivitiesCaloriesService(repository);
-        var calendarService = new CalendarService(calendarRepository);
-        var registrationService = new AddUserService(repository, validationService);
-        var verifyService = new VerifyUserService(repository);
+        var calendarService = new CalendarService(calendarRepository, calendarValidationService);
+        var registrationService = new RegistrationService(repository);
+        var verifyService = new VerifyService(repository);
         var removeUserService = new RemoveUserService(repository);
         var logOutUserService = new LogOutUserService(repository);
+
 
         var actions = Arrays.asList(
                 new ActivitiesCaloriesUserUIAction(activitiesCaloriesService),
@@ -42,7 +43,7 @@ public class TrainingApplication {
         );
 
         var authorizationActions = List.of(
-                new AuthorizationUIAction(new AddUserUIAction(registrationService), new VerifyUIAction(verifyService))
+                new AuthorizationUIAction(new RegistrationUserUIAction(registrationService), new VerifyUIAction(verifyService))
         );
 
         var uiMenu = new UIMenu(actions, authorizationActions);

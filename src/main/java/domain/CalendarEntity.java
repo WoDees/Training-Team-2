@@ -13,8 +13,9 @@ public class CalendarEntity {
         return eventDate;
     }
 
-    public void setEventDate(String eventDate) {
+    public String setEventDate(String eventDate) {
         this.eventDate = eventDate;
+        return eventDate;
     }
 
     public long getId() {
@@ -38,8 +39,9 @@ public class CalendarEntity {
         return description;
     }
 
-    public void setDescription(String description) {
+    public String setDescription(String description) {
         this.description = description;
+        return description;
     }
 
     @Override

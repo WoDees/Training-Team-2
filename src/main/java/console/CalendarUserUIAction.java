@@ -1,14 +1,18 @@
 package console;
 
 import core.CalendarService;
+import core.validation.CalendarValidationService;
 import domain.CalendarEntity;
+import dto.AddCalendarRequest;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class CalendarUserUIAction implements UIAction {
 
 
     private final CalendarService calendarService;
+
 
     public CalendarUserUIAction(CalendarService calendarService) {
         this.calendarService = calendarService;
@@ -16,16 +20,21 @@ public class CalendarUserUIAction implements UIAction {
 
     @Override
     public void execute(Long userId) {
-        CalendarEntity calendar = new CalendarEntity();
+        CalendarEntity calendar;
+        calendar = new CalendarEntity();
 
-        System.out.println("Enter date (format dd.mm.yyyy): ");
+        System.out.println("Enter date (format dd/MM/yyyy): ");
         Scanner scanner = new Scanner(System.in);
-        calendar.setEventDate(scanner.nextLine());
+        String eventDate = calendar.setEventDate(scanner.nextLine());
         System.out.println("Enter description: ");
-        calendar.setDescription(scanner.nextLine());
+        String description = calendar.setDescription(scanner.nextLine());
 
-        calendar.setUserId(userId);
-        calendarService.add(calendar);
+        var request = new AddCalendarRequest();
+        request.setEventDate(eventDate);
+        request.setDescription(description);
+        System.out.println("Successfully saved: " + request);
+        var response = calendarService.add(request);
+        System.out.println("Sending response: " + response);
         System.out.println(calendarService.findAll());
     }
 

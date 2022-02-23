@@ -2,7 +2,7 @@ package core.validation;
 
 public class CoreError {
 
-    private String message;
+    private final String message;
 
     public CoreError(String message) {
         this.message = message;
