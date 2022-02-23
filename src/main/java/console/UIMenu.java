@@ -16,15 +16,14 @@ public class UIMenu {
     }
 
     public void startUI() {
-        Long userId = null;
         while (true) {
             try {
-                boolean onlineStatus = false;
-                while (!onlineStatus) {
+                Long userId = null;
+                while (userId == null) {
                     for (AuthorizationUIAction action : authorizationActions) {
                         if (action.getActionName().equals("Authorization")) {
                             userId = action.authorization();
-                            onlineStatus = true;
+
                         }
                     }
                 }

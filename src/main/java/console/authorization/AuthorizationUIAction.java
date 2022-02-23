@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class AuthorizationUIAction {
 
-    RegistrationUserUIAction registrationUserUIAction;
-    VerifyUIAction verifyUIAction;
+    private AddUserUIAction addUserUIAction;
+    private VerifyUIAction verifyUIAction;
 
-    public AuthorizationUIAction(RegistrationUserUIAction registrationUserUIAction, VerifyUIAction verifyUIAction) {
-        this.registrationUserUIAction = registrationUserUIAction;
+    public AuthorizationUIAction(AddUserUIAction registrationUserUIAction, VerifyUIAction verifyUIAction) {
+        this.addUserUIAction = registrationUserUIAction;
         this.verifyUIAction = verifyUIAction;
     }
 
@@ -21,10 +21,14 @@ public class AuthorizationUIAction {
         Scanner scanner = new Scanner(System.in);
         int authorizationMethod = scanner.nextInt();
 
+
         if (authorizationMethod == 1) {
-            return registrationUserUIAction.registration();
-        } else {
+            return addUserUIAction.add();
+        }
+        if (authorizationMethod == 2) {
             return verifyUIAction.logIn();
         }
+        System.out.println("Invalid choice");
+        return null;
     }
 }

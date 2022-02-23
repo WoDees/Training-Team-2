@@ -1,5 +1,5 @@
 import console.authorization.AuthorizationUIAction;
-import console.authorization.RegistrationUserUIAction;
+import console.authorization.AddUserUIAction;
 import console.*;
 import console.authorization.VerifyUIAction;
 import core.*;
