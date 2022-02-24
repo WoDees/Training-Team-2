@@ -23,7 +23,7 @@ public class CalendarUserUIAction implements UIAction {
         CalendarEntity calendar;
         calendar = new CalendarEntity();
 
-        System.out.println("Enter date (format dd/MM/yyyy): ");
+        System.out.println("Enter date (format dd/mm/yyyy): ");
         Scanner scanner = new Scanner(System.in);
         String eventDate = calendar.setEventDate(scanner.nextLine());
         System.out.println("Enter description: ");
