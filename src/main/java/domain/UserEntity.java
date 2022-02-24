@@ -54,8 +54,8 @@ public class UserEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserEntity that = (UserEntity) o;
-        return onlineStatus == that.onlineStatus && Objects.equals(userId, that.userId) && Objects.equals(nickName, that.nickName) && Objects.equals(password, that.password) && Objects.equals(mail, that.mail);
+        UserEntity entity = (UserEntity) o;
+        return onlineStatus == entity.onlineStatus && Objects.equals(userId, entity.userId) && Objects.equals(nickName, entity.nickName) && Objects.equals(password, entity.password) && Objects.equals(mail, entity.mail);
     }
 
     @Override
