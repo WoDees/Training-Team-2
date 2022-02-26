@@ -1,13 +1,13 @@
 package core.validation;
 
-import domain.CalendarEntity;
+import dto.AddCalendarRequest;
 
 public interface CalendarValidationRule {
 
-    void validate(CalendarEntity entity);
+    void validate(AddCalendarRequest request);
 
-    default void checkNotNull(CalendarEntity entity) {
-        if (entity == null) {
+    default void checkNotNull(AddCalendarRequest request) {
+        if (request == null) {
             throw new ValidationException("Calendar date must not be null.");
         }
     }
