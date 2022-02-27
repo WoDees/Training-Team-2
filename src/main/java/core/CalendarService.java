@@ -20,15 +20,14 @@ public class CalendarService {
 
     public AddCalendarResponse add(AddCalendarRequest request) {
         System.out.println("Received request: " + request);
-        var entity = convert(request);
-        var validationResult = calendarValidationService.validate(entity);
+        var validationResult = calendarValidationService.validate(request);
         if (!validationResult.isEmpty()) {
             System.out.println("Validation failed, errors: " + validationResult);
             var response = new AddCalendarResponse();
             response.setErrors(validationResult);
             return response;
         }
-
+        var entity = convert(request);
         var createdEntity = repository.save(entity);
         System.out.println("Successfully saved: " + createdEntity);
         var response = new AddCalendarResponse();
