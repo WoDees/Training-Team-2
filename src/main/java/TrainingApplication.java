@@ -1,4 +1,3 @@
-import console.authorization.AuthorizationUIAction;
 import console.authorization.AddUserUIAction;
 import console.*;
 import console.authorization.VerifyUIAction;
@@ -51,7 +50,8 @@ public class TrainingApplication {
         );
 
         var authorizationActions = List.of(
-                new AuthorizationUIAction(new AddUserUIAction(addUserService), new VerifyUIAction(verifyService))
+                new AddUserUIAction(addUserService),
+                new VerifyUIAction(verifyService)
         );
 
         var uiMenu = new UIMenu(actions, authorizationActions);

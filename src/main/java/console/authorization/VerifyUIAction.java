@@ -6,7 +6,7 @@ import domain.UserEntity;
 
 import java.util.Scanner;
 
-public class VerifyUIAction implements UIAction {
+public class VerifyUIAction implements UIAuthorization {
 
     private final VerifyUserService verifyService;
 
@@ -15,24 +15,7 @@ public class VerifyUIAction implements UIAction {
     }
 
     @Override
-    public void execute(Long userId) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter your nickName: ");
-        String nickName = scanner.nextLine();
-        System.out.println("Please enter your password: ");
-        String password = scanner.nextLine();
-
-        verifyService.entrance(nickName, password);
-        verifyService.findAll()
-                .forEach(System.out::println);
-    }
-
-    @Override
-    public String getActionName() {
-        return "LogIn";
-    }
-
-    public Long logIn() {
+    public Long execute() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter your nickName: ");
         String nickName = scanner.nextLine();
@@ -50,5 +33,10 @@ public class VerifyUIAction implements UIAction {
         }
         System.out.println("Wrong user name or password!");
         return null;
+    }
+
+    @Override
+    public String getActionName() {
+        return "Log In";
     }
 }
