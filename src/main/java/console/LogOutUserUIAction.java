@@ -22,11 +22,15 @@ public class LogOutUserUIAction implements UIAction {
         if (answer == 1) {
             logOutService.logOut(userId);
             System.out.println(logOutService.findAll());
+        } else if (answer == 2) {
+            System.out.println("Welcome back!");
+        } else {
+            System.out.println("Wrong number. Please try again!");
         }
     }
 
     @Override
     public String getActionName() {
-        return "Logout";
+        return "Log Out";
     }
 }

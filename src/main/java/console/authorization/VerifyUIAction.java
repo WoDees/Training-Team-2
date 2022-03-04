@@ -39,11 +39,12 @@ public class VerifyUIAction implements UIAction {
         System.out.println("Please enter your password: ");
         String password = scanner.nextLine();
 
-        verifyService.findAll()
-                .forEach(System.out::println);
         UserEntity entity = verifyService.entrance(nickName, password);
 
         if (entity.getUserId() != null) {
+            verifyService.findAll()
+                    .forEach(System.out::println);
+
             System.out.println("Log in successful!");
             return entity.getUserId();
         }

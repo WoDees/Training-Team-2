@@ -14,9 +14,9 @@ public class VerifyUserService {
     }
 
     public UserEntity entrance(String nickName, String password) {
-
         if (repository.verify(nickName, password)) {
-            return repository.getUserEntity(nickName, password);
+            repository.logIn(repository.getUserEntityByNameAndPassword(nickName, password).getUserId());
+            return repository.getUserEntityByNameAndPassword(nickName, password);
         }
         return null;
     }

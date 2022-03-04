@@ -16,13 +16,17 @@ public class UIMenu {
     }
 
     public void startUI() {
+        boolean onlineStatus = false;
         Long userId = null;
         while (true) {
             try {
-                while (userId == null) {
+                while (!onlineStatus) {
                     for (AuthorizationUIAction action : authorizationActions) {
                         if (action.getActionName().equals("Authorization")) {
                             userId = action.authorization();
+                            if (userId != null) {
+                                onlineStatus = true;
+                            }
 
                         }
                     }
@@ -36,6 +40,12 @@ public class UIMenu {
                 int userInput = scanner.nextInt();
 
                 uiActions.get(userInput).execute(userId);
+
+                if (uiActions.get(userInput).getActionName().equals("Log Out")) {
+                    onlineStatus = false;
+                }
+
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
