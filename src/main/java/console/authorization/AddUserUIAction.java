@@ -1,14 +1,11 @@
 package console.authorization;
 
-import console.UIAction;
 import core.AddUserService;
-import domain.UserEntity;
 import dto.AddUserRequest;
-import dto.AddUserResponse;
 
 import java.util.Scanner;
 
-public class AddUserUIAction implements UIAction {
+public class AddUserUIAction implements UIAuthorization {
 
     private final AddUserService addUserService;
 
@@ -17,29 +14,7 @@ public class AddUserUIAction implements UIAction {
     }
 
     @Override
-    public void execute(Long userId) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter your nickname: ");
-        String nickName = scanner.nextLine();
-        System.out.println("Please enter your e-mail: ");
-        String mail = scanner.nextLine();
-        System.out.println("Please enter your password: ");
-        String password = scanner.nextLine();
-
-        var request = new AddUserRequest();
-        request.setNickName(nickName);
-        request.setPassword(password);
-        request.setMail(mail);
-
-        addUserService.add(request);
-    }
-
-    @Override
-    public String getActionName() {
-        return "Add";
-    }
-
-    public Long add() {
+    public Long execute() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter your nickname: ");
         String nickName = scanner.nextLine();
@@ -62,5 +37,11 @@ public class AddUserUIAction implements UIAction {
             return response.getCreatedUserId();
         }
         return response.getCreatedUserId();
+
+    }
+
+    @Override
+    public String getActionName() {
+        return "Registration";
     }
 }

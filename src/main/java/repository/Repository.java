@@ -14,9 +14,11 @@ public interface Repository {
 
     boolean remove(String login, String password);
 
-    UserEntity getUserEntity(String nickName, String password);
+    UserEntity getUserEntityByNameAndPassword(String nickName, String password);
 
-    boolean logOut(Long userId);
+    void logOut(Long userId);
+
+    void logIn(Long userId);
 
     UserEntity getUserById(Long userId);
 

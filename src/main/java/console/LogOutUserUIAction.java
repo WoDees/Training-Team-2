@@ -2,8 +2,6 @@ package console;
 
 import core.LogOutUserService;
 
-import java.util.Scanner;
-
 public class LogOutUserUIAction implements UIAction {
 
     private final LogOutUserService logOutService;
@@ -14,19 +12,14 @@ public class LogOutUserUIAction implements UIAction {
 
     @Override
     public void execute(Long userId) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Do you really want to log out? " +
-                "\n" + "1 - Yes" +
-                "\n" + "2 - No");
-        int answer = scanner.nextInt();
-        if (answer == 1) {
-            logOutService.logOut(userId);
-            System.out.println(logOutService.findAll());
-        }
+        System.out.println("""
+                Do you really want to log out?\s
+                1 - Yes
+                2 - No""");
     }
 
     @Override
     public String getActionName() {
-        return "Logout";
+        return "Log Out";
     }
 }

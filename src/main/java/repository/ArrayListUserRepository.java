@@ -46,7 +46,7 @@ public class ArrayListUserRepository implements Repository {
     }
 
     @Override
-    public UserEntity getUserEntity(String nickName, String password) {
+    public UserEntity getUserEntityByNameAndPassword(String nickName, String password) {
         for (UserEntity entity : dataBase) {
             if (entity.getNickName().equals(nickName) && entity.getPassword().equals(password)) {
                 return entity;
@@ -66,8 +66,12 @@ public class ArrayListUserRepository implements Repository {
     }
 
     @Override
-    public boolean logOut(Long userId) {
+    public void logOut(Long userId) {
         getUserById(userId).setOnlineStatus(false);
-        return false;
+    }
+
+    @Override
+    public void logIn(Long userId) {
+        getUserById(userId).setOnlineStatus(true);
     }
 }
