@@ -47,8 +47,17 @@ public class UIMenu {
                 int userInput = scanner.nextInt();
                 uiActions.get(userInput).execute(userId);
 
+
                 if (uiActions.get(userInput).getActionName().equals("Log Out")) {
-                    onlineStatus = false;
+                    int answer = scanner.nextInt();
+                    if (answer == 1) {
+                        onlineStatus = false;
+                        System.out.println("See you soon!");
+                    } else if (answer == 2) {
+                        System.out.println("Welcome back!");
+                    } else {
+                        System.out.println("Wrong number. Please try again!");
+                    }
                 }
 
 

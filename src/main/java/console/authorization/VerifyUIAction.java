@@ -1,6 +1,5 @@
 package console.authorization;
 
-import console.UIAction;
 import core.VerifyUserService;
 import domain.UserEntity;
 
