@@ -25,9 +25,9 @@ public class ArrayListUserRepository implements Repository {
     }
 
     @Override
-    public boolean verify(String nickName, String password) {
+    public boolean verify(String nickname, String password) {
         for (UserEntity entity : dataBase) {
-            if (entity.getNickName().equals(nickName) && entity.getPassword().equals(password)) {
+            if (entity.getNickname().equals(nickname) && entity.getPassword().equals(password)) {
                 return true;
             }
         }
@@ -35,9 +35,9 @@ public class ArrayListUserRepository implements Repository {
     }
 
     @Override
-    public boolean remove(String login, String password) {
+    public boolean remove(String nickname, String password) {
         for (int i = 0; i < dataBase.size(); i++) {
-            if (dataBase.get(i).getNickName().equals(login) && dataBase.get(i).getPassword().equals(password)) {
+            if (dataBase.get(i).getNickname().equals(nickname) && dataBase.get(i).getPassword().equals(password)) {
                 dataBase.remove(i);
                 return true;
             }
@@ -46,9 +46,9 @@ public class ArrayListUserRepository implements Repository {
     }
 
     @Override
-    public UserEntity getUserEntity(String nickName, String password) {
+    public UserEntity getUserEntityByNickNameAndPassword(String nickname, String password) {
         for (UserEntity entity : dataBase) {
-            if (entity.getNickName().equals(nickName) && entity.getPassword().equals(password)) {
+            if (entity.getNickname().equals(nickname) && entity.getPassword().equals(password)) {
                 return entity;
             }
         }
@@ -57,17 +57,61 @@ public class ArrayListUserRepository implements Repository {
 
     @Override
     public UserEntity getUserById(Long userId) {
-        for (int i = 0; i < dataBase.size(); i++) {
-            if (dataBase.get(i).getUserId().equals(userId)) {
-                return dataBase.get(i);
+        for (UserEntity entity : dataBase) {
+            if (entity.getUserId().equals(userId)) {
+                return entity;
             }
         }
         return null;
     }
 
     @Override
-    public boolean logOut(Long userId) {
+    public void logOut(Long userId) {
         getUserById(userId).setOnlineStatus(false);
+    }
+
+    @Override
+    public void logIn(Long userId) {
+        getUserById(userId).setOnlineStatus(true);
+    }
+
+    @Override
+    public UserEntity getUserByNickName(String nickname) {
+        for (UserEntity entity : dataBase) {
+            if (entity.getNickname().equals(nickname)) {
+                return entity;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public UserEntity getUserByMail(String mail) {
+        for (UserEntity entity : dataBase) {
+            if (entity.getMail().equals(mail)) {
+                return entity;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public boolean verifyUserByNickname(String nickname) {
+        for (UserEntity entity : dataBase) {
+            if (entity.getNickname().equals(nickname)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean verifyUserByPassword(String password) {
+        for (UserEntity entity : dataBase) {
+            if (entity.getPassword().equals(password)) {
+                return true;
+            }
+        }
         return false;
     }
 }

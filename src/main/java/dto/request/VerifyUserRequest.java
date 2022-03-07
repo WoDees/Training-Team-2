@@ -2,10 +2,9 @@ package dto.request;
 
 import java.util.Objects;
 
-public class AddUserRequest {
+public class VerifyUserRequest {
 
     private String nickname;
-    private String mail;
     private String password;
 
     public String getNickname() {
@@ -14,14 +13,6 @@ public class AddUserRequest {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
     }
 
     public String getPassword() {
@@ -36,20 +27,19 @@ public class AddUserRequest {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AddUserRequest that = (AddUserRequest) o;
-        return Objects.equals(nickname, that.nickname) && Objects.equals(mail, that.mail) && Objects.equals(password, that.password);
+        VerifyUserRequest that = (VerifyUserRequest) o;
+        return Objects.equals(nickname, that.nickname) && Objects.equals(password, that.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nickname, mail, password);
+        return Objects.hash(nickname, password);
     }
 
     @Override
     public String toString() {
-        return "AddUserRequest{" +
+        return "VerifyUserRequest{" +
                 "nickName='" + nickname + '\'' +
-                ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

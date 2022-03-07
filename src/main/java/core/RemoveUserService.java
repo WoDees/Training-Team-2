@@ -10,7 +10,7 @@ public class RemoveUserService {
         this.repository = repository;
     }
 
-    public void delete(String login, String password) {
+    public void remove(String login, String password) {
 
         if (repository.remove(login, password)) {
             System.out.println("Account was successful deleted!");

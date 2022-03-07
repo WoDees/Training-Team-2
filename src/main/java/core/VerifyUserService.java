@@ -1,6 +1,9 @@
 package core;
 
+import core.validation.authorization.verify.VerifyValidationService;
 import domain.UserEntity;
+import dto.request.VerifyUserRequest;
+import dto.response.VerifyUserResponse;
 import repository.Repository;
 
 import java.util.List;
@@ -8,20 +11,43 @@ import java.util.List;
 public class VerifyUserService {
 
     private final Repository repository;
+    private final VerifyValidationService verifyValidationService;
 
-    public VerifyUserService(Repository repository) {
+    public VerifyUserService(Repository repository, VerifyValidationService verifyValidationService) {
         this.repository = repository;
+        this.verifyValidationService = verifyValidationService;
     }
 
-    public UserEntity entrance(String nickName, String password) {
-
-        if (repository.verify(nickName, password)) {
-            return repository.getUserEntity(nickName, password);
+    public VerifyUserResponse entrance(VerifyUserRequest request) {
+        System.out.println("Received request: " + request);
+        var validationResult = verifyValidationService.validate(request);
+        if (!validationResult.isEmpty()) {
+            System.out.println("Validation failed, errors:");
+            validationResult.forEach(System.out::println);
+            var response = new VerifyUserResponse();
+            response.setErrors(validationResult);
+            return response;
         }
-        return null;
+        var entity = convert(request);
+        var verifiedEntity = repository.getUserEntityByNickNameAndPassword(entity.getNickname(), entity.getPassword());
+        System.out.println("Log in successful: " + verifiedEntity);
+
+        var response = new VerifyUserResponse();
+        response.setUserId(verifiedEntity.getUserId());
+        response.setOnlineStatus(true);
+        System.out.println("Sending response: " + response);
+        return response;
     }
 
     public List<UserEntity> findAll() {
         return repository.findAll();
+    }
+
+    private UserEntity convert(VerifyUserRequest request) {
+        UserEntity entity = new UserEntity();
+        entity.setNickname(request.getNickname());
+        entity.setPassword(request.getPassword());
+
+        return entity;
     }
 }
