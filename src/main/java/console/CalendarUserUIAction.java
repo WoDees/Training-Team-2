@@ -1,12 +1,10 @@
 package console;
 
 import core.CalendarService;
-import core.validation.CalendarValidationService;
 import domain.CalendarEntity;
-import dto.AddCalendarRequest;
+import dto.request.AddCalendarRequest;
 
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class CalendarUserUIAction implements UIAction {
 

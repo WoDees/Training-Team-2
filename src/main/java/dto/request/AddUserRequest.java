@@ -1,13 +1,12 @@
-package dto;
+package dto.request;
 
 import java.util.Objects;
 
 public class AddUserRequest {
 
     private String nickName;
-    private String mail;
     private String password;
-    private Long userId;
+    private String mail;
     private boolean onlineStatus;
 
     public String getNickName() {
@@ -18,14 +17,6 @@ public class AddUserRequest {
         this.nickName = nickName;
     }
 
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -34,12 +25,12 @@ public class AddUserRequest {
         this.password = password;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getMail() {
+        return mail;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public boolean isOnlineStatus() {
@@ -55,21 +46,20 @@ public class AddUserRequest {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AddUserRequest that = (AddUserRequest) o;
-        return onlineStatus == that.onlineStatus && Objects.equals(nickName, that.nickName) && Objects.equals(mail, that.mail) && Objects.equals(password, that.password) && Objects.equals(userId, that.userId);
+        return onlineStatus == that.onlineStatus && Objects.equals(nickName, that.nickName) && Objects.equals(password, that.password) && Objects.equals(mail, that.mail);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nickName, mail, password, userId, onlineStatus);
+        return Objects.hash(nickName, password, mail, onlineStatus);
     }
 
     @Override
     public String toString() {
         return "AddUserRequest{" +
                 "nickName='" + nickName + '\'' +
-                ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
-                ", userId=" + userId +
+                ", mail='" + mail + '\'' +
                 ", onlineStatus=" + onlineStatus +
                 '}';
     }
