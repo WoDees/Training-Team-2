@@ -22,4 +22,7 @@ public interface Repository {
 
     UserEntity getUserById(Long userId);
 
+    UserEntity getUserByNickName(String nickName);
+
+    UserEntity getUserByMail(String mail);
 }

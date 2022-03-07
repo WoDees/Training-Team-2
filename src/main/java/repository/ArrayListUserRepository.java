@@ -57,9 +57,9 @@ public class ArrayListUserRepository implements Repository {
 
     @Override
     public UserEntity getUserById(Long userId) {
-        for (int i = 0; i < dataBase.size(); i++) {
-            if (dataBase.get(i).getUserId().equals(userId)) {
-                return dataBase.get(i);
+        for (UserEntity entity : dataBase) {
+            if (entity.getUserId().equals(userId)) {
+                return entity;
             }
         }
         return null;
@@ -73,5 +73,25 @@ public class ArrayListUserRepository implements Repository {
     @Override
     public void logIn(Long userId) {
         getUserById(userId).setOnlineStatus(true);
+    }
+
+    @Override
+    public UserEntity getUserByNickName(String nickName) {
+        for (UserEntity entity : dataBase) {
+            if (entity.getNickName().equals(nickName)) {
+                return entity;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public UserEntity getUserByMail(String mail) {
+        for (UserEntity entity : dataBase) {
+            if (entity.getMail().equals(mail)) {
+                return entity;
+            }
+        }
+        return null;
     }
 }

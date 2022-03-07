@@ -28,9 +28,9 @@ public class TrainingApplication {
         var calendarValidationService = new CalendarValidationService(calendarValidationRules);
 
         var validationRules = List.of(
-                new AddUserNickNameValidationRule(),
+                new AddUserNickNameValidationRule(repository),
                 new AddUserPasswordValidationRule(),
-                new AddUserMailValidationRule()
+                new AddUserMailValidationRule(repository)
         );
         var validationService = new ValidationService(validationRules);
 
