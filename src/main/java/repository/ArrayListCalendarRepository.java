@@ -4,10 +4,11 @@ import domain.CalendarEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ArrayListCalendarRepository {
 
-    private List<CalendarEntity> dataBase = new ArrayList<>();
+    private final List<CalendarEntity> dataBase = new ArrayList<>();
     private Long sequence = 0L;
 
     public List<CalendarEntity> findCalendarsByUserId(Long id) {
@@ -15,7 +16,7 @@ public class ArrayListCalendarRepository {
         List<CalendarEntity> userDays = new ArrayList<>();
 
         for (CalendarEntity calendar : dataBase) {
-            if (calendar.getUserId() == id) {
+            if (Objects.equals(calendar.getUserId(), id)) {
                 userDays.add(calendar);
             }
         }

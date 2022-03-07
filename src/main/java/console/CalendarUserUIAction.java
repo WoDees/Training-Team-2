@@ -8,9 +8,7 @@ import java.util.Scanner;
 
 public class CalendarUserUIAction implements UIAction {
 
-
     private final CalendarService calendarService;
-
 
     public CalendarUserUIAction(CalendarService calendarService) {
         this.calendarService = calendarService;
@@ -31,9 +29,9 @@ public class CalendarUserUIAction implements UIAction {
         request.setEventDate(eventDate);
         request.setDescription(description);
         System.out.println("Successfully saved: " + request);
+
         var response = calendarService.add(request);
-        System.out.println("Sending response: " + response);
-        System.out.println(calendarService.findAll());
+        System.out.println("Received response: " + response);
     }
 
     @Override

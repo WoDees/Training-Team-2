@@ -8,9 +8,8 @@ import java.util.Objects;
 public class AddUserResponse {
 
     private Long createdUserId;
-    private List<CoreError> errors;
+    private List<CoreError>errors;
     private boolean onlineStatus;
-
 
     public Long getCreatedUserId() {
         return createdUserId;
