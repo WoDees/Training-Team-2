@@ -1,6 +1,6 @@
 package console;
 
-import core.service.LogOutUserService;
+import core.LogOutUserService;
 
 import java.util.Scanner;
 

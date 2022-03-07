@@ -1,6 +1,6 @@
 package console.authorization;
 
-import core.service.VerifyUserService;
+import core.VerifyUserService;
 import dto.request.VerifyUserRequest;
 
 import java.util.Scanner;

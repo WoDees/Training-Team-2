@@ -1,4 +1,4 @@
-package core.service;
+package core;
 
 import core.validation.authorization.registration.RegistrationValidationService;
 import domain.UserEntity;

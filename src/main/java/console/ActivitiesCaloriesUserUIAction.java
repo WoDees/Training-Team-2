@@ -1,6 +1,6 @@
 package console;
 
-import core.service.ActivitiesCaloriesService;
+import core.ActivitiesCaloriesService;
 
 public class ActivitiesCaloriesUserUIAction implements UIAction {
 

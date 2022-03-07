@@ -1,6 +1,6 @@
 package console;
 
-import core.service.RemoveUserService;
+import core.RemoveUserService;
 import dto.request.RemoveUserRequest;
 
 import java.util.Scanner;
