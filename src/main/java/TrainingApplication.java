@@ -1,7 +1,7 @@
 import console.authorization.AddUserUIAction;
 import console.*;
 import console.authorization.VerifyUIAction;
-import core.*;
+import core.service.*;
 import core.validation.authorization.verify.VerifyAttemptsAmountValidationRule;
 import core.validation.authorization.verify.VerifyExistenceValidationRule;
 import core.validation.authorization.verify.VerifyUserInputValidationRule;

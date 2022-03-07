@@ -1,4 +1,4 @@
-package core;
+package core.service;
 
 import domain.UserEntity;
 import repository.Repository;

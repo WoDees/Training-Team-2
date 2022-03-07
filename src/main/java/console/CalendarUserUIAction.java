@@ -1,6 +1,6 @@
 package console;
 
-import core.CalendarService;
+import core.service.CalendarService;
 import domain.CalendarEntity;
 import dto.request.AddCalendarRequest;
 
