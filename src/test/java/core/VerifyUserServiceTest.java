@@ -1,5 +1,6 @@
 package core;
 
+import core.service.VerifyUserService;
 import domain.UserEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
