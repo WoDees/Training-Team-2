@@ -1,10 +1,11 @@
 package core.validation;
 
 import domain.UserEntity;
+import dto.request.AddUserRequest;
 
 public interface ValidationRule {
 
-    void validate(UserEntity entity);
+    void validate(AddUserRequest request);
 
     default void checkNotNull(UserEntity entity) {
         if (entity == null) {

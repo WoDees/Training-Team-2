@@ -7,7 +7,6 @@ public class VerifyUserRequest {
     private String nickName;
     private String password;
     private boolean onlineStatus;
-    private Long userId;
 
     public String getNickName() {
         return nickName;
@@ -33,25 +32,17 @@ public class VerifyUserRequest {
         this.onlineStatus = onlineStatus;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         VerifyUserRequest that = (VerifyUserRequest) o;
-        return onlineStatus == that.onlineStatus && Objects.equals(nickName, that.nickName) && Objects.equals(password, that.password) && Objects.equals(userId, that.userId);
+        return onlineStatus == that.onlineStatus && Objects.equals(nickName, that.nickName) && Objects.equals(password, that.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nickName, password, onlineStatus, userId);
+        return Objects.hash(nickName, password, onlineStatus);
     }
 
     @Override
@@ -60,7 +51,6 @@ public class VerifyUserRequest {
                 "nickName='" + nickName + '\'' +
                 ", password='" + password + '\'' +
                 ", onlineStatus=" + onlineStatus +
-                ", userId=" + userId +
                 '}';
     }
 }

@@ -2,7 +2,7 @@ package core.validation.authorization;
 
 import core.validation.ValidationException;
 import core.validation.ValidationRule;
-import domain.UserEntity;
+import dto.request.AddUserRequest;
 import repository.Repository;
 
 public class AddUserMailValidationRule implements ValidationRule {
@@ -14,12 +14,12 @@ public class AddUserMailValidationRule implements ValidationRule {
     }
 
     @Override
-    public void validate(UserEntity entity) {
-        if (!entity.getMail().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,3})$")) {
+    public void validate(AddUserRequest request) {
+        if (!request.getMail().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,3})$")) {
             throw new ValidationException("Incorrect mail");
         }
-        if (repository.getUserByMail(entity.getMail()) != null) {
-            if (repository.getUserByMail(entity.getMail()).getMail().equals(entity.getMail())) {
+        if (repository.getUserByMail(request.getMail()) != null) {
+            if (repository.getUserByMail(request.getMail()).getMail().equals(request.getMail())) {
                 throw new ValidationException("User with that mail already exist!");
             }
         }
