@@ -11,6 +11,7 @@ public class AddUserResponse {
     private List<CoreError> errors;
     private boolean onlineStatus;
 
+
     public Long getCreatedUserId() {
         return createdUserId;
     }

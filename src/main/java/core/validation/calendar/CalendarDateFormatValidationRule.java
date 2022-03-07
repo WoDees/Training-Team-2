@@ -2,7 +2,7 @@ package core.validation.calendar;
 
 import core.validation.CalendarValidationRule;
 import core.validation.ValidationException;
-import dto.AddCalendarRequest;
+import dto.request.AddCalendarRequest;
 
 public class CalendarDateFormatValidationRule implements CalendarValidationRule {
 
