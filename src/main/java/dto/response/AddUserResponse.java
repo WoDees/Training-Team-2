@@ -1,21 +1,21 @@
-package dto;
+package dto.response;
 
 import core.validation.CoreError;
 
 import java.util.List;
 import java.util.Objects;
 
-public class AddCalendarResponse {
+public class AddUserResponse {
 
-    private Integer createdCalendarId;
+    private Long createdUserId;
     private List<CoreError> errors;
 
-    public Integer getCreatedCalendarId() {
-        return createdCalendarId;
+    public Long getCreatedUserId() {
+        return createdUserId;
     }
 
-    public void setCreatedCalendarId(Integer createdCalendarId) {
-        this.createdCalendarId = createdCalendarId;
+    public void setCreatedUserId(Long createdUserId) {
+        this.createdUserId = createdUserId;
     }
 
     public List<CoreError> getErrors() {
@@ -30,19 +30,19 @@ public class AddCalendarResponse {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AddCalendarResponse that = (AddCalendarResponse) o;
-        return Objects.equals(createdCalendarId, that.createdCalendarId) && Objects.equals(errors, that.errors);
+        AddUserResponse that = (AddUserResponse) o;
+        return Objects.equals(createdUserId, that.createdUserId) && Objects.equals(errors, that.errors);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(createdCalendarId, errors);
+        return Objects.hash(createdUserId, errors);
     }
 
     @Override
     public String toString() {
-        return "AddCalendarResponse{" +
-                "createdToDoId=" + createdCalendarId +
+        return "AddUserResponse{" +
+                "createdUserId=" + createdUserId +
                 ", errors=" + errors +
                 '}';
     }
