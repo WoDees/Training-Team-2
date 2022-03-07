@@ -7,14 +7,14 @@ import java.util.Objects;
 
 public class AddCalendarResponse {
 
-    private Integer createdCalendarId;
+    private Long createdCalendarId;
     private List<CoreError> errors;
 
-    public Integer getCreatedCalendarId() {
+    public Long getCreatedCalendarId() {
         return createdCalendarId;
     }
 
-    public void setCreatedCalendarId(Integer createdCalendarId) {
+    public void setCreatedCalendarId(Long createdCalendarId) {
         this.createdCalendarId = createdCalendarId;
     }
 
@@ -42,7 +42,7 @@ public class AddCalendarResponse {
     @Override
     public String toString() {
         return "AddCalendarResponse{" +
-                "createdToDoId=" + createdCalendarId +
+                "createdCalendarId=" + createdCalendarId +
                 ", errors=" + errors +
                 '}';
     }

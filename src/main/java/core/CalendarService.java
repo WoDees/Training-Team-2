@@ -4,9 +4,9 @@ import core.validation.CalendarValidationService;
 import domain.CalendarEntity;
 import dto.AddCalendarRequest;
 import dto.AddCalendarResponse;
+import dto.CalendarDTO;
+import dto.FindAllCalendarResponse;
 import repository.ArrayListCalendarRepository;
-
-import java.util.List;
 
 public class CalendarService {
 
@@ -31,7 +31,8 @@ public class CalendarService {
         var createdEntity = repository.save(entity);
         System.out.println("Successfully saved: " + createdEntity);
         var response = new AddCalendarResponse();
-        response.setCreatedCalendarId((int) createdEntity.getId());
+        response.setCreatedCalendarId(createdEntity.getId());
+        System.out.println("Sending response: " + response);
         return response;
     }
 
@@ -42,8 +43,15 @@ public class CalendarService {
         return entity;
     }
 
-    public List<CalendarEntity> findAll() {
-        return repository.findAll();
+    public FindAllCalendarResponse findAll() {
+        var dtos = repository.findAll().stream()
+                .map(this::convert)
+                .toList();
+        return new FindAllCalendarResponse(dtos);
+    }
+
+    private CalendarDTO convert(CalendarEntity entity) {
+        return new CalendarDTO(entity.getId(), entity.getUserId(), entity.getDescription(), entity.getEventDate());
     }
 }
 

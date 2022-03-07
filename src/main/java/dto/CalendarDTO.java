@@ -1,54 +1,26 @@
-package domain;
+package dto;
 
 import java.util.Objects;
 
-public class CalendarEntity {
+public class CalendarDTO {
 
-    private Long id;
-    private Long userId;
-    private String description;
-    private String eventDate;
+    private final Long id;
+    private final Long userId;
+    private final String description;
+    private final String eventDate;
 
-    public String getEventDate() {
-        return eventDate;
-    }
-
-    public String setEventDate(String eventDate) {
-        this.eventDate = eventDate;
-        return eventDate;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
+    public CalendarDTO(Long id, Long userId, String description, String eventDate) {
         this.id = id;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
         this.userId = userId;
-    }
-
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String setDescription(String description) {
         this.description = description;
-        return description;
+        this.eventDate = eventDate;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CalendarEntity that = (CalendarEntity) o;
+        CalendarDTO that = (CalendarDTO) o;
         return Objects.equals(id, that.id) && Objects.equals(userId, that.userId) && Objects.equals(description, that.description) && Objects.equals(eventDate, that.eventDate);
     }
 
@@ -59,7 +31,7 @@ public class CalendarEntity {
 
     @Override
     public String toString() {
-        return "CalendarEntity{" +
+        return "CalendarDTO{" +
                 "id=" + id +
                 ", userId=" + userId +
                 ", description='" + description + '\'' +
