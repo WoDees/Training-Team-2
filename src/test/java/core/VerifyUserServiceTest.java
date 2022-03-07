@@ -26,7 +26,7 @@ class VerifyUserServiceTest {
         var returnEntity = new UserEntity();
         returnEntity.setUserId(1L);
         returnEntity.setPassword("TEST_PASSWORD");
-        returnEntity.setNickName("TEST_NICKNAME");
+        returnEntity.setNickname("TEST_NICKNAME");
         returnEntity.setMail("TEST_MAIL");
         returnEntity.setOnlineStatus(true);
         var returnResult = List.of(returnEntity);
@@ -40,7 +40,7 @@ class VerifyUserServiceTest {
 
         expectedEntity.setUserId(1L);
         expectedEntity.setPassword("TEST_PASSWORD");
-        expectedEntity.setNickName("TEST_NICKNAME");
+        expectedEntity.setNickname("TEST_NICKNAME");
         expectedEntity.setMail("TEST_MAIL");
         expectedEntity.setOnlineStatus(true);
 
@@ -53,7 +53,7 @@ class VerifyUserServiceTest {
         var returnEntity = new UserEntity();
         returnEntity.setUserId(0L);
         returnEntity.setPassword("TEST_PASSWORD1");
-        returnEntity.setNickName("TEST_NICKNAME");
+        returnEntity.setNickname("TEST_NICKNAME");
         returnEntity.setMail("TEST_MAIL");
         return List.of(returnEntity);
     }
@@ -62,7 +62,7 @@ class VerifyUserServiceTest {
         var returnEntity = new UserEntity();
         returnEntity.setUserId(0L);
         returnEntity.setPassword("TEST_PASSWORD2");
-        returnEntity.setNickName("TEST_NICKNAME");
+        returnEntity.setNickname("TEST_NICKNAME");
         returnEntity.setMail("TEST_MAIL");
         return List.of(returnEntity);
     }
