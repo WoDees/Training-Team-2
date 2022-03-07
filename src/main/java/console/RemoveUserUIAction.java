@@ -19,7 +19,7 @@ public class RemoveUserUIAction implements UIAction {
         String login = scanner.nextLine();
         System.out.println("Enter your password:");
         String password = scanner.nextLine();
-        deleteService.delete(login, password);
+        deleteService.remove(login, password);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package core;
 
-import core.validation.ValidationService;
 import domain.UserEntity;
 import dto.request.VerifyUserRequest;
 import dto.response.VerifyUserResponse;
@@ -22,7 +21,6 @@ public class VerifyUserService {
         boolean verifiedEntity = repository.verify(entity.getNickName(), entity.getPassword());
 
         var response = new VerifyUserResponse();
-        response.setUserId(repository.getUserByNickName(entity.getNickName()).getUserId());
         response.setOnlineStatus(verifiedEntity);
 
         return response;

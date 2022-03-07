@@ -6,8 +6,6 @@ import dto.request.AddUserRequest;
 import dto.response.AddUserResponse;
 import repository.Repository;
 
-import java.util.Arrays;
-
 public class AddUserService {
 
     private final Repository repository;
@@ -21,9 +19,7 @@ public class AddUserService {
 
     public AddUserResponse add(AddUserRequest request) {
         System.out.println("Received request: " + request);
-        var entity = convert(request);
-        var validationResult = validationService.validate(entity);
-
+        var validationResult = validationService.validate(request);
         if (!validationResult.isEmpty()) {
             System.out.println("Validation failed, errors:");
             validationResult.forEach(System.out::println);
@@ -31,6 +27,7 @@ public class AddUserService {
             response.setErrors(validationResult);
             return response;
         }
+        var entity = convert(request);
         var createdEntity = repository.save(entity);
         System.out.println("Successfully saved: " + createdEntity);
         var response = new AddUserResponse();

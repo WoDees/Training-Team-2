@@ -1,6 +1,6 @@
 package core.validation;
 
-import domain.UserEntity;
+import dto.request.AddUserRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,22 +15,22 @@ public class ValidationService {
         this.validationRules = validationRules;
     }
 
-    public List<CoreError> validate(UserEntity entity) {
+    public List<CoreError> validate(AddUserRequest request) {
         List<CoreError> errors = new ArrayList<>();
-        if (entity == null) {
+        if (request == null) {
             errors.add(new CoreError("User must not be null"));
             return errors;
         }
 
         return validationRules.stream()
-                .map(rule -> mapError(rule, entity))
+                .map(rule -> mapError(rule, request))
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
-    private CoreError mapError(ValidationRule rule, UserEntity entity) {
+    private CoreError mapError(ValidationRule rule, AddUserRequest request) {
         try {
-            rule.validate(entity);
+            rule.validate(request);
         } catch (ValidationException e) {
             return new CoreError(e.getMessage());
         }
