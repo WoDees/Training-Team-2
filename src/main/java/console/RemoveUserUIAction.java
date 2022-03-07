@@ -15,11 +15,11 @@ public class RemoveUserUIAction implements UIAction {
     @Override
     public void execute(Long userId) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter your login:");
-        String login = scanner.nextLine();
+        System.out.println("Enter your nickname:");
+        String nickname = scanner.nextLine();
         System.out.println("Enter your password:");
         String password = scanner.nextLine();
-        deleteService.remove(login, password);
+        deleteService.remove(nickname, password);
     }
 
     @Override

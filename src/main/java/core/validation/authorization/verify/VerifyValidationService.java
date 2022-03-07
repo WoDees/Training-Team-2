@@ -1,21 +1,23 @@
-package core.validation;
+package core.validation.authorization.verify;
 
-import dto.request.AddUserRequest;
+import core.validation.CoreError;
+import core.validation.ValidationException;
+import dto.request.VerifyUserRequest;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class ValidationService {
+public class VerifyValidationService {
 
-    private final List<ValidationRule> validationRules;
+    private final List<VerifyValidationRule> validationRules;
 
-    public ValidationService(List<ValidationRule> validationRules) {
+    public VerifyValidationService(List<VerifyValidationRule> validationRules) {
         this.validationRules = validationRules;
     }
 
-    public List<CoreError> validate(AddUserRequest request) {
+    public List<CoreError> validate(VerifyUserRequest request) {
         List<CoreError> errors = new ArrayList<>();
         if (request == null) {
             errors.add(new CoreError("User must not be null"));
@@ -28,7 +30,7 @@ public class ValidationService {
                 .collect(Collectors.toList());
     }
 
-    private CoreError mapError(ValidationRule rule, AddUserRequest request) {
+    private CoreError mapError(VerifyValidationRule rule, VerifyUserRequest request) {
         try {
             rule.validate(request);
         } catch (ValidationException e) {

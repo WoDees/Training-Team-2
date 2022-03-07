@@ -1,33 +1,32 @@
-package core.validation.authorization;
+package core.validation.authorization.registration;
 
 import core.validation.ValidationException;
-import core.validation.ValidationRule;
 import dto.request.AddUserRequest;
 import repository.Repository;
 
-public class AddUserNickNameValidationRule implements ValidationRule {
+public class RegistrationUserNickNameValidationRule implements RegistrationValidationRule {
 
     private final Repository repository;
 
-    public AddUserNickNameValidationRule(Repository repository) {
+    public RegistrationUserNickNameValidationRule(Repository repository) {
         this.repository = repository;
     }
 
     @Override
     public void validate(AddUserRequest request) {
-        if (request.getNickName().length() < 5) {
+        if (request.getNickname().length() < 5) {
             throw new ValidationException("User nick name length must be greater than 5, but actual nick name length is "
-                    + request.getNickName().length());
+                    + request.getNickname().length());
         }
-        if (request.getNickName().length() > 12) {
+        if (request.getNickname().length() > 12) {
             throw new ValidationException("User nick name length must be less than 12, but actual nick name length is "
-                    + request.getNickName().length());
+                    + request.getNickname().length());
         }
-        if (!request.getNickName().matches("^[a-zA-Z0-9]+$")) {
+        if (!request.getNickname().matches("^[a-zA-Z0-9]+$")) {
             throw new ValidationException("User nick name can only contain available symbols (a-z A-Z 0-9)");
         }
-        if (repository.getUserByNickName(request.getNickName()) != null) {
-            if (repository.getUserByNickName(request.getNickName()).getNickName().equals(request.getNickName()))
+        if (repository.getUserByNickName(request.getNickname()) != null) {
+            if (repository.getUserByNickName(request.getNickname()).getNickname().equals(request.getNickname()))
                 throw new ValidationException("User with that nick name already exist!");
         }
     }

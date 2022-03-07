@@ -1,6 +1,5 @@
 package core.validation.calendar;
 
-import core.validation.CalendarValidationRule;
 import core.validation.ValidationException;
 import dto.request.AddCalendarRequest;
 

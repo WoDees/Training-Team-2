@@ -1,15 +1,14 @@
-package core.validation.authorization;
+package core.validation.authorization.registration;
 
 import core.validation.ValidationException;
-import core.validation.ValidationRule;
 import dto.request.AddUserRequest;
 import repository.Repository;
 
-public class AddUserMailValidationRule implements ValidationRule {
+public class RegistrationUserMailValidationRule implements RegistrationValidationRule {
 
     private final Repository repository;
 
-    public AddUserMailValidationRule(Repository repository) {
+    public RegistrationUserMailValidationRule(Repository repository) {
         this.repository = repository;
     }
 

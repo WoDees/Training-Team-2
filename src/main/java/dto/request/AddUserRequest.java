@@ -4,17 +4,16 @@ import java.util.Objects;
 
 public class AddUserRequest {
 
-    private String nickName;
+    private String nickname;
     private String mail;
     private String password;
-    private boolean onlineStatus;
 
-    public String getNickName() {
-        return nickName;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getMail() {
@@ -33,34 +32,25 @@ public class AddUserRequest {
         this.password = password;
     }
 
-    public boolean isOnlineStatus() {
-        return onlineStatus;
-    }
-
-    public void setOnlineStatus(boolean onlineStatus) {
-        this.onlineStatus = onlineStatus;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AddUserRequest that = (AddUserRequest) o;
-        return onlineStatus == that.onlineStatus && Objects.equals(nickName, that.nickName) && Objects.equals(mail, that.mail) && Objects.equals(password, that.password);
+        return Objects.equals(nickname, that.nickname) && Objects.equals(mail, that.mail) && Objects.equals(password, that.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nickName, mail, password, onlineStatus);
+        return Objects.hash(nickname, mail, password);
     }
 
     @Override
     public String toString() {
         return "AddUserRequest{" +
-                "nickName='" + nickName + '\'' +
+                "nickName='" + nickname + '\'' +
                 ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
-                ", onlineStatus=" + onlineStatus +
                 '}';
     }
 }

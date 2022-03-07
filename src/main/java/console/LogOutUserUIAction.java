@@ -24,7 +24,7 @@ public class LogOutUserUIAction implements UIAction {
         if (answer == 1) {
             System.out.println("See you soon!");
             logOutService.logOut(userId);
-            System.out.println(logOutService.findAll());
+            logOutService.findAll().forEach(System.out::println);
         } else if (answer == 2) {
             System.out.println("Welcome back!");
         } else {

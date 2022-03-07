@@ -1,10 +1,9 @@
-package core.validation.authorization;
+package core.validation.authorization.registration;
 
 import core.validation.ValidationException;
-import core.validation.ValidationRule;
 import dto.request.AddUserRequest;
 
-public class AddUserPasswordValidationRule implements ValidationRule {
+public class RegistrationUserPasswordValidationRule implements RegistrationValidationRule {
 
     @Override
     public void validate(AddUserRequest request) {
