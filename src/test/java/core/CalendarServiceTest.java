@@ -1,12 +1,12 @@
 package core;
 
-import core.validation.CalendarValidationService;
+import core.validation.calendar.CalendarValidationService;
 import core.validation.CoreError;
 import domain.CalendarEntity;
-import dto.AddCalendarRequest;
-import dto.AddCalendarResponse;
+import dto.request.AddCalendarRequest;
+import dto.response.AddCalendarResponse;
 import dto.CalendarDTO;
-import dto.FindAllCalendarResponse;
+import dto.response.FindAllCalendarResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

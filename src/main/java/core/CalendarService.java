@@ -1,11 +1,11 @@
 package core;
 
-import core.validation.CalendarValidationService;
+import core.validation.calendar.CalendarValidationService;
 import domain.CalendarEntity;
-import dto.AddCalendarRequest;
-import dto.AddCalendarResponse;
+import dto.request.AddCalendarRequest;
+import dto.response.AddCalendarResponse;
 import dto.CalendarDTO;
-import dto.FindAllCalendarResponse;
+import dto.response.FindAllCalendarResponse;
 import repository.ArrayListCalendarRepository;
 
 public class CalendarService {

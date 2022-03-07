@@ -1,4 +1,6 @@
-package dto;
+package dto.response;
+
+import dto.CalendarDTO;
 
 import java.util.List;
 import java.util.Objects;

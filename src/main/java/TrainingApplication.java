@@ -3,7 +3,7 @@ import console.authorization.AddUserUIAction;
 import console.*;
 import console.authorization.VerifyUIAction;
 import core.*;
-import core.validation.CalendarValidationService;
+import core.validation.calendar.CalendarValidationService;
 import core.validation.ValidationService;
 import core.validation.authorization.AddUserMailValidationRule;
 import core.validation.authorization.AddUserNickNameValidationRule;

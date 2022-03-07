@@ -2,7 +2,7 @@ package console;
 
 import core.CalendarService;
 import domain.CalendarEntity;
-import dto.AddCalendarRequest;
+import dto.request.AddCalendarRequest;
 
 import java.util.Scanner;
 

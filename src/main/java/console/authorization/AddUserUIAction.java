@@ -2,9 +2,7 @@ package console.authorization;
 
 import console.UIAction;
 import core.AddUserService;
-import domain.UserEntity;
-import dto.AddUserRequest;
-import dto.AddUserResponse;
+import dto.request.AddUserRequest;
 
 import java.util.Scanner;
 
