@@ -1,15 +1,16 @@
 package console;
 
 import core.RemoveUserService;
+import dto.request.RemoveUserRequest;
 
 import java.util.Scanner;
 
 public class RemoveUserUIAction implements UIAction {
 
-    private final RemoveUserService deleteService;
+    private final RemoveUserService removeUserService;
 
     public RemoveUserUIAction(RemoveUserService deleteService) {
-        this.deleteService = deleteService;
+        this.removeUserService = deleteService;
     }
 
     @Override
@@ -19,7 +20,13 @@ public class RemoveUserUIAction implements UIAction {
         String nickname = scanner.nextLine();
         System.out.println("Enter your password:");
         String password = scanner.nextLine();
-        deleteService.remove(nickname, password);
+
+        var request = new RemoveUserRequest();
+        request.setNickname(nickname);
+        request.setPassword(password);
+
+        var response = removeUserService.remove(request);
+        System.out.println("Received response: " + response);
     }
 
     @Override
