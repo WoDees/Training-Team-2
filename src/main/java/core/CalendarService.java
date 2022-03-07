@@ -2,8 +2,8 @@ package core;
 
 import core.validation.CalendarValidationService;
 import domain.CalendarEntity;
-import dto.AddCalendarRequest;
-import dto.AddCalendarResponse;
+import dto.request.AddCalendarRequest;
+import dto.response.AddCalendarResponse;
 import repository.ArrayListCalendarRepository;
 
 import java.util.List;

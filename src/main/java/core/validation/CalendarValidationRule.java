@@ -1,6 +1,6 @@
 package core.validation;
 
-import dto.AddCalendarRequest;
+import dto.request.AddCalendarRequest;
 
 public interface CalendarValidationRule {
 

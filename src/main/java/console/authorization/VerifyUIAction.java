@@ -1,7 +1,7 @@
 package console.authorization;
 
 import core.VerifyUserService;
-import domain.UserEntity;
+import dto.request.VerifyUserRequest;
 
 import java.util.Scanner;
 
@@ -21,17 +21,22 @@ public class VerifyUIAction implements UIAuthorization {
         System.out.println("Please enter your password: ");
         String password = scanner.nextLine();
 
-        UserEntity entity = verifyService.entrance(nickName, password);
 
-        if (entity.getUserId() != null) {
-            verifyService.findAll()
-                    .forEach(System.out::println);
+        var request = new VerifyUserRequest();
+        request.setNickName(nickName);
+        request.setPassword(password);
+        request.setOnlineStatus(true);
 
+        var response = verifyService.entrance(request);
+        System.out.println("Received response: " + response);
+
+        if (response.isOnlineStatus()) {
             System.out.println("Log in successful!");
-            return entity.getUserId();
+            return response.getUserId();
+        } else {
+            System.out.println("Incorrect nickname or password");
+            return null;
         }
-        System.out.println("Wrong user name or password!");
-        return null;
     }
 
     @Override

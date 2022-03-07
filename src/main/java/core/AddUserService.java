@@ -2,8 +2,8 @@ package core;
 
 import core.validation.ValidationService;
 import domain.UserEntity;
-import dto.AddUserRequest;
-import dto.AddUserResponse;
+import dto.request.AddUserRequest;
+import dto.response.AddUserResponse;
 import repository.Repository;
 
 public class AddUserService {
@@ -38,7 +38,7 @@ public class AddUserService {
         entity.setNickName(request.getNickName());
         entity.setMail(request.getMail());
         entity.setPassword(request.getPassword());
-        entity.setOnlineStatus(true);
+        entity.setOnlineStatus(request.isOnlineStatus());
 
         return entity;
     }

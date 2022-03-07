@@ -1,7 +1,6 @@
 package core.validation;
 
-import domain.CalendarEntity;
-import dto.AddCalendarRequest;
+import dto.request.AddCalendarRequest;
 
 import java.util.ArrayList;
 import java.util.List;
