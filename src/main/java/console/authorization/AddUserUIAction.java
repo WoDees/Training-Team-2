@@ -31,13 +31,7 @@ public class AddUserUIAction implements UIAuthorization {
 
         var response = addUserService.add(request);
         System.out.println("Received response: " + response);
-
-        if (response == null) {
-            System.out.println("Registration successful!");
-            return response.getCreatedUserId();
-        }
         return response.getCreatedUserId();
-
     }
 
     @Override

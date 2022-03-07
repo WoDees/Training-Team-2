@@ -1,6 +1,9 @@
 package core;
 
+import core.validation.ValidationService;
 import domain.UserEntity;
+import dto.request.VerifyUserRequest;
+import dto.response.VerifyUserResponse;
 import repository.Repository;
 
 import java.util.List;
@@ -13,15 +16,29 @@ public class VerifyUserService {
         this.repository = repository;
     }
 
-    public UserEntity entrance(String nickName, String password) {
-        if (repository.verify(nickName, password)) {
-            repository.logIn(repository.getUserEntityByNameAndPassword(nickName, password).getUserId());
-            return repository.getUserEntityByNameAndPassword(nickName, password);
-        }
-        return null;
+    public VerifyUserResponse entrance(VerifyUserRequest request) {
+        var entity = convert(request);
+
+        boolean verifiedEntity = repository.verify(entity.getNickName(), entity.getPassword());
+
+        var response = new VerifyUserResponse();
+        response.setUserId(repository.getUserByNickName(entity.getNickName()).getUserId());
+        response.setOnlineStatus(verifiedEntity);
+
+        return response;
+
     }
 
     public List<UserEntity> findAll() {
         return repository.findAll();
+    }
+
+    private UserEntity convert(VerifyUserRequest request) {
+        UserEntity entity = new UserEntity();
+        entity.setNickName(request.getNickName());
+        entity.setPassword(request.getPassword());
+        entity.setOnlineStatus(request.isOnlineStatus());
+
+        return entity;
     }
 }

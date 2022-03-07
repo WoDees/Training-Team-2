@@ -45,6 +45,7 @@ public class AddUserService {
         entity.setMail(request.getMail());
         entity.setPassword(request.getPassword());
         entity.setOnlineStatus(request.isOnlineStatus());
+
         return entity;
     }
 }

@@ -9,6 +9,8 @@ public class AddUserResponse {
 
     private Long createdUserId;
     private List<CoreError> errors;
+    private boolean onlineStatus;
+
 
     public Long getCreatedUserId() {
         return createdUserId;
@@ -26,17 +28,25 @@ public class AddUserResponse {
         this.errors = errors;
     }
 
+    public boolean isOnlineStatus() {
+        return onlineStatus;
+    }
+
+    public void setOnlineStatus(boolean onlineStatus) {
+        this.onlineStatus = onlineStatus;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AddUserResponse that = (AddUserResponse) o;
-        return Objects.equals(createdUserId, that.createdUserId) && Objects.equals(errors, that.errors);
+        return onlineStatus == that.onlineStatus && Objects.equals(createdUserId, that.createdUserId) && Objects.equals(errors, that.errors);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(createdUserId, errors);
+        return Objects.hash(createdUserId, errors, onlineStatus);
     }
 
     @Override
@@ -44,6 +54,7 @@ public class AddUserResponse {
         return "AddUserResponse{" +
                 "createdUserId=" + createdUserId +
                 ", errors=" + errors +
+                ", onlineStatus=" + onlineStatus +
                 '}';
     }
 }
