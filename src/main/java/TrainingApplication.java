@@ -1,7 +1,7 @@
 import console.authorization.AddUserUIAction;
 import console.*;
 import console.authorization.VerifyUIAction;
-import core.*;
+import core.service.*;
 import core.validation.authorization.verify.VerifyAttemptsAmountValidationRule;
 import core.validation.authorization.verify.VerifyExistenceValidationRule;
 import core.validation.authorization.verify.VerifyUserInputValidationRule;
@@ -12,6 +12,9 @@ import core.validation.authorization.registration.RegistrationUserMailValidation
 import core.validation.authorization.registration.RegistrationUserNickNameValidationRule;
 import core.validation.authorization.registration.RegistrationUserPasswordValidationRule;
 import core.validation.calendar.*;
+import core.validation.remove.RemoveExistenceValidationRule;
+import core.validation.remove.RemoveUserInputValidationRule;
+import core.validation.remove.RemoveValidationService;
 import repository.ArrayListUserRepository;
 import repository.ArrayListCalendarRepository;
 
@@ -45,11 +48,17 @@ public class TrainingApplication {
         );
         var verifyValidationService = new VerifyValidationService(verifyValidationRules);
 
+        var removeValidationRules = List.of(
+                new RemoveExistenceValidationRule(repository),
+                new RemoveUserInputValidationRule(repository)
+        );
+        var removeValidationService = new RemoveValidationService(removeValidationRules);
+
         var activitiesCaloriesService = new ActivitiesCaloriesService(repository);
         var calendarService = new CalendarService(calendarRepository, calendarValidationService);
         var addUserService = new AddUserService(repository, registrationValidationService);
         var verifyService = new VerifyUserService(repository, verifyValidationService);
-        var removeUserService = new RemoveUserService(repository);
+        var removeUserService = new RemoveUserService(repository,removeValidationService);
         var logOutUserService = new LogOutUserService(repository);
 
 
