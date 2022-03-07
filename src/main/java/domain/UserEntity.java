@@ -5,7 +5,7 @@ import java.util.Objects;
 public class UserEntity {
 
     private Long userId;
-    private String nickName;
+    private String nickname;
     private String password;
     private String mail;
     private boolean onlineStatus;
@@ -14,8 +14,8 @@ public class UserEntity {
         return userId;
     }
 
-    public String getNickName() {
-        return nickName;
+    public String getNickname() {
+        return nickname;
     }
 
     public String getPassword() {
@@ -30,8 +30,8 @@ public class UserEntity {
         this.userId = userId;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public void setPassword(String password) {
@@ -55,19 +55,19 @@ public class UserEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserEntity entity = (UserEntity) o;
-        return onlineStatus == entity.onlineStatus && Objects.equals(userId, entity.userId) && Objects.equals(nickName, entity.nickName) && Objects.equals(password, entity.password) && Objects.equals(mail, entity.mail);
+        return onlineStatus == entity.onlineStatus && Objects.equals(userId, entity.userId) && Objects.equals(nickname, entity.nickname) && Objects.equals(password, entity.password) && Objects.equals(mail, entity.mail);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, nickName, password, mail, onlineStatus);
+        return Objects.hash(userId, nickname, password, mail, onlineStatus);
     }
 
     @Override
     public String toString() {
         return "UserEntity{" +
                 "userId=" + userId +
-                ", nickName='" + nickName + '\'' +
+                ", nickName='" + nickname + '\'' +
                 ", password='" + password + '\'' +
                 ", mail='" + mail + '\'' +
                 ", onlineStatus=" + onlineStatus +

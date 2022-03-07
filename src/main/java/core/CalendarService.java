@@ -1,6 +1,6 @@
 package core;
 
-import core.validation.CalendarValidationService;
+import core.validation.calendar.CalendarValidationService;
 import domain.CalendarEntity;
 import dto.request.AddCalendarRequest;
 import dto.response.AddCalendarResponse;

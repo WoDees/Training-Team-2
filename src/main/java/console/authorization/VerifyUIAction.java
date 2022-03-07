@@ -15,28 +15,23 @@ public class VerifyUIAction implements UIAuthorization {
 
     @Override
     public Long execute() {
+
+        verifyService.findAll().forEach(System.out::println);
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter your nickName: ");
-        String nickName = scanner.nextLine();
+        System.out.println("Please enter your nickname: ");
+        String nickname = scanner.nextLine();
         System.out.println("Please enter your password: ");
         String password = scanner.nextLine();
 
 
         var request = new VerifyUserRequest();
-        request.setNickName(nickName);
+        request.setNickname(nickname);
         request.setPassword(password);
-        request.setOnlineStatus(true);
 
         var response = verifyService.entrance(request);
         System.out.println("Received response: " + response);
 
-        if (response.isOnlineStatus()) {
-            System.out.println("Log in successful!");
-            return response.getUserId();
-        } else {
-            System.out.println("Incorrect nickname or password");
-            return null;
-        }
+        return response.getUserId();
     }
 
     @Override
