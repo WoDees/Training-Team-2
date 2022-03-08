@@ -1,6 +1,6 @@
 package console.authorization;
 
-import core.VerifyUserService;
+import core.service.VerifyUserService;
 import dto.request.VerifyUserRequest;
 
 import java.util.Scanner;
@@ -15,8 +15,6 @@ public class VerifyUIAction implements UIAuthorization {
 
     @Override
     public Long execute() {
-
-        verifyService.findAll().forEach(System.out::println);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter your nickname: ");
         String nickname = scanner.nextLine();

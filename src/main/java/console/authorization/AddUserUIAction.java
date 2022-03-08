@@ -1,6 +1,6 @@
 package console.authorization;
 
-import core.AddUserService;
+import core.service.AddUserService;
 import dto.request.AddUserRequest;
 
 import java.util.Scanner;
@@ -30,7 +30,6 @@ public class AddUserUIAction implements UIAuthorization {
 
         var response = addUserService.add(request);
         System.out.println("Received response: " + response);
-        addUserService.findAll().forEach(System.out::println);
         return response.getCreatedUserId();
     }
 

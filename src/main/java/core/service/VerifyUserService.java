@@ -39,10 +39,6 @@ public class VerifyUserService {
         return response;
     }
 
-    public List<UserEntity> findAll() {
-        return repository.findAll();
-    }
-
     private UserEntity convert(VerifyUserRequest request) {
         UserEntity entity = new UserEntity();
         entity.setNickname(request.getNickname());

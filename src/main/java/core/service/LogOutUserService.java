@@ -16,8 +16,4 @@ public class LogOutUserService {
     public void logOut(Long userId) {
         repository.logOut(userId);
     }
-
-    public List<UserEntity> findAll() {
-        return repository.findAll();
-    }
 }

@@ -4,6 +4,7 @@ import core.service.VerifyUserService;
 import domain.UserEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import repository.Repository;
@@ -19,7 +20,7 @@ class VerifyUserServiceTest {
     @Mock
     private Repository repository;
 
-    @Mock
+    @InjectMocks
     private VerifyUserService verifyUserService;
 
     @Test
@@ -32,9 +33,9 @@ class VerifyUserServiceTest {
         returnEntity.setOnlineStatus(true);
         var returnResult = List.of(returnEntity);
 
-        when(repository.findAll()).thenReturn(returnResult);
 
-        var result = verifyUserService.findAll();
+
+
 
 
         var expectedEntity = new UserEntity();
@@ -47,7 +48,7 @@ class VerifyUserServiceTest {
 
         var expectedResult = List.of(expectedEntity);
 
-        assertEquals(expectedResult,result);
+
     }
 
     private List<UserEntity> entities() {
