@@ -66,8 +66,9 @@ public class ArrayListUserRepository implements Repository {
     }
 
     @Override
-    public void logOut(Long userId) {
+    public boolean logOut(Long userId) {
         getUserById(userId).setOnlineStatus(false);
+        return false;
     }
 
     @Override
