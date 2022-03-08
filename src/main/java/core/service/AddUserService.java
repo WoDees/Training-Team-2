@@ -48,8 +48,4 @@ public class AddUserService {
 
         return entity;
     }
-
-    public List<UserEntity> findAll(){
-        return repository.findAll();
-    }
 }

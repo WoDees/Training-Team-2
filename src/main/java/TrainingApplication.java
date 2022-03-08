@@ -58,15 +58,17 @@ public class TrainingApplication {
         var calendarService = new CalendarService(calendarRepository, calendarValidationService);
         var addUserService = new AddUserService(repository, registrationValidationService);
         var verifyService = new VerifyUserService(repository, verifyValidationService);
-        var removeUserService = new RemoveUserService(repository,removeValidationService);
+        var removeUserService = new RemoveUserService(repository, removeValidationService);
         var logOutUserService = new LogOutUserService(repository);
+        var findAllUserService = new FindAllUserService(repository);
 
 
         var actions = Arrays.asList(
                 new ActivitiesCaloriesUserUIAction(activitiesCaloriesService),
                 new CalendarUserUIAction(calendarService),
                 new RemoveUserUIAction(removeUserService),
-                new LogOutUserUIAction(logOutUserService)
+                new LogOutUserUIAction(logOutUserService),
+                new FindAllUserUIAction(findAllUserService)
         );
 
         var authorizationActions = List.of(

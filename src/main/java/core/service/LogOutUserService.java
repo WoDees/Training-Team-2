@@ -30,10 +30,6 @@ public class LogOutUserService {
 
     }
 
-    public List<UserEntity> findAll() {
-        return repository.findAll();
-    }
-
     private UserEntity convert(LogOutUserRequest request) {
         var entity = new UserEntity();
         entity.setOnlineStatus(request.isOnlineStatus());

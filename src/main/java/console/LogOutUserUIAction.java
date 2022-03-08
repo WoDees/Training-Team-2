@@ -30,7 +30,7 @@ public class LogOutUserUIAction implements UIAction {
 
         if (answer == 1) {
             System.out.println("See you soon!");
-            logOutService.findAll().forEach(System.out::println);
+            logOutService.logOut(userId);
         } else if (answer == 2) {
             System.out.println("Welcome back!");
         } else {
