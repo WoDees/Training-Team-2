@@ -9,8 +9,8 @@ public class RemoveUserUIAction implements UIAction {
 
     private final RemoveUserService removeUserService;
 
-    public RemoveUserUIAction(RemoveUserService deleteService) {
-        this.removeUserService = deleteService;
+    public RemoveUserUIAction(RemoveUserService removeUserService) {
+        this.removeUserService = removeUserService;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package console;
 
 import core.service.LogOutUserService;
+import dto.request.LogOutUserRequest;
 
 import java.util.Scanner;
 
@@ -18,9 +19,15 @@ public class LogOutUserUIAction implements UIAction {
                 Do you really want to log out?\s
                 1 - Yes
                 2 - No""");
-
         Scanner scanner = new Scanner(System.in);
         int answer = scanner.nextInt();
+
+        var request = new LogOutUserRequest();
+        request.setUserId(userId);
+        request.setOnlineStatus(false);
+        var response = logOutService.logOut(request);
+        System.out.println("Received response: " + response);
+
         if (answer == 1) {
             System.out.println("See you soon!");
             logOutService.logOut(userId);
