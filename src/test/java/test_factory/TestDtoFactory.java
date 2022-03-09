@@ -4,6 +4,7 @@ import domain.UserEntity;
 import dto.request.AddUserRequest;
 import dto.request.LogOutUserRequest;
 import dto.request.RemoveUserRequest;
+import dto.request.VerifyUserRequest;
 
 public class TestDtoFactory {
 
@@ -34,6 +35,13 @@ public class TestDtoFactory {
 
     public static RemoveUserRequest createRemoveUserRequest() {
         var request = new RemoveUserRequest();
+        request.setNickname("TEST_NICKNAME");
+        request.setPassword("TEST_PASSWORD");
+        return request;
+    }
+
+    public static VerifyUserRequest createVerifyUserRequest() {
+        var request = new VerifyUserRequest();
         request.setNickname("TEST_NICKNAME");
         request.setPassword("TEST_PASSWORD");
         return request;
