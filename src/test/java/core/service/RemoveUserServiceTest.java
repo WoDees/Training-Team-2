@@ -34,7 +34,7 @@ class RemoveUserServiceTest {
     void shouldRemoveUser() {
         var request = createRemoveUserRequest();
         when(validationService.validate(request)).thenReturn(List.of());
-        when(repository.remove(createRemoveUserRequest().getNickname(), createRemoveUserRequest().getPassword())).thenReturn(true);
+        when(repository.remove(request.getNickname(), request.getPassword())).thenReturn(true);
 
         var result = removeUserService.remove(request);
 

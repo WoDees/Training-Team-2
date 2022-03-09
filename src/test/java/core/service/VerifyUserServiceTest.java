@@ -35,9 +35,9 @@ class VerifyUserServiceTest {
         var request = createVerifyUserRequest();
 
         when(verifyValidationService.validate(request)).thenReturn(List.of());
-        when(repository.getUserEntityByNickNameAndPassword(createVerifyUserRequest().getNickname(), createVerifyUserRequest().getPassword())).thenReturn(createEntity(11L));
+        when(repository.getUserEntityByNickNameAndPassword(request.getNickname(), request.getPassword())).thenReturn(createEntity(11L));
 
-        var result = verifyUserService.entrance(createVerifyUserRequest());
+        var result = verifyUserService.entrance(request);
 
         verify(verifyValidationService).validate(any());
         verify(repository).getUserEntityByNickNameAndPassword(any(), any());
@@ -56,7 +56,7 @@ class VerifyUserServiceTest {
 
         when(verifyValidationService.validate(request)).thenReturn(List.of(new CoreError("TEST_ERROR")));
 
-        var result = verifyUserService.entrance(createVerifyUserRequest());
+        var result = verifyUserService.entrance(request);
 
 
         verify(verifyValidationService).validate(any());
