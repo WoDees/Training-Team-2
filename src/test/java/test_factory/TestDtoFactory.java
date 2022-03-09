@@ -3,6 +3,7 @@ package test_factory;
 import domain.UserEntity;
 import dto.request.AddUserRequest;
 import dto.request.LogOutUserRequest;
+import dto.request.RemoveUserRequest;
 
 public class TestDtoFactory {
 
@@ -28,6 +29,13 @@ public class TestDtoFactory {
         var request = new LogOutUserRequest();
         request.setOnlineStatus(false);
         request.setUserId(userId);
+        return request;
+    }
+
+    public static RemoveUserRequest createRemoveUserRequest() {
+        var request = new RemoveUserRequest();
+        request.setNickname("TEST_NICKNAME");
+        request.setPassword("TEST_PASSWORD");
         return request;
     }
 }

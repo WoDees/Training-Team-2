@@ -34,7 +34,7 @@ public class VerifyUserService {
 
         var response = new VerifyUserResponse();
         response.setUserId(verifiedEntity.getUserId());
-        response.setOnlineStatus(true);
+        response.setOnlineStatus(verifiedEntity.isOnlineStatus());
         System.out.println("Sending response: " + response);
         return response;
     }
