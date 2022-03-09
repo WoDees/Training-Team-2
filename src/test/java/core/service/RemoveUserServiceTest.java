@@ -43,6 +43,7 @@ class RemoveUserServiceTest {
 
         var expected = new RemoveUserResponse();
         expected.setRemovedAccount(true);
+        expected.setErrors(null);
 
         assertEquals(expected, result);
     }
