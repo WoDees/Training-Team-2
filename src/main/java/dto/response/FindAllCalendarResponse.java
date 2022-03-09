@@ -1,39 +1,16 @@
 package dto.response;
 
 import dto.CalendarDTO;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.Objects;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class FindAllCalendarResponse {
 
-    private final List<CalendarDTO> calendars;
-
-    public FindAllCalendarResponse(List<CalendarDTO> calendars) {
-        this.calendars = calendars;
-    }
-
-    public List<CalendarDTO> getCalendars() {
-        return calendars;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        FindAllCalendarResponse that = (FindAllCalendarResponse) o;
-        return Objects.equals(calendars, that.calendars);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(calendars);
-    }
-
-    @Override
-    public String toString() {
-        return "FindAllCalendarResponse{" +
-                "calendars=" + calendars +
-                '}';
-    }
+    private List<CalendarDTO> calendars;
 }

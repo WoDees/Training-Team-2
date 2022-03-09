@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ArrayListUserRepository implements Repository {
 
-    private List<UserEntity> dataBase = new ArrayList<>();
+    private final List<UserEntity> dataBase = new ArrayList<>();
     private Long idSequence = 0L;
 
     @Override
