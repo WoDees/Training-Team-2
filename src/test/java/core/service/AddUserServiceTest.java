@@ -16,8 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.verify;
-import static test_factory.TestDtoFactory.createEntity;
-import static test_factory.TestDtoFactory.createRequest;
+import static test_factory.TestDtoFactory.*;
 
 @ExtendWith(MockitoExtension.class)
 class AddUserServiceTest {
@@ -33,7 +32,7 @@ class AddUserServiceTest {
 
     @Test
     void shouldSuccessfullySaveUser() {
-        var request = createRequest();
+        var request = createAddUserRequest();
         when(validationService.validate(request)).thenReturn(List.of());
         when(repository.save(createEntity(null))).thenReturn(createEntity(31L));
 
@@ -52,7 +51,7 @@ class AddUserServiceTest {
 
     @Test
     void shouldReturnError() {
-        var request = createRequest();
+        var request = createAddUserRequest();
         when(validationService.validate(request)).thenReturn(List.of(new CoreError("TEST_ERROR")));
 
         var result = addUserService.add(request);
