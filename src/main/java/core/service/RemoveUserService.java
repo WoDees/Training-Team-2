@@ -31,6 +31,7 @@ public class RemoveUserService {
         System.out.println("Remove successful: " + removedEntity);
 
         var response = new RemoveUserResponse();
+        response.setRemovedAccount(removedEntity);
         System.out.println("Sending response: " + response);
         return response;
     }

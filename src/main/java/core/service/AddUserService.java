@@ -34,7 +34,7 @@ public class AddUserService {
         System.out.println("Successfully saved: " + createdEntity);
         var response = new AddUserResponse();
         response.setCreatedUserId(createdEntity.getUserId());
-        response.setOnlineStatus(true);
+        response.setOnlineStatus(createdEntity.isOnlineStatus());
         System.out.println("Sending response: " + response);
         return response;
     }
