@@ -1,7 +1,6 @@
 package console;
 
 import core.service.CalendarService;
-import domain.CalendarEntity;
 import dto.request.AddCalendarRequest;
 
 import java.util.Scanner;
@@ -16,14 +15,11 @@ public class CalendarUserUIAction implements UIAction {
 
     @Override
     public void execute(Long userId) {
-        CalendarEntity calendar;
-        calendar = new CalendarEntity();
-
         System.out.println("Enter date (format dd/mm/yyyy): ");
         Scanner scanner = new Scanner(System.in);
-        String eventDate = calendar.setEventDate(scanner.nextLine());
+        String eventDate = scanner.nextLine();
         System.out.println("Enter description: ");
-        String description = calendar.setDescription(scanner.nextLine());
+        String description = scanner.nextLine();
 
         var request = new AddCalendarRequest();
         request.setEventDate(eventDate);

@@ -2,7 +2,6 @@ package core.validation.calendar;
 
 import core.validation.CoreError;
 import core.validation.ValidationException;
-import core.validation.calendar.CalendarValidationRule;
 import dto.request.AddCalendarRequest;
 
 import java.util.ArrayList;
@@ -26,12 +25,12 @@ public class CalendarValidationService {
         }
 
         return calendarValidationRules.stream()
-                .map(rule -> mapError(rule, request))
+                .map(rule -> validate(rule, request))
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
-    private CoreError mapError(CalendarValidationRule rule, AddCalendarRequest request) {
+    private CoreError validate(CalendarValidationRule rule, AddCalendarRequest request) {
         try {
             rule.validate(request);
         } catch (ValidationException e) {
