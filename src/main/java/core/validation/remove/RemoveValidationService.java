@@ -25,12 +25,12 @@ public class RemoveValidationService {
         }
 
         return validationRules.stream()
-                .map(rule -> mapError(rule, request))
+                .map(rule -> validateError(rule, request))
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
-    private CoreError mapError(RemoveValidationRule rule, RemoveUserRequest request) {
+    private CoreError validateError(RemoveValidationRule rule, RemoveUserRequest request) {
         try {
             rule.validate(request);
         } catch (ValidationException e) {

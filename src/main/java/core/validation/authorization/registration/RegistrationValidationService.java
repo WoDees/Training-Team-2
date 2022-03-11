@@ -25,12 +25,12 @@ public class RegistrationValidationService {
         }
 
         return validationRules.stream()
-                .map(rule -> mapError(rule, request))
+                .map(rule -> validateError(rule, request))
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
-    private CoreError mapError(RegistrationValidationRule rule, AddUserRequest request) {
+    private CoreError validateError(RegistrationValidationRule rule, AddUserRequest request) {
         try {
             rule.validate(request);
         } catch (ValidationException e) {

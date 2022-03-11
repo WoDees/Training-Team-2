@@ -42,7 +42,7 @@ public class TrainingApplication {
         var registrationValidationService = new RegistrationValidationService(registrationValidationRules);
 
         var verifyValidationRules = List.of(
-                new VerifyUserInputValidationRule(repository),
+                new VerifyUserInputValidationRule(),
                 new VerifyAttemptsAmountValidationRule(repository),
                 new VerifyExistenceValidationRule(repository)
         );
@@ -50,7 +50,7 @@ public class TrainingApplication {
 
         var removeValidationRules = List.of(
                 new RemoveExistenceValidationRule(repository),
-                new RemoveUserInputValidationRule(repository)
+                new RemoveUserInputValidationRule()
         );
         var removeValidationService = new RemoveValidationService(removeValidationRules);
 
