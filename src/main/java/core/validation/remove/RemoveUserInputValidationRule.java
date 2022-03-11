@@ -2,15 +2,8 @@ package core.validation.remove;
 
 import core.validation.ValidationException;
 import dto.request.RemoveUserRequest;
-import repository.Repository;
 
 public class RemoveUserInputValidationRule implements RemoveValidationRule {
-
-    private final Repository repository;
-
-    public RemoveUserInputValidationRule(Repository repository) {
-        this.repository = repository;
-    }
 
     @Override
     public void validate(RemoveUserRequest request) {

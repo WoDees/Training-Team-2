@@ -25,12 +25,12 @@ public class VerifyValidationService {
         }
 
         return validationRules.stream()
-                .map(rule -> mapError(rule, request))
+                .map(rule -> validateError(rule, request))
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
-    private CoreError mapError(VerifyValidationRule rule, VerifyUserRequest request) {
+    private CoreError validateError(VerifyValidationRule rule, VerifyUserRequest request) {
         try {
             rule.validate(request);
         } catch (ValidationException e) {

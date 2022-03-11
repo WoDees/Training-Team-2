@@ -2,15 +2,8 @@ package core.validation.authorization.verify;
 
 import core.validation.ValidationException;
 import dto.request.VerifyUserRequest;
-import repository.Repository;
 
 public class VerifyUserInputValidationRule implements VerifyValidationRule {
-
-    private final Repository repository;
-
-    public VerifyUserInputValidationRule(Repository repository) {
-        this.repository = repository;
-    }
 
     @Override
     public void validate(VerifyUserRequest request) {
