@@ -5,7 +5,6 @@ import com.trainingApplication.dto.request.LogOutUserRequest;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import java.util.Scanner;
 
 @Order(4)
 @Component
@@ -19,26 +18,13 @@ public class LogOutUserUIAction implements UIAction {
 
     @Override
     public void execute(Long userId) {
-        System.out.println("""
-                Do you really want to log out?\s
-                1 - Yes
-                2 - No""");
-        Scanner scanner = new Scanner(System.in);
-        int answer = scanner.nextInt();
-
         var request = new LogOutUserRequest();
         request.setUserId(userId);
         request.setOnlineStatus(false);
         var response = logOutService.logOut(request);
         System.out.println("Received response: " + response);
 
-        if (answer == 1) {
-            System.out.println("See you soon!");
-        } else if (answer == 2) {
-            System.out.println("Welcome back!");
-        } else {
-            System.out.println("Wrong number. Please try again!");
-        }
+        System.out.println("See you soon!");
     }
 
     @Override
