@@ -1,22 +1,23 @@
-package core.service;
+package com.javaguru.core.service;
 
-import core.validation.CoreError;
-import core.validation.authorization.verify.VerifyValidationService;
-import dto.response.VerifyUserResponse;
+import com.trainingApplication.core.service.VerifyUserService;
+import com.trainingApplication.core.validation.CoreError;
+import com.trainingApplication.core.validation.authorization.verify.VerifyValidationService;
+import com.trainingApplication.dto.response.VerifyUserResponse;
+import com.trainingApplication.repository.Repository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import repository.Repository;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static test_factory.TestDtoFactory.createEntity;
-import static test_factory.TestDtoFactory.createVerifyUserRequest;
+import static com.javaguru.core.service.TestDtoFactory.createEntity;
+import static com.javaguru.core.service.TestDtoFactory.createVerifyUserRequest;
 
 @ExtendWith(MockitoExtension.class)
 class VerifyUserServiceTest {
@@ -49,6 +50,7 @@ class VerifyUserServiceTest {
 
         assertEquals(expected, result);
     }
+
 
     @Test
     void shouldUnSuccessfullyVerifyUser() {

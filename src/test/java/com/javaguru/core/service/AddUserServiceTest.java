@@ -1,22 +1,24 @@
-package core.service;
+package com.javaguru.core.service;
 
-import core.validation.CoreError;
-import core.validation.authorization.registration.RegistrationValidationService;
-import dto.response.AddUserResponse;
+import com.trainingApplication.core.service.AddUserService;
+import com.trainingApplication.core.validation.CoreError;
+import com.trainingApplication.core.validation.authorization.registration.RegistrationValidationService;
+import com.trainingApplication.dto.response.AddUserResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import repository.Repository;
+import com.trainingApplication.repository.Repository;
 
 import java.util.List;
 
+import static com.javaguru.core.service.TestDtoFactory.createAddUserRequest;
+import static com.javaguru.core.service.TestDtoFactory.createEntity;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.verify;
-import static test_factory.TestDtoFactory.*;
 
 @ExtendWith(MockitoExtension.class)
 class AddUserServiceTest {
@@ -48,6 +50,7 @@ class AddUserServiceTest {
 
         assertEquals(expected, result);
     }
+
 
     @Test
     void shouldReturnError() {

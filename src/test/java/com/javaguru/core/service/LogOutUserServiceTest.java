@@ -1,18 +1,19 @@
-package core.service;
+package com.javaguru.core.service;
 
-import dto.response.LogOutUserResponse;
+import com.trainingApplication.core.service.LogOutUserService;
+import com.trainingApplication.dto.response.LogOutUserResponse;
+import com.trainingApplication.repository.Repository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import repository.Repository;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static test_factory.TestDtoFactory.createLogOutRequest;
+import static com.javaguru.core.service.TestDtoFactory.createLogOutRequest;
 
 @ExtendWith(MockitoExtension.class)
 class LogOutUserServiceTest {

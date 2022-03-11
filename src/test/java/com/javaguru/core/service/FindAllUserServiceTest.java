@@ -1,18 +1,19 @@
-package core.service;
+package com.javaguru.core.service;
 
-import domain.UserEntity;
-import dto.UserEntityDTO;
-import dto.response.FindAllUserResponse;
+import com.trainingApplication.core.service.FindAllUserService;
+import com.trainingApplication.domain.UserEntity;
+import com.trainingApplication.dto.UserEntityDTO;
+import com.trainingApplication.dto.response.FindAllUserResponse;
+import com.trainingApplication.repository.Repository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import repository.Repository;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)

@@ -1,21 +1,22 @@
-package core.service;
+package com.javaguru.core.service;
 
-import core.validation.CoreError;
-import core.validation.remove.RemoveValidationService;
-import dto.response.RemoveUserResponse;
+import com.trainingApplication.core.service.RemoveUserService;
+import com.trainingApplication.core.validation.CoreError;
+import com.trainingApplication.core.validation.remove.RemoveValidationService;
+import com.trainingApplication.dto.response.RemoveUserResponse;
+import com.trainingApplication.repository.Repository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import repository.Repository;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static test_factory.TestDtoFactory.createRemoveUserRequest;
+import static com.javaguru.core.service.TestDtoFactory.createRemoveUserRequest;
 
 @ExtendWith(MockitoExtension.class)
 class RemoveUserServiceTest {

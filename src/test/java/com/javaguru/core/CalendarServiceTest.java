@@ -1,23 +1,24 @@
-package core;
+package com.javaguru.core;
 
-import core.service.CalendarService;
-import core.validation.calendar.CalendarValidationService;
-import core.validation.CoreError;
-import domain.CalendarEntity;
-import dto.request.AddCalendarRequest;
-import dto.response.AddCalendarResponse;
-import dto.CalendarDTO;
-import dto.response.FindAllCalendarResponse;
+import com.trainingApplication.core.service.CalendarService;
+import com.trainingApplication.core.validation.CoreError;
+import com.trainingApplication.core.validation.calendar.CalendarValidationService;
+import com.trainingApplication.domain.CalendarEntity;
+import com.trainingApplication.dto.CalendarDTO;
+import com.trainingApplication.dto.request.AddCalendarRequest;
+import com.trainingApplication.dto.response.AddCalendarResponse;
+import com.trainingApplication.dto.response.FindAllCalendarResponse;
+import com.trainingApplication.repository.ArrayListCalendarRepository;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import repository.ArrayListCalendarRepository;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)

@@ -1,10 +1,10 @@
-package test_factory;
+package com.javaguru.core.service;
 
-import domain.UserEntity;
-import dto.request.AddUserRequest;
-import dto.request.LogOutUserRequest;
-import dto.request.RemoveUserRequest;
-import dto.request.VerifyUserRequest;
+import com.trainingApplication.domain.UserEntity;
+import com.trainingApplication.dto.request.AddUserRequest;
+import com.trainingApplication.dto.request.LogOutUserRequest;
+import com.trainingApplication.dto.request.RemoveUserRequest;
+import com.trainingApplication.dto.request.VerifyUserRequest;
 
 public class TestDtoFactory {
 

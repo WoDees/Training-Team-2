@@ -1,60 +1,54 @@
-package core.validation.calendar;
+package com.javaguru.core.validation.calendar;
 
-import core.validation.ValidationException;
-import dto.request.AddCalendarRequest;
+import com.trainingApplication.core.validation.ValidationException;
+import com.trainingApplication.core.validation.calendar.CalendarDescriptionLengthValidationRule;
+import com.trainingApplication.dto.request.AddCalendarRequest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CalendarDateFormatValidationRuleTest {
+class CalendarDescriptionLengthValidationRuleTest {
 
-    CalendarDateFormatValidationRule validationRule = new CalendarDateFormatValidationRule();
+    CalendarDescriptionLengthValidationRule validationRule = new CalendarDescriptionLengthValidationRule();
 
     @Test
-    void shouldThrowExceptionWhenDateIsIncorrect() {
+    void shouldThrowExceptionWhenDescriptionLengthIsIncorrect() {
         var request = new AddCalendarRequest();
         assertThrows(ValidationException.class, () -> validationRule.validate(request));
     }
 
     @Test
-    void shouldThrowExceptionWhenDateIsIncorrectSecondTest() {
+    void shouldThrowExceptionWhenDescriptionLengthIsIncorrectSecondTest() {
         var request = new AddCalendarRequest();
-        request.setEventDate("07/03/20000");
+        request.setDescription("Test");
         assertThrows(ValidationException.class, () -> validationRule.validate(request));
     }
 
     @Test
-    void shouldThrowExceptionWhenDateIsIncorrectThirdTest() {
+    void shouldThrowExceptionWhenDescriptionLengthIsIncorrectThirdTest() {
         var request = new AddCalendarRequest();
-        request.setEventDate("32/03/2022");
-        assertThrows(ValidationException.class, () -> validationRule.validate(request));
-    }
-
-    @Test
-    void shouldThrowExceptionWhenDateIsIncorrectFourthTest() {
-        var request = new AddCalendarRequest();
-        request.setEventDate("31/13/2022");
+        request.setDescription("Testdasdhsafdahfsdhfsdfyshhysdhfudsfjudsjfsudfjsdufadsadasd");
         assertThrows(ValidationException.class, () -> validationRule.validate(request));
     }
 
     @Test
     void shouldNotThrowException() {
         var request = new AddCalendarRequest();
-        request.setEventDate("07/03/2022");
+        request.setDescription("Test_Description");
         assertDoesNotThrow(() -> validationRule.validate(request));
     }
 
     @Test
     void shouldNotThrowExceptionSecondTest() {
         var request = new AddCalendarRequest();
-        request.setEventDate("23/12/2055");
+        request.setDescription("Test_Description, Test_Description");
         assertDoesNotThrow(() -> validationRule.validate(request));
     }
 
     @Test
     void shouldNotThrowExceptionThirdTest() {
         var request = new AddCalendarRequest();
-        request.setEventDate("31/12/9999");
+        request.setDescription("Test_Description,Test_Description,Test_Description");
         assertDoesNotThrow(() -> validationRule.validate(request));
     }
 }

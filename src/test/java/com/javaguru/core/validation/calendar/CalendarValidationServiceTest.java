@@ -1,8 +1,10 @@
-package core.validation.calendar;
+package com.javaguru.core.validation.calendar;
 
-import core.validation.CoreError;
-import core.validation.ValidationException;
-import dto.request.AddCalendarRequest;
+import com.trainingApplication.core.validation.CoreError;
+import com.trainingApplication.core.validation.ValidationException;
+import com.trainingApplication.core.validation.calendar.CalendarValidationRule;
+import com.trainingApplication.core.validation.calendar.CalendarValidationService;
+import com.trainingApplication.dto.request.AddCalendarRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
