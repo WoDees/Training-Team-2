@@ -1,7 +1,6 @@
 package com.trainingApplication.repository;
 
 import com.trainingApplication.domain.CalendarEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

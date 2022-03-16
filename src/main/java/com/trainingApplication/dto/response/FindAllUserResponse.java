@@ -13,5 +13,4 @@ import java.util.List;
 public class FindAllUserResponse {
 
     private List<UserEntityDTO> userEntityDTOList;
-
 }
