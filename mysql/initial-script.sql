@@ -1,3 +1,2 @@
 CREATE SCHEMA IF NOT EXISTS training DEFAULT CHARACTER SET utf8 ;
 USE training;
-

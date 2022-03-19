@@ -1,5 +1,6 @@
 package com.trainingApplication.repository;
 
+import com.trainingApplication.domain.CalendarEntity;
 import com.trainingApplication.domain.UserEntity;
 
 import java.util.List;
@@ -29,4 +30,6 @@ public interface Repository {
     boolean verifyUserByNickname(String nickname);
 
     boolean verifyUserByPassword(String password);
+
+    void addCalendarToUser(Long userId, CalendarEntity entity);
 }
