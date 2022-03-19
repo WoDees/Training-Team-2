@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+
 public class ArrayListUserRepository implements Repository {
 
     private final List<UserEntity> dataBase = new ArrayList<>();
