@@ -2,6 +2,8 @@ package com.trainingApplication.domain;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class UserEntity {
 
@@ -10,5 +12,6 @@ public class UserEntity {
     private String password;
     private String mail;
     private boolean onlineStatus;
+    private List<CalendarEntity> calendarEntityList;
 
 }
