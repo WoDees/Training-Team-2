@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class FindAllCalendarResponse {
+public class FindAllTrainingDaysResponse {
 
-    private List<CalendarDTO> calendars;
+    private List<CalendarDTO> calendarDTOS;
 }

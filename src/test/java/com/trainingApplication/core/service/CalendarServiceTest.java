@@ -3,8 +3,6 @@ package com.trainingApplication.core.service;
 import com.trainingApplication.core.validation.calendar.CalendarValidationService;
 import com.trainingApplication.core.validation.CoreError;
 import com.trainingApplication.dto.response.AddCalendarResponse;
-import com.trainingApplication.dto.CalendarDTO;
-import com.trainingApplication.dto.response.FindAllCalendarResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -29,25 +27,6 @@ class CalendarServiceTest {
 
     @InjectMocks
     private CalendarService calendarService;
-
-    @Test
-    void shouldFindAllTrainingDays() {
-
-        var returnResult = createEntities();
-        doReturn(returnResult).when(repository).findAll();
-
-        var actualResult = calendarService.findAll();
-
-        var expectedResult = response();
-
-        assertEquals(expectedResult, actualResult);
-
-    }
-
-    private FindAllCalendarResponse response() {
-        var dto = new CalendarDTO(1L, 1L, "Test description", "28/02/2022");
-        return new FindAllCalendarResponse(List.of(dto));
-    }
 
     @Test
     void shouldSuccessfullyAddCalendarDate() {

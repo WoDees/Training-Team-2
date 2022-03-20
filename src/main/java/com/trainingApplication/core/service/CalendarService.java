@@ -4,8 +4,6 @@ import com.trainingApplication.core.validation.calendar.CalendarValidationServic
 import com.trainingApplication.domain.CalendarEntity;
 import com.trainingApplication.dto.request.AddCalendarRequest;
 import com.trainingApplication.dto.response.AddCalendarResponse;
-import com.trainingApplication.dto.CalendarDTO;
-import com.trainingApplication.dto.response.FindAllCalendarResponse;
 import com.trainingApplication.repository.ArrayListCalendarRepository;
 import org.springframework.stereotype.Service;
 
@@ -44,16 +42,4 @@ public class CalendarService {
         entity.setDescription(request.getDescription());
         return entity;
     }
-
-    public FindAllCalendarResponse findAll() {
-        var dtos = repository.findAll().stream()
-                .map(this::convert)
-                .toList();
-        return new FindAllCalendarResponse(dtos);
-    }
-
-    private CalendarDTO convert(CalendarEntity entity) {
-        return new CalendarDTO(entity.getId(), entity.getUserId(), entity.getDescription(), entity.getEventDate());
-    }
 }
-
