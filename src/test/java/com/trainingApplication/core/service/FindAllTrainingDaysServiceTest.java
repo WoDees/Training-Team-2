@@ -1,0 +1,51 @@
+package com.trainingApplication.core.service;
+
+import com.trainingApplication.domain.CalendarEntity;
+import com.trainingApplication.dto.CalendarDTO;
+import com.trainingApplication.dto.response.FindAllTrainingDaysResponse;
+import com.trainingApplication.repository.ArrayListCalendarRepository;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
+
+@ExtendWith(MockitoExtension.class)
+class FindAllTrainingDaysServiceTest {
+
+    @Mock
+    private ArrayListCalendarRepository repository;
+
+    @InjectMocks
+    private FindAllTrainingDaysService findAllTrainingDaysService;
+
+    @Test
+    void shouldFindAllTrainingDays() {
+        var returnResult = entities();
+        when(repository.findAllTrainingDays()).thenReturn(returnResult);
+
+        var result = findAllTrainingDaysService.findAll();
+        var expectedResult = response();
+
+        assertEquals(expectedResult, result);
+    }
+
+    private List<CalendarEntity> entities() {
+        var entity = new CalendarEntity();
+        entity.setId(1L);
+        entity.setUserId(1L);
+        entity.setDescription("Test description");
+        entity.setEventDate("20/03/2022");
+        return List.of(entity);
+    }
+
+    private FindAllTrainingDaysResponse response() {
+        var dto = new CalendarDTO(1L, 1L, "Test description", "20/03/2022");
+        return new FindAllTrainingDaysResponse((List.of(dto)));
+    }
+}

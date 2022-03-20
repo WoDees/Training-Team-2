@@ -32,7 +32,7 @@ public class ArrayListCalendarRepository {
         return calendarEntity;
     }
 
-    public List<CalendarEntity> findAll() {
+    public List<CalendarEntity> findAllTrainingDays() {
         return dataBase;
     }
 }
