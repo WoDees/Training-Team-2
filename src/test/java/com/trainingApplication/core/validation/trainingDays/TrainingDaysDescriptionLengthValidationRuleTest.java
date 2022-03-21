@@ -1,52 +1,52 @@
-package com.trainingApplication.core.validation.calendar;
+package com.trainingApplication.core.validation.trainingDays;
 
 import com.trainingApplication.core.validation.ValidationException;
-import com.trainingApplication.dto.request.AddCalendarRequest;
+import com.trainingApplication.dto.request.AddTrainingDaysRequest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CalendarDescriptionLengthValidationRuleTest {
+class TrainingDaysDescriptionLengthValidationRuleTest {
 
-    CalendarDescriptionLengthValidationRule validationRule = new CalendarDescriptionLengthValidationRule();
+    TrainingDaysDescriptionLengthValidationRule validationRule = new TrainingDaysDescriptionLengthValidationRule();
 
     @Test
     void shouldThrowExceptionWhenDescriptionLengthIsIncorrect() {
-        var request = new AddCalendarRequest();
+        var request = new AddTrainingDaysRequest();
         assertThrows(ValidationException.class, () -> validationRule.validate(request));
     }
 
     @Test
     void shouldThrowExceptionWhenDescriptionLengthIsIncorrectSecondTest() {
-        var request = new AddCalendarRequest();
+        var request = new AddTrainingDaysRequest();
         request.setDescription("Test");
         assertThrows(ValidationException.class, () -> validationRule.validate(request));
     }
 
     @Test
     void shouldThrowExceptionWhenDescriptionLengthIsIncorrectThirdTest() {
-        var request = new AddCalendarRequest();
+        var request = new AddTrainingDaysRequest();
         request.setDescription("Testdasdhsafdahfsdhfsdfyshhysdhfudsfjudsjfsudfjsdufadsadasd");
         assertThrows(ValidationException.class, () -> validationRule.validate(request));
     }
 
     @Test
     void shouldNotThrowException() {
-        var request = new AddCalendarRequest();
+        var request = new AddTrainingDaysRequest();
         request.setDescription("Test_Description");
         assertDoesNotThrow(() -> validationRule.validate(request));
     }
 
     @Test
     void shouldNotThrowExceptionSecondTest() {
-        var request = new AddCalendarRequest();
+        var request = new AddTrainingDaysRequest();
         request.setDescription("Test_Description, Test_Description");
         assertDoesNotThrow(() -> validationRule.validate(request));
     }
 
     @Test
     void shouldNotThrowExceptionThirdTest() {
-        var request = new AddCalendarRequest();
+        var request = new AddTrainingDaysRequest();
         request.setDescription("Test_Description,Test_Description,Test_Description");
         assertDoesNotThrow(() -> validationRule.validate(request));
     }

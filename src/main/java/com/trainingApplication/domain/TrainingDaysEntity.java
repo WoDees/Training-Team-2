@@ -3,7 +3,7 @@ package com.trainingApplication.domain;
 import lombok.Data;
 
 @Data
-public class CalendarEntity {
+public class TrainingDaysEntity {
 
     private Long id;
     private Long userId;

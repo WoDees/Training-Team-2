@@ -8,8 +8,8 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-public class AddCalendarResponse {
+public class AddTrainingDaysResponse {
 
-    private Long createdCalendarId;
+    private Long createdTrainingDaysId;
     private List<CoreError> errors;
 }

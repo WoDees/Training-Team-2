@@ -1,9 +1,9 @@
 package com.trainingApplication.core.service;
 
-import com.trainingApplication.domain.CalendarEntity;
-import com.trainingApplication.dto.CalendarDTO;
+import com.trainingApplication.domain.TrainingDaysEntity;
+import com.trainingApplication.dto.TrainingDaysDTO;
 import com.trainingApplication.dto.response.FindAllTrainingDaysResponse;
-import com.trainingApplication.repository.ArrayListCalendarRepository;
+import com.trainingApplication.repository.ArrayListTrainingDaysRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 class FindAllTrainingDaysServiceTest {
 
     @Mock
-    private ArrayListCalendarRepository repository;
+    private ArrayListTrainingDaysRepository repository;
 
     @InjectMocks
     private FindAllTrainingDaysService findAllTrainingDaysService;
@@ -35,8 +35,8 @@ class FindAllTrainingDaysServiceTest {
         assertEquals(expectedResult, result);
     }
 
-    private List<CalendarEntity> entities() {
-        var entity = new CalendarEntity();
+    private List<TrainingDaysEntity> entities() {
+        var entity = new TrainingDaysEntity();
         entity.setId(1L);
         entity.setUserId(1L);
         entity.setDescription("Test description");
@@ -45,7 +45,7 @@ class FindAllTrainingDaysServiceTest {
     }
 
     private FindAllTrainingDaysResponse response() {
-        var dto = new CalendarDTO(1L, 1L, "Test description", "20/03/2022");
+        var dto = new TrainingDaysDTO(1L, 1L, "Test description", "20/03/2022");
         return new FindAllTrainingDaysResponse((List.of(dto)));
     }
 }

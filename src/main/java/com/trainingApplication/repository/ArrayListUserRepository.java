@@ -1,8 +1,7 @@
 package com.trainingApplication.repository;
 
-import com.trainingApplication.domain.CalendarEntity;
+import com.trainingApplication.domain.TrainingDaysEntity;
 import com.trainingApplication.domain.UserEntity;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +14,7 @@ public class ArrayListUserRepository implements Repository {
 
 
 
-    private final List<CalendarEntity> calendarDataBase = new ArrayList<>();
+    private final List<TrainingDaysEntity> trainingDaysDataBase = new ArrayList<>();
 
 
     @Override
@@ -125,8 +124,8 @@ public class ArrayListUserRepository implements Repository {
     }
 
     @Override
-    public void addCalendarToUser(Long userId, CalendarEntity entity) {
-        var calendars = new ArrayList<CalendarEntity>();
-        getUserById(userId).setCalendarEntityList(calendars);
+    public void addTrainingDaysToUser(Long userId, TrainingDaysEntity entity) {
+        var trainingDays = new ArrayList<TrainingDaysEntity>();
+        //getUserById(userId).setTrainingDaysEntityList(calendars);
     }
 }

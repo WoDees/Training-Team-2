@@ -1,17 +1,17 @@
 package com.trainingApplication.core.service;
 
-import com.trainingApplication.domain.CalendarEntity;
-import com.trainingApplication.dto.CalendarDTO;
+import com.trainingApplication.domain.TrainingDaysEntity;
+import com.trainingApplication.dto.TrainingDaysDTO;
 import com.trainingApplication.dto.response.FindAllTrainingDaysResponse;
-import com.trainingApplication.repository.ArrayListCalendarRepository;
+import com.trainingApplication.repository.ArrayListTrainingDaysRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class FindAllTrainingDaysService {
 
-    private final ArrayListCalendarRepository repository;
+    private final ArrayListTrainingDaysRepository repository;
 
-    public FindAllTrainingDaysService(ArrayListCalendarRepository repository) {
+    public FindAllTrainingDaysService(ArrayListTrainingDaysRepository repository) {
         this.repository = repository;
     }
 
@@ -22,7 +22,7 @@ public class FindAllTrainingDaysService {
         return new FindAllTrainingDaysResponse(dtos);
     }
 
-    private CalendarDTO convert(CalendarEntity entity) {
-        return new CalendarDTO(entity.getId(), entity.getUserId(), entity.getDescription(), entity.getEventDate());
+    private TrainingDaysDTO convert(TrainingDaysEntity entity) {
+        return new TrainingDaysDTO(entity.getId(), entity.getUserId(), entity.getDescription(), entity.getEventDate());
     }
 }
