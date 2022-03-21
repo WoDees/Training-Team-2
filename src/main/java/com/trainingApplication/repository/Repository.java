@@ -11,15 +11,11 @@ public interface Repository {
 
     List<UserEntity> findAll();
 
-    boolean verify(String nickname, String password);
-
     boolean remove(String nickname, String password);
 
     UserEntity getUserEntityByNickNameAndPassword(String nickname, String password);
 
     boolean logOut(Long userId);
-
-    void logIn(Long userId);
 
     UserEntity getUserById(Long userId);
 

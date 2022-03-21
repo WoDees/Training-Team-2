@@ -13,7 +13,6 @@ public class ArrayListUserRepository implements Repository {
     private Long idSequence = 0L;
 
 
-
     private final List<TrainingDaysEntity> trainingDaysDataBase = new ArrayList<>();
 
 
@@ -29,16 +28,6 @@ public class ArrayListUserRepository implements Repository {
     @Override
     public List<UserEntity> findAll() {
         return dataBase;
-    }
-
-    @Override
-    public boolean verify(String nickname, String password) {
-        for (UserEntity entity : dataBase) {
-            if (entity.getNickname().equals(nickname) && entity.getPassword().equals(password)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     @Override
@@ -76,11 +65,6 @@ public class ArrayListUserRepository implements Repository {
     public boolean logOut(Long userId) {
         getUserById(userId).setOnlineStatus(false);
         return false;
-    }
-
-    @Override
-    public void logIn(Long userId) {
-        getUserById(userId).setOnlineStatus(true);
     }
 
     @Override

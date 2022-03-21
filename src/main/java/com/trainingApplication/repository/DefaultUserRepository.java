@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Component;
 
-import java.sql.Statement;
+import java.sql.*;
 import java.util.List;
 
 @Component
@@ -41,28 +41,20 @@ public class DefaultUserRepository implements Repository {
     }
 
     @Override
-    public boolean verify(String nickname, String password) {
-        return false;
-    }
-
-    @Override
     public boolean remove(String nickname, String password) {
         return false;
     }
 
     @Override
     public UserEntity getUserEntityByNickNameAndPassword(String nickname, String password) {
-        return null;
+        return jdbcTemplate.query("SELECT * FROM Users WHERE nickname = ? AND password = ?", new Object[]{nickname, password}, new BeanPropertyRowMapper<>(UserEntity.class)).
+                stream().findAny().orElse(null);
+
     }
 
     @Override
     public boolean logOut(Long userId) {
         return false;
-    }
-
-    @Override
-    public void logIn(Long userId) {
-
     }
 
     @Override
@@ -72,7 +64,8 @@ public class DefaultUserRepository implements Repository {
 
     @Override
     public UserEntity getUserByNickName(String nickname) {
-        return null;
+        return jdbcTemplate.query("SELECT * FROM Users WHERE nickname = ?", new Object[]{nickname}, new BeanPropertyRowMapper<>(UserEntity.class)).
+                stream().findAny().orElse(null);
     }
 
     @Override
@@ -82,12 +75,14 @@ public class DefaultUserRepository implements Repository {
 
     @Override
     public boolean verifyUserByNickname(String nickname) {
-        return false;
+        Integer count = jdbcTemplate.queryForObject("SELECT count(*) FROM Users WHERE nickname = ? ", new Object[]{nickname}, Integer.class);
+        return count != null && count > 0;
     }
 
     @Override
     public boolean verifyUserByPassword(String password) {
-        return false;
+        Integer count = jdbcTemplate.queryForObject("SELECT count(*) FROM Users WHERE password = ? ", new Object[]{password}, Integer.class);
+        return count != null && count > 0;
     }
 
     @Override
