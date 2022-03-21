@@ -1,8 +1,8 @@
-package com.trainingApplication.core.validation.calendar;
+package com.trainingApplication.core.validation.trainingDays;
 
 import com.trainingApplication.core.validation.CoreError;
 import com.trainingApplication.core.validation.ValidationException;
-import com.trainingApplication.dto.request.AddCalendarRequest;
+import com.trainingApplication.dto.request.AddTrainingDaysRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,33 +17,33 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
-import static test_factory.TestCalendarDtoFactory.createAddCalendarRequest;
-import static test_factory.TestCalendarDtoFactory.createRequestWithoutEventDate;
+import static test_factory.TestTrainingDaysDtoFactory.createAddCalendarRequest;
+import static test_factory.TestTrainingDaysDtoFactory.createRequestWithoutEventDate;
 
 @ExtendWith(MockitoExtension.class)
 class CalendarValidationServiceTest {
 
     @Mock
-    private CalendarValidationRule calendarValidationRule;
+    private TrainingDaysValidationRule trainingDaysValidationRule;
 
     @Captor
-    private ArgumentCaptor<AddCalendarRequest> addCalendarRequestArgumentCaptor;
+    private ArgumentCaptor<AddTrainingDaysRequest> addCalendarRequestArgumentCaptor;
 
-    private CalendarValidationService calendarValidationService;
+    private TrainingDaysValidationService trainingDaysValidationService;
 
     @BeforeEach
     void setUp() {
-        calendarValidationService = new CalendarValidationService(List.of(calendarValidationRule));
+        trainingDaysValidationService = new TrainingDaysValidationService(List.of(trainingDaysValidationRule));
     }
 
     @Test
     void shouldMapErrors() {
-        doThrow(new ValidationException("Test_Exception")).when(calendarValidationRule).validate(any());
+        doThrow(new ValidationException("Test_Exception")).when(trainingDaysValidationRule).validate(any());
         var request = createRequestWithoutEventDate();
 
-        var actual = calendarValidationService.validate(request);
+        var actual = trainingDaysValidationService.validate(request);
 
-        verify(calendarValidationRule).validate(addCalendarRequestArgumentCaptor.capture());
+        verify(trainingDaysValidationRule).validate(addCalendarRequestArgumentCaptor.capture());
         var captureRequest = addCalendarRequestArgumentCaptor.getValue();
 
         assertNotNull(captureRequest);
@@ -59,9 +59,9 @@ class CalendarValidationServiceTest {
 
         var request = createAddCalendarRequest();
 
-        var actualResult = calendarValidationService.validate(request);
+        var actualResult = trainingDaysValidationService.validate(request);
 
-        verify(calendarValidationRule).validate(addCalendarRequestArgumentCaptor.capture());
+        verify(trainingDaysValidationRule).validate(addCalendarRequestArgumentCaptor.capture());
         var captureRequest = addCalendarRequestArgumentCaptor.getValue();
 
         System.out.println(captureRequest);

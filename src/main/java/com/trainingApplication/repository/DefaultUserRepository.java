@@ -1,6 +1,6 @@
 package com.trainingApplication.repository;
 
-import com.trainingApplication.domain.CalendarEntity;
+import com.trainingApplication.domain.TrainingDaysEntity;
 import com.trainingApplication.domain.UserEntity;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -78,6 +78,7 @@ public class DefaultUserRepository implements Repository{
     }
 
     @Override
-    public void addCalendarToUser(Long userId, CalendarEntity entity) {
+    public void addTrainingDaysToUser(Long userId, TrainingDaysEntity entity) {
+
     }
 }

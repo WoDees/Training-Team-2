@@ -1,8 +1,8 @@
-package com.trainingApplication.core.validation.calendar;
+package com.trainingApplication.core.validation.trainingDays;
 
 import com.trainingApplication.core.validation.CoreError;
 import com.trainingApplication.core.validation.ValidationException;
-import com.trainingApplication.dto.request.AddCalendarRequest;
+import com.trainingApplication.dto.request.AddTrainingDaysRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,28 +11,28 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
-public class CalendarValidationService {
+public class TrainingDaysValidationService {
 
-    private final List<CalendarValidationRule> calendarValidationRules;
+    private final List<TrainingDaysValidationRule> trainingDaysValidationRules;
 
-    public CalendarValidationService(List<CalendarValidationRule> calendarValidationRules) {
-        this.calendarValidationRules = calendarValidationRules;
+    public TrainingDaysValidationService(List<TrainingDaysValidationRule> trainingDaysValidationRules) {
+        this.trainingDaysValidationRules = trainingDaysValidationRules;
     }
 
-    public List<CoreError> validate(AddCalendarRequest request) {
+    public List<CoreError> validate(AddTrainingDaysRequest request) {
         List<CoreError> errors = new ArrayList<>();
         if (request == null) {
             errors.add(new CoreError("Date must not be null"));
             return errors;
         }
 
-        return calendarValidationRules.stream()
+        return trainingDaysValidationRules.stream()
                 .map(rule -> validate(rule, request))
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
-    private CoreError validate(CalendarValidationRule rule, AddCalendarRequest request) {
+    private CoreError validate(TrainingDaysValidationRule rule, AddTrainingDaysRequest request) {
         try {
             rule.validate(request);
         } catch (ValidationException e) {

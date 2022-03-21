@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class AddCalendarRequest {
+public class AddTrainingDaysRequest {
 
     private String eventDate;
     private String description;

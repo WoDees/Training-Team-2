@@ -1,45 +1,46 @@
 package com.trainingApplication.core.service;
 
-import com.trainingApplication.core.validation.calendar.CalendarValidationService;
 import com.trainingApplication.core.validation.CoreError;
-import com.trainingApplication.dto.response.AddCalendarResponse;
+import com.trainingApplication.core.validation.trainingDays.TrainingDaysValidationService;
+import com.trainingApplication.dto.response.AddTrainingDaysResponse;
+import com.trainingApplication.repository.ArrayListTrainingDaysRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import com.trainingApplication.repository.ArrayListCalendarRepository;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-import static test_factory.TestCalendarDtoFactory.*;
+import static test_factory.TestTrainingDaysDtoFactory.createEntity;
+import static test_factory.TestTrainingDaysDtoFactory.createRequest;
 
 @ExtendWith(MockitoExtension.class)
-class CalendarServiceTest {
+class TrainingDaysServiceTest {
 
     @Mock
-    private ArrayListCalendarRepository repository;
+    private ArrayListTrainingDaysRepository repository;
 
     @Mock
-    private CalendarValidationService calendarValidationService;
+    private TrainingDaysValidationService trainingDaysValidationService;
 
     @InjectMocks
-    private CalendarService calendarService;
+    private TrainingDaysService trainingDaysService;
 
     @Test
     void shouldSuccessfullyAddCalendarDate() {
         var request = createRequest();
-        doReturn(List.of()).when(calendarValidationService).validate(request);
+        doReturn(List.of()).when(trainingDaysValidationService).validate(request);
         doReturn(createEntity(123L)).when(repository).save(createEntity(null));
 
-        var actualResult = calendarService.add(createRequest());
+        var actualResult = trainingDaysService.add(createRequest());
 
         verify(repository).save(any());
-        verify(calendarValidationService).validate(any());
+        verify(trainingDaysValidationService).validate(any());
 
-        var expectedResult = new AddCalendarResponse();
+        var expectedResult = new AddTrainingDaysResponse();
         expectedResult.setErrors(null);
         expectedResult.setCreatedCalendarId(123L);
 
@@ -49,14 +50,14 @@ class CalendarServiceTest {
     @Test
     void shouldReturnErrors() {
         var request = createRequest();
-        doReturn(List.of(new CoreError("Test Error"))).when(calendarValidationService).validate(request);
+        doReturn(List.of(new CoreError("Test Error"))).when(trainingDaysValidationService).validate(request);
 
-        var actualResult = calendarService.add(createRequest());
+        var actualResult = trainingDaysService.add(createRequest());
 
-        verify(calendarValidationService).validate(any());
+        verify(trainingDaysValidationService).validate(any());
         verifyNoInteractions(repository);
 
-        var expectedResult = new AddCalendarResponse();
+        var expectedResult = new AddTrainingDaysResponse();
         expectedResult.setErrors(List.of(new CoreError("Test Error")));
         expectedResult.setCreatedCalendarId(null);
 

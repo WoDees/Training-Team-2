@@ -1,14 +1,14 @@
-package com.trainingApplication.core.validation.calendar;
+package com.trainingApplication.core.validation.trainingDays;
 
 import com.trainingApplication.core.validation.ValidationException;
-import com.trainingApplication.dto.request.AddCalendarRequest;
+import com.trainingApplication.dto.request.AddTrainingDaysRequest;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CalendarDateFormatValidationRule implements CalendarValidationRule {
+public class TrainingDaysFormatValidationRule implements TrainingDaysValidationRule {
 
     @Override
-    public void validate(AddCalendarRequest request) {
+    public void validate(AddTrainingDaysRequest request) {
         if (request.getEventDate() == null) {
             throw new ValidationException("Calendar number must not be null.");
         }
