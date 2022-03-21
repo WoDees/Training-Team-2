@@ -4,12 +4,14 @@ import com.trainingApplication.domain.CalendarEntity;
 import com.trainingApplication.domain.UserEntity;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Component;
 
+import java.sql.Statement;
 import java.util.List;
 
 @Component
-public class DefaultUserRepository implements Repository{
+public class DefaultUserRepository implements Repository {
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -19,12 +21,23 @@ public class DefaultUserRepository implements Repository{
 
     @Override
     public UserEntity save(UserEntity userEntity) {
-        return null;
+        var query = "INSERT INTO Users(nickname, mail, password, onlineStatus) VALUES (?, ?, ?, ?)";
+        var keyHolder = new GeneratedKeyHolder();
+        jdbcTemplate.update(connection -> {
+            var ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, userEntity.getNickname());
+            ps.setString(2, userEntity.getMail());
+            ps.setString(3, userEntity.getPassword());
+            ps.setBoolean(4, userEntity.isOnlineStatus());
+            return ps;
+        }, keyHolder);
+        userEntity.setUserId(keyHolder.getKey().longValue());
+        return userEntity;
     }
 
     @Override
     public List<UserEntity> findAll() {
-        return jdbcTemplate.query("SELECT * FROM User", new BeanPropertyRowMapper(UserEntity.class));
+        return jdbcTemplate.query("SELECT * FROM Users", new BeanPropertyRowMapper(UserEntity.class));
     }
 
     @Override

@@ -26,19 +26,19 @@ public class UIMenu {
 
                 Scanner scanner = new Scanner(System.in);
 
-        //        while (!onlineStatus) {
-         //           System.out.println("Please make your choice: ");
-          //          for (int i = 0; i < uiAuthorizations.size(); i++) {
-          //              var uiAuthorization = uiAuthorizations.get(i);
-          //              System.out.println(i + ". " + uiAuthorization.getActionName());
-          //          }
-//
-          //          int userInput = scanner.nextInt();
-        //            userId = uiAuthorizations.get(userInput).execute();
-          //          if (userId != null) {
-          //              onlineStatus = true;
-          //          }
-          //      }
+                while (!onlineStatus) {
+                    System.out.println("Please make your choice: ");
+                    for (int i = 0; i < uiAuthorizations.size(); i++) {
+                        var uiAuthorization = uiAuthorizations.get(i);
+                        System.out.println(i + ". " + uiAuthorization.getActionName());
+                    }
+
+                    int userInput = scanner.nextInt();
+                    userId = uiAuthorizations.get(userInput).execute();
+                    if (userId != null) {
+                        onlineStatus = true;
+                    }
+                }
 
                 System.out.println("Please make your choice: ");
                 for (int i = 0; i < uiActions.size(); i++) {
