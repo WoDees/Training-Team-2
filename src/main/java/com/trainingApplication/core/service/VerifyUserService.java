@@ -30,6 +30,7 @@ public class VerifyUserService {
         }
         var entity = convert(request);
         var verifiedEntity = repository.getUserEntityByNickNameAndPassword(entity.getNickname(), entity.getPassword());
+        repository.logIn(verifiedEntity.getUserId());
         System.out.println("Log in successful: " + verifiedEntity);
 
         var response = new VerifyUserResponse();

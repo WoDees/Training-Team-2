@@ -42,7 +42,8 @@ public class DefaultUserRepository implements Repository {
 
     @Override
     public boolean remove(String nickname, String password) {
-        return false;
+        jdbcTemplate.update("DELETE FROM Users WHERE nickname = ? AND password = ?", nickname, password);
+        return true;
     }
 
     @Override
@@ -54,7 +55,14 @@ public class DefaultUserRepository implements Repository {
 
     @Override
     public boolean logOut(Long userId) {
-        return false;
+        jdbcTemplate.update("UPDATE Users SET onlineStatus = '0' WHERE userId = ?", userId);
+        return true;
+    }
+
+    @Override
+    public boolean logIn(Long userId) {
+        jdbcTemplate.update("UPDATE Users SET onlineStatus = '1' WHERE userId = ?", userId);
+        return true;
     }
 
     @Override
@@ -70,7 +78,8 @@ public class DefaultUserRepository implements Repository {
 
     @Override
     public UserEntity getUserByMail(String mail) {
-        return null;
+        return jdbcTemplate.query("SELECT * FROM Users WHERE mail = ?", new Object[]{mail}, new BeanPropertyRowMapper<>(UserEntity.class)).
+                stream().findAny().orElse(null);
     }
 
     @Override

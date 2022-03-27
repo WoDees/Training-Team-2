@@ -68,6 +68,12 @@ public class ArrayListUserRepository implements Repository {
     }
 
     @Override
+    public boolean logIn(Long userId) {
+        getUserById(userId).setOnlineStatus(true);
+        return true;
+    }
+
+    @Override
     public UserEntity getUserByNickName(String nickname) {
         for (UserEntity entity : dataBase) {
             if (entity.getNickname().equals(nickname)) {
