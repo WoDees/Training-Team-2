@@ -35,6 +35,6 @@ public class RemoveUserUIAction implements UIAction {
 
     @Override
     public String getActionName() {
-        return "Remove";
+        return "Remove User";
     }
 }

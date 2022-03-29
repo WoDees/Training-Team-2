@@ -17,6 +17,8 @@ public interface Repository {
 
     boolean logOut(Long userId);
 
+    boolean logIn(Long userId);
+
     UserEntity getUserById(Long userId);
 
     UserEntity getUserByNickName(String nickname);
