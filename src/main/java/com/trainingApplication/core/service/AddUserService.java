@@ -4,7 +4,7 @@ import com.trainingApplication.core.validation.authorization.registration.Regist
 import com.trainingApplication.domain.UserEntity;
 import com.trainingApplication.dto.request.AddUserRequest;
 import com.trainingApplication.dto.response.AddUserResponse;
-import com.trainingApplication.repository.Repository;
+import com.trainingApplication.repository.user.Repository;
 import org.springframework.stereotype.Service;
 
 @Service

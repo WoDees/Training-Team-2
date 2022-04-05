@@ -4,7 +4,7 @@ import com.trainingApplication.core.validation.remove.RemoveValidationService;
 import com.trainingApplication.domain.UserEntity;
 import com.trainingApplication.dto.request.RemoveUserRequest;
 import com.trainingApplication.dto.response.RemoveUserResponse;
-import com.trainingApplication.repository.Repository;
+import com.trainingApplication.repository.user.Repository;
 import org.springframework.stereotype.Service;
 
 @Service

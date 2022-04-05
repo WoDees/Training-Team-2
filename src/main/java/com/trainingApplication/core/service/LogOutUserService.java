@@ -3,7 +3,7 @@ package com.trainingApplication.core.service;
 import com.trainingApplication.domain.UserEntity;
 import com.trainingApplication.dto.request.LogOutUserRequest;
 import com.trainingApplication.dto.response.LogOutUserResponse;
-import com.trainingApplication.repository.Repository;
+import com.trainingApplication.repository.user.Repository;
 import org.springframework.stereotype.Service;
 
 @Service

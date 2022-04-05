@@ -2,7 +2,7 @@ package com.trainingApplication.core.validation.authorization.registration;
 
 import com.trainingApplication.core.validation.ValidationException;
 import com.trainingApplication.dto.request.AddUserRequest;
-import com.trainingApplication.repository.Repository;
+import com.trainingApplication.repository.user.Repository;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -4,7 +4,7 @@ import com.trainingApplication.core.validation.trainingDays.TrainingDaysValidati
 import com.trainingApplication.domain.TrainingDaysEntity;
 import com.trainingApplication.dto.request.AddTrainingDaysRequest;
 import com.trainingApplication.dto.response.AddTrainingDaysResponse;
-import com.trainingApplication.repository.TrainingDaysRepository;
+import com.trainingApplication.repository.days.TrainingDaysRepository;
 import org.springframework.stereotype.Service;
 
 @Service

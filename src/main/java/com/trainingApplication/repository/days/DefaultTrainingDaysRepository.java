@@ -1,4 +1,4 @@
-package com.trainingApplication.repository;
+package com.trainingApplication.repository.days;
 
 import com.trainingApplication.domain.TrainingDaysEntity;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;

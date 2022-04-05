@@ -1,4 +1,4 @@
-package com.trainingApplication.repository;
+package com.trainingApplication.repository.user;
 
 import com.trainingApplication.domain.TrainingDaysEntity;
 import com.trainingApplication.domain.UserEntity;

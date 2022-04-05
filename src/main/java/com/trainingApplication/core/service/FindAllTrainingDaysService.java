@@ -3,7 +3,7 @@ package com.trainingApplication.core.service;
 import com.trainingApplication.domain.TrainingDaysEntity;
 import com.trainingApplication.dto.TrainingDaysDTO;
 import com.trainingApplication.dto.response.FindAllTrainingDaysResponse;
-import com.trainingApplication.repository.TrainingDaysRepository;
+import com.trainingApplication.repository.days.TrainingDaysRepository;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,6 +1,6 @@
 package com.trainingApplication.core.service;
 
-import com.trainingApplication.repository.Repository;
+import com.trainingApplication.repository.user.Repository;
 
 public class ActivitiesCaloriesService {
 
