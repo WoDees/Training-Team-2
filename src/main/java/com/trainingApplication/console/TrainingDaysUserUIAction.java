@@ -28,6 +28,7 @@ public class TrainingDaysUserUIAction implements UIAction {
         var request = new AddTrainingDaysRequest();
         request.setEventDate(trainingDate);
         request.setDescription(description);
+        request.setUserId(userId);
         System.out.println("Successfully saved: " + request);
 
         var response = trainingDaysService.add(request);

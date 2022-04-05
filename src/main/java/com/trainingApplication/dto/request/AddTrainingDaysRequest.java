@@ -9,4 +9,5 @@ public class AddTrainingDaysRequest {
 
     private String eventDate;
     private String description;
+    private Long userId;
 }

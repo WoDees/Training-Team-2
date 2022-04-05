@@ -1,6 +1,5 @@
 package com.trainingApplication.repository;
 
-import com.trainingApplication.domain.TrainingDaysEntity;
 import com.trainingApplication.domain.UserEntity;
 
 import java.util.List;
@@ -28,5 +27,4 @@ public interface Repository {
     boolean verifyUserByNickname(String nickname);
 
     boolean verifyUserByPassword(String password);
-
 }

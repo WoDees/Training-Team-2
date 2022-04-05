@@ -8,13 +8,18 @@ import java.util.Optional;
 
 public class ArrayListTrainingDaysRepository implements TrainingDaysRepository {
 
+    private final Repository repository;
     private final List<TrainingDaysEntity> dataBase = new ArrayList<>();
     private Long sequence = 0L;
+
+    public ArrayListTrainingDaysRepository(Repository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public TrainingDaysEntity save(TrainingDaysEntity trainingDaysEntity) {
         trainingDaysEntity.setId(sequence);
-        trainingDaysEntity.getUserId();
+        addDayToUser(trainingDaysEntity);
         sequence++;
         dataBase.add(trainingDaysEntity);
         return trainingDaysEntity;
@@ -30,5 +35,11 @@ public class ArrayListTrainingDaysRepository implements TrainingDaysRepository {
     @Override
     public List<TrainingDaysEntity> findAllTrainingDays() {
         return dataBase;
+    }
+
+    public void addDayToUser(TrainingDaysEntity trainingDaysEntity) {
+        var entity = repository.getUserById(trainingDaysEntity.getUserId());
+        Long count = 1L;
+        entity.setTrainingDaysCount(count + entity.getTrainingDaysCount());
     }
 }

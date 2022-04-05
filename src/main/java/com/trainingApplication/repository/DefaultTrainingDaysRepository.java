@@ -43,4 +43,9 @@ public class DefaultTrainingDaysRepository implements TrainingDaysRepository {
         var result = (TrainingDaysEntity) jdbcTemplate.queryForObject("SELECT * FROM TrainingDays WHERE id=?", new Object[]{id}, new BeanPropertyRowMapper(TrainingDaysEntity.class));
         return Optional.ofNullable(result);
     }
+
+    @Override
+    public void addDayToUser(TrainingDaysEntity trainingDaysEntity) {
+
+    }
 }
