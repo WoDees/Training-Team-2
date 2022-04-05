@@ -32,14 +32,12 @@ public class UIMenu {
                         var uiAuthorization = uiAuthorizations.get(i);
                         System.out.println(i + ". " + uiAuthorization.getActionName());
                     }
-
                     int userInput = scanner.nextInt();
                     userId = uiAuthorizations.get(userInput).execute();
                     if (userId != null) {
                         onlineStatus = true;
                     }
                 }
-
                 System.out.println("Please make your choice: ");
                 for (int i = 0; i < uiActions.size(); i++) {
                     var uiAction = uiActions.get(i);
