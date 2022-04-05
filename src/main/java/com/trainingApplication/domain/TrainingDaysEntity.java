@@ -2,11 +2,21 @@ package com.trainingApplication.domain;
 
 import lombok.Data;
 
+import javax.persistence.*;
+
 @Data
+@Entity
+@Table(name = "trainingDays")
 public class TrainingDaysEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "trainingId")
     private Long id;
+    @Column(name = "userId")
     private Long userId;
+    @Column(name = "description", nullable = false, length = 50)
     private String description;
+    @Column (name = "trainingDate", nullable = false)
     private String trainingDate;
 }

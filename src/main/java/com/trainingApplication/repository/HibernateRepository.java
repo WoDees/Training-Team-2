@@ -70,8 +70,4 @@ public class HibernateRepository implements Repository {
         return false;
     }
 
-    @Override
-    public void addTrainingDaysToUser(Long userId, TrainingDaysEntity entity) {
-
-    }
 }

@@ -93,9 +93,4 @@ public class DefaultUserRepository implements Repository {
         Integer count = jdbcTemplate.queryForObject("SELECT count(*) FROM Users WHERE password = ? ", new Object[]{password}, Integer.class);
         return count != null && count > 0;
     }
-
-    @Override
-    public void addTrainingDaysToUser(Long userId, TrainingDaysEntity entity) {
-
-    }
 }

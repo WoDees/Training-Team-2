@@ -107,9 +107,4 @@ public class ArrayListUserRepository implements Repository {
         }
         return false;
     }
-
-    @Override
-    public void addTrainingDaysToUser(Long userId, TrainingDaysEntity entity) {
-        getUserById(userId).setTrainingDaysEntitiesList(trainingDaysDataBase);
-    }
 }

@@ -23,5 +23,4 @@ public class UserEntity {
     private String mail;
     @Column(name = "onlineStatus")
     private boolean onlineStatus;
-    private List<TrainingDaysEntity> trainingDaysEntitiesList;
 }

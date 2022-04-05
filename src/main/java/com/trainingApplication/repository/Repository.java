@@ -29,5 +29,4 @@ public interface Repository {
 
     boolean verifyUserByPassword(String password);
 
-    void addTrainingDaysToUser(Long userId, TrainingDaysEntity entity);
 }
