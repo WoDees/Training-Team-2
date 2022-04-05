@@ -23,6 +23,6 @@ public class FindAllUserService {
     }
 
     private UserEntityDTO convert(UserEntity entity) {
-        return new UserEntityDTO(entity.getUserId(), entity.getNickname(), entity.getPassword(), entity.getMail(), entity.isOnlineStatus(), entity.getTrainingDaysEntitiesList());
+        return new UserEntityDTO(entity.getUserId(), entity.getNickname(), entity.getPassword(), entity.getMail(), entity.isOnlineStatus());
     }
 }
