@@ -55,13 +55,13 @@ public class DefaultUserRepository implements Repository {
 
     @Override
     public boolean logOut(Long userId) {
-        jdbcTemplate.update("UPDATE Users SET onlineStatus = '0' WHERE userId = ?", userId);
+        jdbcTemplate.update("UPDATE Users SET onlineStatus = FALSE WHERE userId = ?", userId);
         return true;
     }
 
     @Override
     public boolean logIn(Long userId) {
-        jdbcTemplate.update("UPDATE Users SET onlineStatus = '1' WHERE userId = ?", userId);
+        jdbcTemplate.update("UPDATE Users SET onlineStatus = TRUE WHERE userId = ?", userId);
         return true;
     }
 
