@@ -3,15 +3,15 @@ package com.trainingApplication.core.service;
 import com.trainingApplication.domain.TrainingDaysEntity;
 import com.trainingApplication.dto.TrainingDaysDTO;
 import com.trainingApplication.dto.response.FindAllTrainingDaysResponse;
-import com.trainingApplication.repository.ArrayListTrainingDaysRepository;
+import com.trainingApplication.repository.TrainingDaysRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class FindAllTrainingDaysService {
 
-    private final ArrayListTrainingDaysRepository repository;
+    private final TrainingDaysRepository repository;
 
-    public FindAllTrainingDaysService(ArrayListTrainingDaysRepository repository) {
+    public FindAllTrainingDaysService(TrainingDaysRepository repository) {
         this.repository = repository;
     }
 
@@ -23,6 +23,6 @@ public class FindAllTrainingDaysService {
     }
 
     private TrainingDaysDTO convert(TrainingDaysEntity entity) {
-        return new TrainingDaysDTO(entity.getId(), entity.getUserId(), entity.getDescription(), entity.getEventDate());
+        return new TrainingDaysDTO(entity.getId(), entity.getUserId(), entity.getDescription(), entity.getTrainingDate());
     }
 }

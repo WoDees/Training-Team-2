@@ -4,16 +4,16 @@ import com.trainingApplication.core.validation.trainingDays.TrainingDaysValidati
 import com.trainingApplication.domain.TrainingDaysEntity;
 import com.trainingApplication.dto.request.AddTrainingDaysRequest;
 import com.trainingApplication.dto.response.AddTrainingDaysResponse;
-import com.trainingApplication.repository.ArrayListTrainingDaysRepository;
+import com.trainingApplication.repository.TrainingDaysRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TrainingDaysService {
 
-    private final ArrayListTrainingDaysRepository repository;
+    private final TrainingDaysRepository repository;
     private final TrainingDaysValidationService validationService;
 
-    public TrainingDaysService(ArrayListTrainingDaysRepository repository, TrainingDaysValidationService validationService) {
+    public TrainingDaysService(TrainingDaysRepository repository, TrainingDaysValidationService validationService) {
         this.repository = repository;
         this.validationService = validationService;
     }
@@ -39,7 +39,7 @@ public class TrainingDaysService {
 
     private TrainingDaysEntity convert(AddTrainingDaysRequest request) {
         TrainingDaysEntity entity = new TrainingDaysEntity();
-        entity.setEventDate(request.getEventDate());
+        entity.setTrainingDate(request.getEventDate());
         entity.setDescription(request.getDescription());
         return entity;
     }

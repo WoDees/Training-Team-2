@@ -1,37 +1,33 @@
 package com.trainingApplication.repository;
 
 import com.trainingApplication.domain.TrainingDaysEntity;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
 
-@Component
-public class ArrayListTrainingDaysRepository {
+public class ArrayListTrainingDaysRepository implements TrainingDaysRepository {
 
     private final List<TrainingDaysEntity> dataBase = new ArrayList<>();
     private Long sequence = 0L;
 
-    public List<TrainingDaysEntity> findCalendarsByUserId(Long id) {
-
-        List<TrainingDaysEntity> userDays = new ArrayList<>();
-
-        for (TrainingDaysEntity calendar : dataBase) {
-            if (Objects.equals(calendar.getUserId(), id)) {
-                userDays.add(calendar);
-            }
-        }
-        return userDays;
-    }
-
+    @Override
     public TrainingDaysEntity save(TrainingDaysEntity trainingDaysEntity) {
-        trainingDaysEntity.setUserId(sequence);
+        trainingDaysEntity.setId(sequence);
+        trainingDaysEntity.getUserId();
         sequence++;
         dataBase.add(trainingDaysEntity);
         return trainingDaysEntity;
     }
 
+    @Override
+    public Optional<TrainingDaysEntity> findTrainingDaysById(Long id) {
+        return dataBase.stream()
+                .filter(entity -> entity.getId().equals(id))
+                .findFirst();
+    }
+
+    @Override
     public List<TrainingDaysEntity> findAllTrainingDays() {
         return dataBase;
     }

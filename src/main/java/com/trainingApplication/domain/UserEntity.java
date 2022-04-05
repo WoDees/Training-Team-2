@@ -12,5 +12,5 @@ public class UserEntity {
     private String password;
     private String mail;
     private boolean onlineStatus;
-    private List<TrainingDaysEntity> calendarEntityList;
+    private List<TrainingDaysEntity> trainingDaysEntitiesList;
 }

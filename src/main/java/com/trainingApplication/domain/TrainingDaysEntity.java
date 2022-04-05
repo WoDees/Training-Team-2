@@ -8,5 +8,5 @@ public class TrainingDaysEntity {
     private Long id;
     private Long userId;
     private String description;
-    private String eventDate;
+    private String trainingDate;
 }

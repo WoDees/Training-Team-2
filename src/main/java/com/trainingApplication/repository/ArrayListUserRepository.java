@@ -6,15 +6,11 @@ import com.trainingApplication.domain.UserEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class ArrayListUserRepository implements Repository {
 
     private final List<UserEntity> dataBase = new ArrayList<>();
     private Long idSequence = 0L;
-
-
     private final List<TrainingDaysEntity> trainingDaysDataBase = new ArrayList<>();
-
 
     @Override
     public UserEntity save(UserEntity userEntity) {
@@ -22,7 +18,6 @@ public class ArrayListUserRepository implements Repository {
         idSequence++;
         dataBase.add(userEntity);
         return userEntity;
-
     }
 
     @Override
@@ -109,7 +104,6 @@ public class ArrayListUserRepository implements Repository {
 
     @Override
     public void addTrainingDaysToUser(Long userId, TrainingDaysEntity entity) {
-        var trainingDays = new ArrayList<TrainingDaysEntity>();
-        //getUserById(userId).setTrainingDaysEntityList(calendars);
+        getUserById(userId).setTrainingDaysEntitiesList(trainingDaysDataBase);
     }
 }
