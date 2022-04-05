@@ -19,11 +19,11 @@ public class LogOutUserService {
         System.out.println("Received request: " + request);
         var entity = convert(request);
         var logOutEntity = repository.logOut(entity.getUserId());
-        System.out.println("Log out successful: " + !logOutEntity);
+        System.out.println("Log out successful:");
 
         var response = new LogOutUserResponse();
         response.setUserId(entity.getUserId());
-        response.setOnlineStatus(logOutEntity);
+        response.setOnlineStatus(!logOutEntity);
         System.out.println("Sending response: " + response);
         return response;
 
