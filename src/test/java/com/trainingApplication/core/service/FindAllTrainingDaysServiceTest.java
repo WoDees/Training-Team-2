@@ -4,6 +4,7 @@ import com.trainingApplication.domain.TrainingDaysEntity;
 import com.trainingApplication.dto.TrainingDaysDTO;
 import com.trainingApplication.dto.response.FindAllTrainingDaysResponse;
 import com.trainingApplication.repository.ArrayListTrainingDaysRepository;
+import com.trainingApplication.repository.TrainingDaysRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,7 +20,7 @@ import static org.mockito.Mockito.when;
 class FindAllTrainingDaysServiceTest {
 
     @Mock
-    private ArrayListTrainingDaysRepository repository;
+    private TrainingDaysRepository repository;
 
     @InjectMocks
     private FindAllTrainingDaysService findAllTrainingDaysService;

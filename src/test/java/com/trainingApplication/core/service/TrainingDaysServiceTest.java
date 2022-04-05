@@ -4,6 +4,7 @@ import com.trainingApplication.core.validation.CoreError;
 import com.trainingApplication.core.validation.trainingDays.TrainingDaysValidationService;
 import com.trainingApplication.dto.response.AddTrainingDaysResponse;
 import com.trainingApplication.repository.ArrayListTrainingDaysRepository;
+import com.trainingApplication.repository.TrainingDaysRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -21,7 +22,7 @@ import static test_factory.TestTrainingDaysDtoFactory.createRequest;
 class TrainingDaysServiceTest {
 
     @Mock
-    private ArrayListTrainingDaysRepository repository;
+    private TrainingDaysRepository repository;
 
     @Mock
     private TrainingDaysValidationService trainingDaysValidationService;
@@ -42,7 +43,7 @@ class TrainingDaysServiceTest {
 
         var expectedResult = new AddTrainingDaysResponse();
         expectedResult.setErrors(null);
-        expectedResult.setCreatedCalendarId(123L);
+        expectedResult.setCreatedTrainingDaysId(123L);
 
         assertEquals(expectedResult, actualResult);
     }
@@ -59,7 +60,7 @@ class TrainingDaysServiceTest {
 
         var expectedResult = new AddTrainingDaysResponse();
         expectedResult.setErrors(List.of(new CoreError("Test Error")));
-        expectedResult.setCreatedCalendarId(null);
+        expectedResult.setCreatedTrainingDaysId(null);
 
         assertEquals(expectedResult, actualResult);
     }
