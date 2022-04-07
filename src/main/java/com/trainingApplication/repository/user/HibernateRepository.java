@@ -26,6 +26,13 @@ public class HibernateRepository implements Repository {
 
     @Override
     public boolean remove(String nickname, String password) {
+        var copy = new UserEntity();
+        copy.setNickname(nickname);
+        copy.setPassword(password);
+        if (sessionFactory.getCurrentSession().contains(nickname, copy)) {
+            sessionFactory.getCurrentSession().remove(copy);
+            return true;
+        }
         return false;
     }
 
