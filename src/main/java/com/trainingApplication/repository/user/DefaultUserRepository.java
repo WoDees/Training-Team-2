@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import java.sql.Statement;
 import java.util.List;
 
-@Component
 public class DefaultUserRepository implements Repository {
 
     private final JdbcTemplate jdbcTemplate;
@@ -91,5 +90,10 @@ public class DefaultUserRepository implements Repository {
     public boolean verifyUserByPassword(String password) {
         Integer count = jdbcTemplate.queryForObject("SELECT count(*) FROM Users WHERE password = ? ", new Object[]{password}, Integer.class);
         return count != null && count > 0;
+    }
+
+    @Override
+    public boolean existsUserByMail(String mail) {
+        return false;
     }
 }
