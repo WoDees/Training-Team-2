@@ -19,8 +19,8 @@ public class RemoveExistenceValidationRule implements RemoveValidationRule {
         if (!repository.verifyUserByNickname(request.getNickname())) {
             throw new ValidationException("User does not exist!");
         }
-        if (request.getNickname().equals(repository.getUserByNickName(request.getNickname()).getNickname()) &&
-                !request.getPassword().equals(repository.getUserByNickName(request.getNickname()).getPassword())) {
+        if (repository.existsUserByNickname(request.getNickname()) &&
+                !repository.verifyUserByPassword(request.getPassword())) {
             throw new ValidationException("Incorrect password");
         }
     }

@@ -33,16 +33,14 @@ public class HibernateRepository implements Repository {
 
     @Override
     public List<UserEntity> findAll() {
-        return sessionFactory.getCurrentSession().createQuery("SELECT * FROM Users", UserEntity.class).list();
+        return sessionFactory.getCurrentSession().createQuery("SELECT u FROM UserEntity u", UserEntity.class).list();
     }
 
     @Override
     public boolean remove(String nickname, String password) {
-        var copy = new UserEntity();
-        copy.setNickname(nickname);
-        copy.setPassword(password);
-        if (sessionFactory.getCurrentSession().contains(nickname, copy)) {
-            sessionFactory.getCurrentSession().remove(copy);
+        var entity = getUserEntityByNickNameAndPassword(nickname, password);
+        if (sessionFactory.getCurrentSession().contains(entity.getNickname(), entity)) {
+            sessionFactory.getCurrentSession().remove(entity);
             return true;
         }
         return false;
@@ -60,17 +58,23 @@ public class HibernateRepository implements Repository {
 
     @Override
     public boolean logOut(Long userId) {
-        return false;
+        var copy = getUserById(userId);
+        copy.setOnlineStatus(false);
+        sessionFactory.getCurrentSession().update(copy);
+        return true;
     }
 
     @Override
     public boolean logIn(Long userId) {
-        return false;
+        var copy = getUserById(userId);
+        copy.setOnlineStatus(true);
+        sessionFactory.getCurrentSession().update(copy);
+        return true;
     }
 
     @Override
     public UserEntity getUserById(Long userId) {
-        return null;
+        return sessionFactory.getCurrentSession().get(UserEntity.class, userId);
     }
 
     @Override
