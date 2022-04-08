@@ -107,4 +107,9 @@ public class ArrayListUserRepository implements Repository {
         }
         return false;
     }
+
+    @Override
+    public boolean existsUserByMail(String mail) {
+        return false;
+    }
 }

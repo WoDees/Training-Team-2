@@ -27,4 +27,6 @@ public interface Repository {
     boolean verifyUserByNickname(String nickname);
 
     boolean verifyUserByPassword(String password);
+
+    boolean existsUserByMail (String mail);
 }
