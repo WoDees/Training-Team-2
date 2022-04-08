@@ -33,7 +33,7 @@ public class HibernateRepository implements Repository {
 
     @Override
     public List<UserEntity> findAll() {
-        return null;
+        return sessionFactory.getCurrentSession().createQuery("SELECT * FROM Users", UserEntity.class).list();
     }
 
     @Override
