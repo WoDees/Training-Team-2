@@ -26,8 +26,7 @@ public class HibernateTrainingDaysRepository implements TrainingDaysRepository {
 
     @Override
     public List<TrainingDaysEntity> findAllTrainingDays() {
-        sessionFactory.getCurrentSession().createQuery("SELECT t FROM trainingDays t").getResultList();
-        return null;
+        return sessionFactory.getCurrentSession().createQuery("SELECT t FROM trainingDays t").getResultList();
     }
 
     @Override
@@ -38,7 +37,6 @@ public class HibernateTrainingDaysRepository implements TrainingDaysRepository {
 
     @Override
     public void addDayToUser(TrainingDaysEntity trainingDaysEntity) {
-
     }
 
     @Override
