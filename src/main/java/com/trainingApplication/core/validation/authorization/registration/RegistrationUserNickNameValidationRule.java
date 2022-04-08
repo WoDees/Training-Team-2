@@ -27,9 +27,8 @@ public class RegistrationUserNickNameValidationRule implements RegistrationValid
         if (!request.getNickname().matches("^[a-zA-Z0-9]+$")) {
             throw new ValidationException("User nick name can only contain available symbols (a-z A-Z 0-9)");
         }
-        if (repository.getUserByNickName(request.getNickname()) != null) {
-            if (repository.getUserByNickName(request.getNickname()).getNickname().equals(request.getNickname()))
-                throw new ValidationException("User with that nick name already exist!");
+        if (repository.existsUserByNickname(request.getNickname())) {
+            throw new ValidationException("User with that nick name already exist!");
         }
     }
 }

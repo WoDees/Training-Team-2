@@ -18,7 +18,7 @@ public class VerifyAttemptsAmountValidationRule implements VerifyValidationRule 
     @Override
     public void validate(VerifyUserRequest request) {
 
-        if (repository.verifyUserByNickname(request.getNickname()) &&
+        if (repository.existsUserByNickname(request.getNickname()) &&
                 !repository.verifyUserByPassword(request.getPassword())) {
             sequence++;
             if (sequence == 3) {

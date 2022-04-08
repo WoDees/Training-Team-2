@@ -96,4 +96,9 @@ public class DefaultUserRepository implements Repository {
     public boolean existsUserByMail(String mail) {
         return false;
     }
+
+    @Override
+    public boolean existsUserByNickname(String nickname) {
+        return false;
+    }
 }

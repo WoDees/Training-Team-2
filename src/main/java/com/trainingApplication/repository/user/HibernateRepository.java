@@ -50,12 +50,12 @@ public class HibernateRepository implements Repository {
 
     @Override
     public UserEntity getUserEntityByNickNameAndPassword(String nickname, String password) {
-        String hql = "SELECT * FROM Users WHERE nickname =:nickname AND password =:password";
+        String hql = "SELECT u FROM UserEntity u WHERE nickname =:nickname AND password =:password";
         var query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter("nickname", nickname);
         query.setParameter("password", password);
         List<UserEntity> userEntities = query.list();
-        return userEntities.get(0);
+        return userEntities.stream().findFirst().orElse(null);
     }
 
     @Override
@@ -75,47 +75,61 @@ public class HibernateRepository implements Repository {
 
     @Override
     public UserEntity getUserByNickName(String nickname) {
-        UserEntity user = (UserEntity) sessionFactory.getCurrentSession().createCriteria(UserEntity.class)
-                .add(Restrictions.eq("nickname", nickname))
-                .uniqueResult();
-        return user;
-    }
-
-    @Override
-    public UserEntity getUserByMail(String mail) {
-
-
         var query = sessionFactory.getCurrentSession().createQuery(
-                "select u FROM UserEntity u where mail = :mail");
-        query.setParameter("mail",mail);
-        List<UserEntity> userList  = (List<UserEntity>) query.getResultList();
-        if (!userList.isEmpty()){
+                "select u FROM UserEntity u where mail = :nickname");
+        query.setParameter("nickname", nickname);
+        List<UserEntity> userList = (List<UserEntity>) query.getResultList();
+        if (!userList.isEmpty()) {
             return userList.get(0);
         }
         return null;
     }
 
     @Override
-    public boolean existsUserByMail(String mail){
+    public boolean existsUserByNickname(String nickname) {
+        var query = sessionFactory.getCurrentSession().createQuery(
+                "select u FROM UserEntity u where nickname = :nickname");
+        query.setParameter("nickname", nickname);
+        List<UserEntity> userList = (List<UserEntity>) query.getResultList();
+        return !userList.isEmpty();
+    }
+
+    @Override
+    public UserEntity getUserByMail(String mail) {
         var query = sessionFactory.getCurrentSession().createQuery(
                 "select u FROM UserEntity u where mail = :mail");
-        query.setParameter("mail",mail);
-        List<UserEntity> userList  = (List<UserEntity>) query.getResultList();
+        query.setParameter("mail", mail);
+        List<UserEntity> userList = (List<UserEntity>) query.getResultList();
+        if (!userList.isEmpty()) {
+            return userList.get(0);
+        }
+        return null;
+    }
+
+    @Override
+    public boolean existsUserByMail(String mail) {
+        var query = sessionFactory.getCurrentSession().createQuery(
+                "select u FROM UserEntity u where mail = :mail");
+        query.setParameter("mail", mail);
+        List<UserEntity> userList = (List<UserEntity>) query.getResultList();
         return !userList.isEmpty();
     }
 
     @Override
     public boolean verifyUserByNickname(String nickname) {
-        var copy = new UserEntity();
-        copy.setNickname(nickname);
-        return sessionFactory.getCurrentSession().contains(nickname, copy);
+        var query = sessionFactory.getCurrentSession().createQuery(
+                "select u FROM UserEntity u where nickname = :nickname");
+        query.setParameter("nickname", nickname);
+        List<UserEntity> userList = (List<UserEntity>) query.getResultList();
+        return !userList.isEmpty();
     }
 
     @Override
     public boolean verifyUserByPassword(String password) {
-        var copy = new UserEntity();
-        copy.setNickname(password);
-        return sessionFactory.getCurrentSession().contains(password, copy);
+        var query = sessionFactory.getCurrentSession().createQuery(
+                "select u FROM UserEntity u where password = :password");
+        query.setParameter("password", password);
+        List<UserEntity> userList = (List<UserEntity>) query.getResultList();
+        return !userList.isEmpty();
     }
-
 }
