@@ -12,7 +12,7 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+
 public class DefaultTrainingDaysRepository implements TrainingDaysRepository {
 
     private final JdbcTemplate jdbcTemplate;
@@ -64,6 +64,7 @@ public class DefaultTrainingDaysRepository implements TrainingDaysRepository {
     public Long getUserDaysCount(Long userId) {
         var entity = jdbcTemplate.query("SELECT * FROM Users WHERE userId = ?", new Object[]{userId}, new BeanPropertyRowMapper<>(UserEntity.class)).
                 stream().findAny().orElse(null);
+        assert entity != null;
         return entity.getTrainingDaysCount();
     }
 }

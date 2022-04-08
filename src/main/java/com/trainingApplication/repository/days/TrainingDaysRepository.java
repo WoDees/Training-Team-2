@@ -14,4 +14,6 @@ public interface TrainingDaysRepository {
     Optional<TrainingDaysEntity> findTrainingDaysById(Long id);
 
     void addDayToUser(TrainingDaysEntity trainingDaysEntity);
+
+    Long getUserDaysCount(Long userId);
 }
