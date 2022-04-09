@@ -17,5 +17,4 @@ public class UserEntityDTO {
     private String password;
     private String mail;
     private boolean onlineStatus;
-    private Long trainingDaysCount;
 }
