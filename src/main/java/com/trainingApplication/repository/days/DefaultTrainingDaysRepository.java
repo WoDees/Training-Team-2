@@ -49,7 +49,6 @@ public class DefaultTrainingDaysRepository implements TrainingDaysRepository {
         return Optional.ofNullable(result);
     }
 
-    @Override
     public void addDayToUser(TrainingDaysEntity trainingDaysEntity) {
         var currentCount = getUserDaysCount(trainingDaysEntity.getUserId());
         if (currentCount == null) {
