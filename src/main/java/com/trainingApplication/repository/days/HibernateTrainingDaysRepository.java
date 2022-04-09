@@ -1,6 +1,7 @@
 package com.trainingApplication.repository.days;
 
 import com.trainingApplication.domain.TrainingDaysEntity;
+import com.trainingApplication.domain.UserEntity;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +27,8 @@ public class HibernateTrainingDaysRepository implements TrainingDaysRepository {
 
     @Override
     public List<TrainingDaysEntity> findAllTrainingDays() {
-        return sessionFactory.getCurrentSession().createQuery("SELECT t FROM trainingDays t").getResultList();
+        return sessionFactory.getCurrentSession().createQuery(
+                "SELECT t FROM TrainingDaysEntity t", TrainingDaysEntity.class).list();
     }
 
     @Override
@@ -36,11 +38,14 @@ public class HibernateTrainingDaysRepository implements TrainingDaysRepository {
     }
 
     @Override
-    public void addDayToUser(TrainingDaysEntity trainingDaysEntity) {
-    }
-
-    @Override
     public Long getUserDaysCount(Long userId) {
+        var query = sessionFactory.getCurrentSession().createQuery(
+                "select u FROM UserEntity u WHERE trainingDaysCount = :trainingDaysCount");
+        query.setParameter("userId", userId);
+        List<UserEntity> copy = (List<UserEntity>) query.getResultList();
+        if (!copy.isEmpty()){
+            return copy.get(0).getTrainingDaysCount();
+        }
         return null;
     }
 }
