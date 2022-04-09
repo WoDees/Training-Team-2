@@ -1,7 +1,6 @@
 package com.trainingApplication.domain;
 
 import lombok.Data;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,7 +12,6 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "userId")
     private Long userId;
     @Column(name = "nickname", unique = true, nullable = false, length = 12)
     private String nickname;
@@ -25,4 +23,8 @@ public class UserEntity {
     private boolean onlineStatus;
     @Column(name = "trainingDaysCount")
     private Long trainingDaysCount;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "userId")
+    private List<TrainingDaysEntity> trainingDaysEntities;
 }

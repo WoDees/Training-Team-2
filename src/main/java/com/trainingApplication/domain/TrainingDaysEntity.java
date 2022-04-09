@@ -13,10 +13,12 @@ public class TrainingDaysEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "userId")
-    private Long userId;
     @Column(name = "description", nullable = false, length = 50)
     private String description;
     @Column(name = "trainingDate", nullable = false)
     private String trainingDate;
+
+    @Column(name = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "userId")
+    private Long userId;
 }
