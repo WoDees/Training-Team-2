@@ -24,7 +24,7 @@ public class UserEntity {
     @Column(name = "trainingDaysCount")
     private Long trainingDaysCount;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", referencedColumnName = "userId")
     private List<TrainingDaysEntity> trainingDaysEntities;
 }
