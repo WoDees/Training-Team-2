@@ -40,7 +40,7 @@ public class HibernateTrainingDaysRepository implements TrainingDaysRepository {
     @Override
     public Long getUserDaysCount(Long userId) {
         var query = sessionFactory.getCurrentSession().createQuery(
-                "select u FROM UserEntity u WHERE trainingDaysCount = :trainingDaysCount");
+                "select u FROM UserEntity u WHERE userId = :userId");
         query.setParameter("userId", userId);
         List<UserEntity> copy = (List<UserEntity>) query.getResultList();
         if (!copy.isEmpty()){
