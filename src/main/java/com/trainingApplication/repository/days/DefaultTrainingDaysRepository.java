@@ -6,13 +6,12 @@ import com.trainingApplication.repository.user.Repository;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.stereotype.Component;
 
 import java.sql.Statement;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+
 public class DefaultTrainingDaysRepository implements TrainingDaysRepository {
 
     private final JdbcTemplate jdbcTemplate;
@@ -61,9 +60,11 @@ public class DefaultTrainingDaysRepository implements TrainingDaysRepository {
         jdbcTemplate.update("UPDATE Users SET trainingDaysCount = ? WHERE userId = ?", count, userId);
     }
 
+    @Override
     public Long getUserDaysCount(Long userId) {
         var entity = jdbcTemplate.query("SELECT * FROM Users WHERE userId = ?", new Object[]{userId}, new BeanPropertyRowMapper<>(UserEntity.class)).
                 stream().findAny().orElse(null);
+        assert entity != null;
         return entity.getTrainingDaysCount();
     }
 }
