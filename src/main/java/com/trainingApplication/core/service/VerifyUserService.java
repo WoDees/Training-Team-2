@@ -7,7 +7,10 @@ import com.trainingApplication.dto.response.VerifyUserResponse;
 import com.trainingApplication.repository.user.Repository;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
+@Transactional
 public class VerifyUserService {
 
     private final Repository repository;

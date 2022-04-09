@@ -52,7 +52,7 @@ public class HibernateRepository implements Repository {
         var query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter("nickname", nickname);
         query.setParameter("password", password);
-        List<UserEntity> userEntities = query.list();
+        List<UserEntity> userEntities = (List<UserEntity>) query.list();
         return userEntities.stream().findFirst().orElse(null);
     }
 
