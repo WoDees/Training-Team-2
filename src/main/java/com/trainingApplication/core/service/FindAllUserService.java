@@ -3,17 +3,15 @@ package com.trainingApplication.core.service;
 import com.trainingApplication.domain.UserEntity;
 import com.trainingApplication.dto.UserEntityDTO;
 import com.trainingApplication.dto.response.FindAllUserResponse;
-import com.trainingApplication.repository.user.Repository;
+import com.trainingApplication.repository.user.HibernateUserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+@AllArgsConstructor
 @Service
 public class FindAllUserService {
 
-    private final Repository repository;
-
-    public FindAllUserService(Repository repository) {
-        this.repository = repository;
-    }
+    private final HibernateUserRepository repository;
 
     public FindAllUserResponse findAll() {
         var dtos = repository.findAll().stream()

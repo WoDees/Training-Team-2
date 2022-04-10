@@ -1,29 +1,19 @@
 package com.trainingApplication.repository.user;
 
 import com.trainingApplication.domain.UserEntity;
-import org.hibernate.Criteria;
+import lombok.AllArgsConstructor;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.CriteriaQuery;
-import org.hibernate.criterion.Restrictions;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-import javax.management.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaDelete;
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
-@Component
 @Transactional
-public class HibernateRepository implements Repository {
+@AllArgsConstructor
+@Repository
+public class HibernateUserRepository implements DefaultRepository<UserEntity> {
 
-    private final SessionFactory sessionFactory;
-
-    public HibernateRepository(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    private SessionFactory sessionFactory;
 
     @Override
     public UserEntity save(UserEntity userEntity) {
@@ -37,8 +27,8 @@ public class HibernateRepository implements Repository {
     }
 
     @Override
-    public boolean remove(String nickname, String password) {
-        var entity = getUserEntityByNickNameAndPassword(nickname, password);
+    public boolean remove(UserEntity entity) {
+        var copy = getEntityById(entity.getUserId());
         if (sessionFactory.getCurrentSession().contains(entity.getNickname(), entity)) {
             sessionFactory.getCurrentSession().remove(entity);
             return true;
@@ -46,7 +36,6 @@ public class HibernateRepository implements Repository {
         return false;
     }
 
-    @Override
     public UserEntity getUserEntityByNickNameAndPassword(String nickname, String password) {
         String hql = "SELECT u FROM UserEntity u WHERE nickname =:nickname AND password =:password";
         var query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -56,28 +45,25 @@ public class HibernateRepository implements Repository {
         return userEntities.stream().findFirst().orElse(null);
     }
 
-    @Override
     public boolean logOut(Long userId) {
-        var copy = getUserById(userId);
+        var copy = getEntityById(userId);
         copy.setOnlineStatus(false);
         sessionFactory.getCurrentSession().update(copy);
         return true;
     }
 
-    @Override
     public boolean logIn(Long userId) {
-        var copy = getUserById(userId);
+        var copy = getEntityById(userId);
         copy.setOnlineStatus(true);
         sessionFactory.getCurrentSession().update(copy);
         return true;
     }
 
     @Override
-    public UserEntity getUserById(Long userId) {
+    public UserEntity getEntityById(Long userId) {
         return sessionFactory.getCurrentSession().get(UserEntity.class, userId);
     }
 
-    @Override
     public UserEntity getUserByNickName(String nickname) {
         var query = sessionFactory.getCurrentSession().createQuery(
                 "select u FROM UserEntity u where mail = :nickname");
@@ -89,7 +75,6 @@ public class HibernateRepository implements Repository {
         return null;
     }
 
-    @Override
     public boolean existsUserByNickname(String nickname) {
         var query = sessionFactory.getCurrentSession().createQuery(
                 "select u FROM UserEntity u where nickname = :nickname");
@@ -98,7 +83,6 @@ public class HibernateRepository implements Repository {
         return !userList.isEmpty();
     }
 
-    @Override
     public UserEntity getUserByMail(String mail) {
         var query = sessionFactory.getCurrentSession().createQuery(
                 "select u FROM UserEntity u where mail = :mail");
@@ -110,7 +94,6 @@ public class HibernateRepository implements Repository {
         return null;
     }
 
-    @Override
     public boolean existsUserByMail(String mail) {
         var query = sessionFactory.getCurrentSession().createQuery(
                 "select u FROM UserEntity u where mail = :mail");
@@ -119,7 +102,6 @@ public class HibernateRepository implements Repository {
         return !userList.isEmpty();
     }
 
-    @Override
     public boolean verifyUserByNickname(String nickname) {
         var query = sessionFactory.getCurrentSession().createQuery(
                 "select u FROM UserEntity u where nickname = :nickname");
@@ -128,7 +110,6 @@ public class HibernateRepository implements Repository {
         return !userList.isEmpty();
     }
 
-    @Override
     public boolean verifyUserByPassword(String password) {
         var query = sessionFactory.getCurrentSession().createQuery(
                 "select u FROM UserEntity u where password = :password");
@@ -136,4 +117,10 @@ public class HibernateRepository implements Repository {
         List<UserEntity> userList = (List<UserEntity>) query.getResultList();
         return !userList.isEmpty();
     }
+
+    @Override
+    public boolean existsEntity(UserEntity entity) {
+        return false;
+    }
+
 }
