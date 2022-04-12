@@ -1,19 +1,12 @@
 package com.trainingApplication.repository.user;
 
+import com.trainingApplication.domain.TrainingDaysEntity;
 import com.trainingApplication.domain.UserEntity;
-import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.CriteriaQuery;
-import org.hibernate.criterion.Restrictions;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Component;
 
-import javax.management.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaDelete;
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 @Transactional
@@ -23,6 +16,7 @@ public class HibernateRepository implements Repository {
 
     public HibernateRepository(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
+
     }
 
     @Override
@@ -135,5 +129,31 @@ public class HibernateRepository implements Repository {
         query.setParameter("password", password);
         List<UserEntity> userList = (List<UserEntity>) query.getResultList();
         return !userList.isEmpty();
+    }
+
+    @Override
+    public void addTrainingDaysToUser(TrainingDaysEntity trainingDaysEntity) {
+        var currentCount = getUserDaysCount(trainingDaysEntity.getUserId());
+        if (currentCount == null) {
+            currentCount = 0L;
+        }
+        var userId = getUserById(trainingDaysEntity.getUserId());
+        long count = 1L + currentCount;
+        var query = sessionFactory.getCurrentSession().createQuery(
+                "update UserEntity u SET trainingDaysCount  = :trainingDaysCount WHERE userId  = :userId");
+        query.setParameter("trainingDaysCount", count);
+        query.setParameter("userId", userId);
+    }
+
+    @Override
+    public Long getUserDaysCount(Long userId) {
+        var query = sessionFactory.getCurrentSession().createQuery(
+                "select u FROM UserEntity u where userId = :userId");
+        query.setParameter("userId", userId);
+        List<UserEntity> userList = (List<UserEntity>) query.getResultList();
+        if (!userList.isEmpty()) {
+            return userList.get(0).getTrainingDaysCount();
+        }
+        return null;
     }
 }

@@ -12,6 +12,4 @@ public interface TrainingDaysRepository {
     List<TrainingDaysEntity> findAllTrainingDays();
 
     Optional<TrainingDaysEntity> findTrainingDaysById(Long id);
-
-    Long getUserDaysCount(Long userId);
 }

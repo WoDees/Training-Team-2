@@ -43,9 +43,4 @@ public class ArrayListTrainingDaysRepository implements TrainingDaysRepository {
         Long count = 1L;
         entity.setTrainingDaysCount(count + entity.getTrainingDaysCount());
     }
-
-    @Override
-    public Long getUserDaysCount(Long userId) {
-        return null;
-    }
 }

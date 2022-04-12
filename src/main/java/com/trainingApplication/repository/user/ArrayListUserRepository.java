@@ -10,7 +10,6 @@ public class ArrayListUserRepository implements Repository {
 
     private final List<UserEntity> dataBase = new ArrayList<>();
     private Long idSequence = 0L;
-    private final List<TrainingDaysEntity> trainingDaysDataBase = new ArrayList<>();
 
     @Override
     public UserEntity save(UserEntity userEntity) {
@@ -117,4 +116,15 @@ public class ArrayListUserRepository implements Repository {
     public boolean existsUserByNickname(String nickname) {
         return false;
     }
+
+    @Override
+    public void addTrainingDaysToUser(TrainingDaysEntity trainingDaysEntity) {
+
+    }
+
+    @Override
+    public Long getUserDaysCount(Long userId) {
+        return null;
+    }
 }
+

@@ -1,5 +1,6 @@
 package com.trainingApplication.repository.user;
 
+import com.trainingApplication.domain.TrainingDaysEntity;
 import com.trainingApplication.domain.UserEntity;
 
 import java.util.List;
@@ -31,4 +32,8 @@ public interface Repository {
     boolean existsUserByMail(String mail);
 
     boolean existsUserByNickname(String nickname);
+
+    void addTrainingDaysToUser(TrainingDaysEntity trainingDaysEntity);
+
+    Long getUserDaysCount(Long userId);
 }

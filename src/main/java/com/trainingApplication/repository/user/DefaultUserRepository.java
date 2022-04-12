@@ -1,10 +1,10 @@
 package com.trainingApplication.repository.user;
 
+import com.trainingApplication.domain.TrainingDaysEntity;
 import com.trainingApplication.domain.UserEntity;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.stereotype.Component;
 
 import java.sql.Statement;
 import java.util.List;
@@ -100,5 +100,14 @@ public class DefaultUserRepository implements Repository {
     @Override
     public boolean existsUserByNickname(String nickname) {
         return false;
+    }
+
+    @Override
+    public Long getUserDaysCount(Long userId) {
+        return null;
+    }
+
+    @Override
+    public void addTrainingDaysToUser(TrainingDaysEntity trainingDaysEntity) {
     }
 }
