@@ -1,6 +1,5 @@
 package com.trainingApplication.repository.user;
 
-import com.trainingApplication.domain.TrainingDaysEntity;
 import com.trainingApplication.domain.UserEntity;
 
 import java.util.ArrayList;
@@ -115,16 +114,6 @@ public class ArrayListUserRepository implements Repository {
     @Override
     public boolean existsUserByNickname(String nickname) {
         return false;
-    }
-
-    @Override
-    public void addTrainingDaysToUser(TrainingDaysEntity trainingDaysEntity) {
-
-    }
-
-    @Override
-    public Long getUserDaysCount(Long userId) {
-        return null;
     }
 }
 

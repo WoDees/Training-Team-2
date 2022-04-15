@@ -1,6 +1,7 @@
 package com.trainingApplication.repository.days;
 
 import com.trainingApplication.domain.TrainingDaysEntity;
+import com.trainingApplication.domain.UserEntity;
 import com.trainingApplication.repository.user.Repository;
 
 import java.util.ArrayList;
@@ -31,6 +32,16 @@ public class ArrayListTrainingDaysRepository implements TrainingDaysRepository {
         return dataBase.stream()
                 .filter(entity -> entity.getId().equals(id))
                 .findFirst();
+    }
+
+    @Override
+    public UserEntity getUserById(Long userId) {
+        return null;
+    }
+
+    @Override
+    public Long addTrainingDaysToUser(Long userId) {
+        return null;
     }
 
     @Override
