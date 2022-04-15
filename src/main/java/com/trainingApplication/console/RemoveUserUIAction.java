@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-@Order(4)
+@Order(5)
 @Component
 public class RemoveUserUIAction implements UIAction {
 

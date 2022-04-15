@@ -6,7 +6,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 
-@Order(5)
+@Order(6)
 @Component
 public class LogOutUserUIAction implements UIAction {
 
