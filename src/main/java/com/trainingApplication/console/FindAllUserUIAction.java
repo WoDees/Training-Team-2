@@ -4,7 +4,7 @@ import com.trainingApplication.core.service.FindAllUserService;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-@Order(3)
+@Order(4)
 @Component
 public class FindAllUserUIAction implements UIAction {
 
