@@ -11,15 +11,12 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Optional;
 
-
 public class DefaultTrainingDaysRepository implements TrainingDaysRepository {
 
     private final JdbcTemplate jdbcTemplate;
-    private final Repository repository;
 
     public DefaultTrainingDaysRepository(JdbcTemplate jdbcTemplate, Repository repository) {
         this.jdbcTemplate = jdbcTemplate;
-        this.repository = repository;
     }
 
     @Override
@@ -49,6 +46,16 @@ public class DefaultTrainingDaysRepository implements TrainingDaysRepository {
         return Optional.ofNullable(result);
     }
 
+    @Override
+    public UserEntity getUserById(Long userId) {
+        return null;
+    }
+
+    @Override
+    public Long addTrainingDaysToUser(Long userId) {
+        return null;
+    }
+
     public void addDayToUser(TrainingDaysEntity trainingDaysEntity) {
         var currentCount = getUserDaysCount(trainingDaysEntity.getUserId());
         if (currentCount == null) {
@@ -59,7 +66,6 @@ public class DefaultTrainingDaysRepository implements TrainingDaysRepository {
         jdbcTemplate.update("UPDATE Users SET trainingDaysCount = ? WHERE userId = ?", count, userId);
     }
 
-    @Override
     public Long getUserDaysCount(Long userId) {
         var entity = jdbcTemplate.query("SELECT * FROM Users WHERE userId = ?", new Object[]{userId}, new BeanPropertyRowMapper<>(UserEntity.class)).
                 stream().findAny().orElse(null);

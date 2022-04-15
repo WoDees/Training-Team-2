@@ -22,7 +22,13 @@ public class HibernateTrainingDaysRepository implements TrainingDaysRepository {
     @Override
     public TrainingDaysEntity save(TrainingDaysEntity trainingDaysEntity) {
         sessionFactory.getCurrentSession().save(trainingDaysEntity);
+        addTrainingDaysToUser(trainingDaysEntity.getUserId());
         return trainingDaysEntity;
+    }
+
+    @Override
+    public UserEntity getUserById(Long userId) {
+        return sessionFactory.getCurrentSession().get(UserEntity.class, userId);
     }
 
     @Override
@@ -38,14 +44,10 @@ public class HibernateTrainingDaysRepository implements TrainingDaysRepository {
     }
 
     @Override
-    public Long getUserDaysCount(Long userId) {
-        var query = sessionFactory.getCurrentSession().createQuery(
-                "select u FROM UserEntity u WHERE userId = :userId");
-        query.setParameter("userId", userId);
-        List<UserEntity> copy = (List<UserEntity>) query.getResultList();
-        if (!copy.isEmpty()){
-            return copy.get(0).getTrainingDaysCount();
-        }
-        return null;
+    public Long addTrainingDaysToUser(Long userId) {
+        var copy = getUserById(userId);
+        copy.setTrainingDaysCount(copy.getTrainingDaysCount() + 1L);
+        sessionFactory.getCurrentSession().update(copy);
+        return copy.getTrainingDaysCount() + 1L;
     }
 }

@@ -1,19 +1,11 @@
 package com.trainingApplication.repository.user;
 
 import com.trainingApplication.domain.UserEntity;
-import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.CriteriaQuery;
-import org.hibernate.criterion.Restrictions;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Component;
 
-import javax.management.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaDelete;
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 @Transactional
@@ -23,6 +15,7 @@ public class HibernateRepository implements Repository {
 
     public HibernateRepository(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
+
     }
 
     @Override

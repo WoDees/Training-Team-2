@@ -1,6 +1,5 @@
 package com.trainingApplication.repository.user;
 
-import com.trainingApplication.domain.TrainingDaysEntity;
 import com.trainingApplication.domain.UserEntity;
 
 import java.util.ArrayList;
@@ -10,7 +9,6 @@ public class ArrayListUserRepository implements Repository {
 
     private final List<UserEntity> dataBase = new ArrayList<>();
     private Long idSequence = 0L;
-    private final List<TrainingDaysEntity> trainingDaysDataBase = new ArrayList<>();
 
     @Override
     public UserEntity save(UserEntity userEntity) {
@@ -118,3 +116,4 @@ public class ArrayListUserRepository implements Repository {
         return false;
     }
 }
+
