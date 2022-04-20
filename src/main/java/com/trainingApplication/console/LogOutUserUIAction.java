@@ -5,8 +5,7 @@ import com.trainingApplication.dto.request.LogOutUserRequest;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-
-@Order(6)
+@Order(7)
 @Component
 public class LogOutUserUIAction implements UIAction {
 
