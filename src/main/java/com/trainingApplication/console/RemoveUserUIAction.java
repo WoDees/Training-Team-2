@@ -19,11 +19,11 @@ public class RemoveUserUIAction implements UIAction {
 
     @Override
     public void execute(Long userId) {
-        Scanner scanner = new Scanner(System.in);
+        var scanner = new Scanner(System.in);
         System.out.println("Enter your nickname:");
-        String nickname = scanner.nextLine();
+        var nickname = scanner.nextLine();
         System.out.println("Enter your password:");
-        String password = scanner.nextLine();
+        var password = scanner.nextLine();
 
         var request = new RemoveUserRequest();
         request.setNickname(nickname);

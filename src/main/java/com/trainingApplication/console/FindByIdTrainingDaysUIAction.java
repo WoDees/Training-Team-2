@@ -18,8 +18,8 @@ public class FindByIdTrainingDaysUIAction implements UIAction {
 
     @Override
     public void execute(Long userId) {
-        System.out.println("Please enter training day id:");
         var scanner = new Scanner(System.in);
+        System.out.println("Please enter training day id:");
         var id = scanner.nextLong();
         var result = findByIdTrainingDaysService.getById(id);
         System.out.println("Result: " + result);
