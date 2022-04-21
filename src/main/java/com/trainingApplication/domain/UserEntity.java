@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "Users")
+@Table(name = "users")
 public class UserEntity {
 
     @Id
@@ -17,7 +17,7 @@ public class UserEntity {
     private String nickname;
     @Column(name = "password", nullable = false, length = 14)
     private String password;
-    @Column(name = "mail", unique = true, nullable = false)
+    @Column(name = "mail", length = 45, unique = true, nullable = false)
     private String mail;
     @Column(name = "onlineStatus")
     private boolean onlineStatus;
