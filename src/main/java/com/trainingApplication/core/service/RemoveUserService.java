@@ -39,7 +39,7 @@ public class RemoveUserService {
     }
 
     private UserEntity convert(RemoveUserRequest request) {
-        UserEntity entity = new UserEntity();
+        var entity = new UserEntity();
         entity.setNickname(request.getNickname());
         entity.setPassword(request.getPassword());
 

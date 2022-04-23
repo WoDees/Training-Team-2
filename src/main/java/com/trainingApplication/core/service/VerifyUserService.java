@@ -43,7 +43,7 @@ public class VerifyUserService {
     }
 
     private UserEntity convert(VerifyUserRequest request) {
-        UserEntity entity = new UserEntity();
+        var entity = new UserEntity();
         entity.setNickname(request.getNickname());
         entity.setPassword(request.getPassword());
 

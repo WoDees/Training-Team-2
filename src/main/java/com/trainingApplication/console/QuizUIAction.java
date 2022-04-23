@@ -24,18 +24,18 @@ public class QuizUIAction implements UIAction {
                 1 - Male
                 2 - Female
                 Please enter your gender:\s""");
-        Long gender = Long.valueOf(scanner.nextLine());
+        var gender = Long.valueOf(scanner.nextLine());
         System.out.println("Please enter your age: ");
-        Long age = Long.valueOf(scanner.nextLine());
+        var age = Long.valueOf(scanner.nextLine());
         System.out.println("Please enter your weight: ");
-        Long weight = Long.valueOf(scanner.nextLine());
+        var weight = Long.valueOf(scanner.nextLine());
 
         System.out.println("Please enter your growth: ");
-        Long growth = Long.valueOf(scanner.nextLine());
+        var growth = Long.valueOf(scanner.nextLine());
         System.out.println("Please enter your desired weight: ");
-        Long desiredWeight = Long.valueOf(scanner.nextLine());
+        var desiredWeight = Long.valueOf(scanner.nextLine());
         System.out.println("Please enter your goal weight loss: ");
-        String target = scanner.nextLine();
+        var target = scanner.nextLine();
 
         var request = new QuizRequest();
         request.setGender(gender);

@@ -19,11 +19,11 @@ public class TrainingDaysUserUIAction implements UIAction {
 
     @Override
     public void execute(Long userId) {
+        var scanner = new Scanner(System.in);
         System.out.println("Enter training date (format dd/mm/yyyy): ");
-        Scanner scanner = new Scanner(System.in);
-        String trainingDate = scanner.nextLine();
+        var trainingDate = scanner.nextLine();
         System.out.println("Enter description: ");
-        String description = scanner.nextLine();
+        var description = scanner.nextLine();
 
         var request = new AddTrainingDaysRequest();
         request.setEventDate(trainingDate);

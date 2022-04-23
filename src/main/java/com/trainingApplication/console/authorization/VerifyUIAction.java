@@ -17,12 +17,11 @@ public class VerifyUIAction implements UIAuthorization {
 
     @Override
     public Long execute() {
-        Scanner scanner = new Scanner(System.in);
+        var scanner = new Scanner(System.in);
         System.out.println("Please enter your nickname: ");
-        String nickname = scanner.nextLine();
+        var nickname = scanner.nextLine();
         System.out.println("Please enter your password: ");
-        String password = scanner.nextLine();
-
+        var password = scanner.nextLine();
 
         var request = new VerifyUserRequest();
         request.setNickname(nickname);

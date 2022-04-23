@@ -38,7 +38,7 @@ public class TrainingDaysService {
     }
 
     private TrainingDaysEntity convert(AddTrainingDaysRequest request) {
-        TrainingDaysEntity entity = new TrainingDaysEntity();
+        var entity = new TrainingDaysEntity();
         entity.setTrainingDate(request.getEventDate());
         entity.setDescription(request.getDescription());
         entity.setUserId(request.getUserId());
