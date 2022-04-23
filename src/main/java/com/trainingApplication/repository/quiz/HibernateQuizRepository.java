@@ -18,7 +18,7 @@ public class HibernateQuizRepository implements QuizRepository {
 
     @Override
     public QuizEntity save(QuizEntity quizEntity) {
-        sessionFactory.getCurrentSession().save(quizEntity);
+        sessionFactory.openSession().save(quizEntity);
         return quizEntity;
     }
 }

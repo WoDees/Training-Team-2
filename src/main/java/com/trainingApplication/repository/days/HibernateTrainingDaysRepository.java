@@ -21,25 +21,25 @@ public class HibernateTrainingDaysRepository implements TrainingDaysRepository {
 
     @Override
     public TrainingDaysEntity save(TrainingDaysEntity trainingDaysEntity) {
-        sessionFactory.getCurrentSession().save(trainingDaysEntity);
+        sessionFactory.openSession().save(trainingDaysEntity);
         addTrainingDaysToUser(trainingDaysEntity.getUserId());
         return trainingDaysEntity;
     }
 
     @Override
     public UserEntity getUserById(Long userId) {
-        return sessionFactory.getCurrentSession().get(UserEntity.class, userId);
+        return sessionFactory.openSession().get(UserEntity.class, userId);
     }
 
     @Override
     public List<TrainingDaysEntity> findAllTrainingDays() {
-        return sessionFactory.getCurrentSession().createQuery(
+        return sessionFactory.openSession().createQuery(
                 "SELECT t FROM TrainingDaysEntity t", TrainingDaysEntity.class).list();
     }
 
     @Override
     public Optional<TrainingDaysEntity> findTrainingDaysById(Long id) {
-        var entity = (sessionFactory.getCurrentSession().get(TrainingDaysEntity.class, id));
+        var entity = (sessionFactory.openSession().get(TrainingDaysEntity.class, id));
         return Optional.ofNullable(entity);
     }
 
@@ -47,7 +47,7 @@ public class HibernateTrainingDaysRepository implements TrainingDaysRepository {
     public Long addTrainingDaysToUser(Long userId) {
         var copy = getUserById(userId);
         copy.setTrainingDaysCount(copy.getTrainingDaysCount() + 1L);
-        sessionFactory.getCurrentSession().update(copy);
+        sessionFactory.openSession().update(copy);
         return copy.getTrainingDaysCount() + 1L;
     }
 }
