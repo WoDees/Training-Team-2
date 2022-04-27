@@ -7,8 +7,6 @@ import com.trainingApplication.dto.response.VerifyUserResponse;
 import com.trainingApplication.repository.user.Repository;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-
 @Service
 public class VerifyUserService {
 
@@ -32,11 +30,11 @@ public class VerifyUserService {
         }
         var entity = convert(request);
         var verifiedEntity = repository.getUserEntityByNickNameAndPassword(entity.getNickname(), entity.getPassword());
-        repository.logIn(verifiedEntity.getUserId());
+        repository.logIn(verifiedEntity.getId());
         System.out.println("Log in successful: " + verifiedEntity);
 
         var response = new VerifyUserResponse();
-        response.setUserId(verifiedEntity.getUserId());
+        response.setUserId(verifiedEntity.getId());
         response.setOnlineStatus(verifiedEntity.isOnlineStatus());
         System.out.println("Sending response: " + response);
         return response;

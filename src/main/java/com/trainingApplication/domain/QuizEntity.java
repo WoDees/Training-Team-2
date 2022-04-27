@@ -27,12 +27,12 @@ public class QuizEntity {
     private Long weight;
     @Column(name = "growth", nullable = false)
     private Long growth;
-    @Column(name = "desiredWeight", nullable = false)
+    @Column(name = "desired_weight", nullable = false)
     private Long desiredWeight;
     @Column(name = "target", nullable = false)
     private String target;
 
-    @Column(name = "userId", nullable = false)
-    @JoinColumn(name = "user_id", referencedColumnName = "userId")
+    @Column(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private Long userId;
 }

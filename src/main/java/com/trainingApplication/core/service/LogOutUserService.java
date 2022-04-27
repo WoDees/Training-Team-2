@@ -18,11 +18,11 @@ public class LogOutUserService {
     public LogOutUserResponse logOut(LogOutUserRequest request) {
         System.out.println("Received request: " + request);
         var entity = convert(request);
-        var logOutEntity = repository.logOut(entity.getUserId());
+        var logOutEntity = repository.logOut(entity.getId());
         System.out.println("Log out successful:");
 
         var response = new LogOutUserResponse();
-        response.setUserId(entity.getUserId());
+        response.setUserId(entity.getId());
         response.setOnlineStatus(!logOutEntity);
         System.out.println("Sending response: " + response);
         return response;
@@ -32,7 +32,7 @@ public class LogOutUserService {
     private UserEntity convert(LogOutUserRequest request) {
         var entity = new UserEntity();
         entity.setOnlineStatus(request.isOnlineStatus());
-        entity.setUserId(request.getUserId());
+        entity.setId(request.getUserId());
 
         return entity;
     }

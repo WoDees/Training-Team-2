@@ -28,7 +28,7 @@ public class DefaultUserRepository implements Repository {
             ps.setBoolean(4, userEntity.isOnlineStatus());
             return ps;
         }, keyHolder);
-        userEntity.setUserId(keyHolder.getKey().longValue());
+        userEntity.setId(keyHolder.getKey().longValue());
         return userEntity;
     }
 

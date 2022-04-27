@@ -37,7 +37,7 @@ class FindAllUserServiceTest {
 
     private List<UserEntity> entities() {
         var returnEntity = new UserEntity();
-        returnEntity.setUserId(1L);
+        returnEntity.setId(1L);
         returnEntity.setNickname("TEST_NICKNAME");
         returnEntity.setPassword("TEST_PASSWORD");
         returnEntity.setMail("TEST_MAIL");

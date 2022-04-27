@@ -33,7 +33,7 @@ public class AddUserService {
         var createdEntity = repository.save(entity);
         System.out.println("Successfully saved: " + createdEntity);
         var response = new AddUserResponse();
-        response.setCreatedUserId(createdEntity.getUserId());
+        response.setCreatedUserId(createdEntity.getId());
         response.setOnlineStatus(createdEntity.isOnlineStatus());
         System.out.println("Sending response: " + response);
         return response;

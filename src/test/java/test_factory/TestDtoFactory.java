@@ -18,7 +18,7 @@ public class TestDtoFactory {
 
     public static UserEntity createEntity(Long userId) {
         var entity = new UserEntity();
-        entity.setUserId(userId);
+        entity.setId(userId);
         entity.setNickname("TEST_NICKNAME");
         entity.setPassword("TEST_PASSWORD");
         entity.setMail("TEST_MAIL");

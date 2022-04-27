@@ -12,7 +12,7 @@ public class ArrayListUserRepository implements Repository {
 
     @Override
     public UserEntity save(UserEntity userEntity) {
-        userEntity.setUserId(idSequence);
+        userEntity.setId(idSequence);
         idSequence++;
         dataBase.add(userEntity);
         return userEntity;
@@ -47,7 +47,7 @@ public class ArrayListUserRepository implements Repository {
     @Override
     public UserEntity getUserById(Long userId) {
         for (UserEntity entity : dataBase) {
-            if (entity.getUserId().equals(userId)) {
+            if (entity.getId().equals(userId)) {
                 return entity;
             }
         }

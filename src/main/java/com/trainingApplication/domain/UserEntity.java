@@ -12,7 +12,7 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long id;
     @Column(name = "nickname", unique = true, nullable = false, length = 12)
     private String nickname;
     @Column(name = "password", nullable = false, length = 14)
@@ -25,6 +25,6 @@ public class UserEntity {
     private Long trainingDaysCount;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", referencedColumnName = "userId")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private List<TrainingDaysEntity> trainingDaysEntities;
 }
