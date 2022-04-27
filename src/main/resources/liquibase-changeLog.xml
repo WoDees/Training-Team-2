@@ -22,4 +22,78 @@
             <column name="trainingDaysCount" type="INT"/>
         </createTable>
     </changeSet>
+
+    <changeSet id="create.table.trainingDays" author="kirils.prihodjko">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="trainingDays"/>
+            </not>
+        </preConditions>
+        <createTable tableName="trainingDays">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="description" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="trainingDate" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create.table.quiz" author="kirils.prihodjko">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="quiz"/>
+            </not>
+        </preConditions>
+        <createTable tableName="quiz">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="gender" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="age" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="weight" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="growth" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="desiredWeight" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="target" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add.column.user_id.to.trainingDays" author="kirils.prihodjko">
+        <addColumn tableName="trainingDays">
+            <column name="user_id" type="BIGINT"/>
+        </addColumn>
+        <addForeignKeyConstraint baseTableName="trainingDays"
+                                 constraintName="fk_trainingDays_user_id"
+                                 baseColumnNames="user_id"
+                                 referencedTableName="users"
+                                 referencedColumnNames="userId"/>
+    </changeSet>
+
+    <changeSet id="add.column.user_id.to.quiz" author="kirils.prihodjko">
+        <addColumn tableName="quiz">
+            <column name="user_id" type="BIGINT"/>
+        </addColumn>
+        <addForeignKeyConstraint baseTableName="quiz"
+                                 constraintName="fk_quiz_user_id"
+                                 baseColumnNames="user_id"
+                                 referencedTableName="users"
+                                 referencedColumnNames="userId"/>
+    </changeSet>
+
 </databaseChangeLog>
+
