@@ -1,8 +1,8 @@
 package com.trainingApplication.core.validation.quiz;
 
-import com.trainingApplication.dto.request.QuizRequest;
+import com.trainingApplication.dto.request.AddQuizRequest;
 
 public interface QuizValidationRule {
 
-    void validate(QuizRequest request);
+    void validate(AddQuizRequest request);
 }
