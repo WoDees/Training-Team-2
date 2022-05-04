@@ -6,6 +6,8 @@ import com.trainingApplication.dto.response.FindAllTrainingDaysResponse;
 import com.trainingApplication.repository.days.TrainingDaysRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.stream.Collectors;
+
 @Service
 public class FindAllTrainingDaysService {
 
@@ -18,7 +20,7 @@ public class FindAllTrainingDaysService {
     public FindAllTrainingDaysResponse findAll() {
         var dtos = repository.findAllTrainingDays().stream()
                 .map(this::convert)
-                .toList();
+                .collect(Collectors.toList());
         return new FindAllTrainingDaysResponse(dtos);
     }
 

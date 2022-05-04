@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-public class QuizResponse {
+public class AddQuizResponse {
 
     private Long createdQuizId;
     private List<CoreError> errors;

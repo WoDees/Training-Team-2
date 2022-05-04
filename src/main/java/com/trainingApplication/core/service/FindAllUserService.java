@@ -6,6 +6,8 @@ import com.trainingApplication.dto.response.FindAllUserResponse;
 import com.trainingApplication.repository.user.Repository;
 import org.springframework.stereotype.Service;
 
+import java.util.stream.Collectors;
+
 @Service
 public class FindAllUserService {
 
@@ -18,7 +20,7 @@ public class FindAllUserService {
     public FindAllUserResponse findAll() {
         var dtos = repository.findAll().stream()
                 .map(this::convert)
-                .toList();
+                .collect(Collectors.toList());
         return new FindAllUserResponse(dtos);
     }
 

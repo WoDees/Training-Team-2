@@ -18,7 +18,7 @@ import static test_factory.TestTrainingDaysDtoFactory.createEntity;
 import static test_factory.TestTrainingDaysDtoFactory.createRequest;
 
 @ExtendWith(MockitoExtension.class)
-class TrainingDaysServiceTest {
+class AddTrainingDaysServiceTest {
 
     @Mock
     private TrainingDaysRepository repository;
@@ -27,7 +27,7 @@ class TrainingDaysServiceTest {
     private TrainingDaysValidationService trainingDaysValidationService;
 
     @InjectMocks
-    private TrainingDaysService trainingDaysService;
+    private AddTrainingDaysService addTrainingDaysService;
 
     @Test
     void shouldSuccessfullyAddCalendarDate() {
@@ -35,7 +35,7 @@ class TrainingDaysServiceTest {
         doReturn(List.of()).when(trainingDaysValidationService).validate(request);
         doReturn(createEntity(123L)).when(repository).save(createEntity(null));
 
-        var actualResult = trainingDaysService.add(createRequest());
+        var actualResult = addTrainingDaysService.add(createRequest());
 
         verify(repository).save(any());
         verify(trainingDaysValidationService).validate(any());
@@ -52,7 +52,7 @@ class TrainingDaysServiceTest {
         var request = createRequest();
         doReturn(List.of(new CoreError("Test Error"))).when(trainingDaysValidationService).validate(request);
 
-        var actualResult = trainingDaysService.add(createRequest());
+        var actualResult = addTrainingDaysService.add(createRequest());
 
         verify(trainingDaysValidationService).validate(any());
         verifyNoInteractions(repository);
