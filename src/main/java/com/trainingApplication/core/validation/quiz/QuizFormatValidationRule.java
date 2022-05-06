@@ -1,14 +1,14 @@
 package com.trainingApplication.core.validation.quiz;
 
 import com.trainingApplication.core.validation.ValidationException;
-import com.trainingApplication.dto.request.QuizRequest;
+import com.trainingApplication.dto.request.AddQuizRequest;
 import org.springframework.stereotype.Component;
 
 @Component
 public class QuizFormatValidationRule implements QuizValidationRule {
 
     @Override
-    public void validate(QuizRequest request) {
+    public void validate(AddQuizRequest request) {
         if (request.getGender() == null) {
             throw new ValidationException("Gender must not be null.");
         }

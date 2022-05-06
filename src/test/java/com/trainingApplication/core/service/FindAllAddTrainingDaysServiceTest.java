@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class FindAllTrainingDaysServiceTest {
+class FindAllAddTrainingDaysServiceTest {
 
     @Mock
     private TrainingDaysRepository repository;
@@ -40,7 +40,7 @@ class FindAllTrainingDaysServiceTest {
         entity.setId(1L);
         entity.setUserId(1L);
         entity.setDescription("Test description");
-        entity.setEventDate("20/03/2022");
+        entity.setTrainingDate("20/03/2022");
         return List.of(entity);
     }
 

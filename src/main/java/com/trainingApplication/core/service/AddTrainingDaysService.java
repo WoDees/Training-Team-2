@@ -8,16 +8,15 @@ import com.trainingApplication.repository.days.TrainingDaysRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TrainingDaysService {
+public class AddTrainingDaysService {
 
     private final TrainingDaysRepository repository;
     private final TrainingDaysValidationService validationService;
 
-    public TrainingDaysService(TrainingDaysRepository repository, TrainingDaysValidationService validationService) {
+    public AddTrainingDaysService(TrainingDaysRepository repository, TrainingDaysValidationService validationService) {
         this.repository = repository;
         this.validationService = validationService;
     }
-
 
     public AddTrainingDaysResponse add(AddTrainingDaysRequest request) {
         System.out.println("Received request: " + request);
@@ -39,7 +38,7 @@ public class TrainingDaysService {
 
     private TrainingDaysEntity convert(AddTrainingDaysRequest request) {
         var entity = new TrainingDaysEntity();
-        entity.setTrainingDate(request.getEventDate());
+        entity.setTrainingDate(request.getTrainingDate());
         entity.setDescription(request.getDescription());
         entity.setUserId(request.getUserId());
         return entity;

@@ -9,14 +9,14 @@ public class TestTrainingDaysDtoFactory {
 
     public static AddTrainingDaysRequest createAddCalendarRequest() {
         var request = new AddTrainingDaysRequest();
-        request.setEventDate("14/03/2022");
+        request.setTrainingDate("14/03/2022");
         request.setDescription("Test_Description");
         return request;
     }
 
     public static AddTrainingDaysRequest createRequestWithoutDescription() {
         var request = new AddTrainingDaysRequest();
-        request.setEventDate("14/03/2022");
+        request.setTrainingDate("14/03/2022");
         return request;
     }
 
@@ -37,7 +37,7 @@ public class TestTrainingDaysDtoFactory {
 
     public static AddTrainingDaysRequest createRequest() {
         var request = new AddTrainingDaysRequest();
-        request.setEventDate("28/02/2022");
+        request.setTrainingDate("28/02/2022");
         request.setDescription("Test description");
         return request;
     }

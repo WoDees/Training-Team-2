@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class QuizRequest {
+public class AddQuizRequest {
 
     private Long gender;
     private Long age;

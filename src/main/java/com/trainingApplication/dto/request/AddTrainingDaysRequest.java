@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AddTrainingDaysRequest {
 
-    private String eventDate;
+    private String trainingDate;
     private String description;
     private Long userId;
 }
