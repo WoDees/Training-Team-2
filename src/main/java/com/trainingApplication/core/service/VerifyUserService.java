@@ -4,16 +4,16 @@ import com.trainingApplication.core.validation.authorization.verify.VerifyValida
 import com.trainingApplication.domain.UserEntity;
 import com.trainingApplication.dto.request.VerifyUserRequest;
 import com.trainingApplication.dto.response.VerifyUserResponse;
-import com.trainingApplication.repository.user.Repository;
+import com.trainingApplication.repository.user.UserRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class VerifyUserService {
 
-    private final Repository repository;
+    private final UserRepository repository;
     private final VerifyValidationService verifyValidationService;
 
-    public VerifyUserService(Repository repository, VerifyValidationService verifyValidationService) {
+    public VerifyUserService(UserRepository repository, VerifyValidationService verifyValidationService) {
         this.repository = repository;
         this.verifyValidationService = verifyValidationService;
     }

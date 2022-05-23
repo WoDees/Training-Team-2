@@ -8,7 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import com.trainingApplication.repository.user.Repository;
+import com.trainingApplication.repository.user.UserRepository;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ import static test_factory.TestDtoFactory.createVerifyUserRequest;
 class VerifyUserServiceTest {
 
     @Mock
-    private Repository repository;
+    private UserRepository repository;
 
     @Mock
     private VerifyValidationService verifyValidationService;

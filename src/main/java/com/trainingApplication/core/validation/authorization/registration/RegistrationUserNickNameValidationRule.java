@@ -2,15 +2,15 @@ package com.trainingApplication.core.validation.authorization.registration;
 
 import com.trainingApplication.core.validation.ValidationException;
 import com.trainingApplication.dto.request.AddUserRequest;
-import com.trainingApplication.repository.user.Repository;
+import com.trainingApplication.repository.user.UserRepository;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RegistrationUserNickNameValidationRule implements RegistrationValidationRule {
 
-    private final Repository repository;
+    private final UserRepository repository;
 
-    public RegistrationUserNickNameValidationRule(Repository repository) {
+    public RegistrationUserNickNameValidationRule(UserRepository repository) {
         this.repository = repository;
     }
 

@@ -3,15 +3,15 @@ package com.trainingApplication.core.service;
 import com.trainingApplication.domain.UserEntity;
 import com.trainingApplication.dto.request.LogOutUserRequest;
 import com.trainingApplication.dto.response.LogOutUserResponse;
-import com.trainingApplication.repository.user.Repository;
+import com.trainingApplication.repository.user.UserRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class LogOutUserService {
 
-    private final Repository repository;
+    private final UserRepository repository;
 
-    public LogOutUserService(Repository repository) {
+    public LogOutUserService(UserRepository repository) {
         this.repository = repository;
     }
 

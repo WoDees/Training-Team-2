@@ -4,16 +4,16 @@ import com.trainingApplication.core.validation.authorization.registration.Regist
 import com.trainingApplication.domain.UserEntity;
 import com.trainingApplication.dto.request.AddUserRequest;
 import com.trainingApplication.dto.response.AddUserResponse;
-import com.trainingApplication.repository.user.Repository;
+import com.trainingApplication.repository.user.UserRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AddUserService {
 
-    private final Repository repository;
+    private final UserRepository repository;
     private final RegistrationValidationService registrationValidationService;
 
-    public AddUserService(Repository repository,
+    public AddUserService(UserRepository repository,
                           RegistrationValidationService validationService) {
         this.repository = repository;
         this.registrationValidationService = validationService;
