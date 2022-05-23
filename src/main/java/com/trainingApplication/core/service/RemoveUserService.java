@@ -1,36 +1,24 @@
 package com.trainingApplication.core.service;
 
-import com.trainingApplication.core.validation.remove.RemoveValidationService;
-import com.trainingApplication.domain.UserEntity;
-import com.trainingApplication.dto.request.RemoveUserRequest;
 import com.trainingApplication.dto.response.RemoveUserResponse;
-import com.trainingApplication.repository.user.Repository;
+import com.trainingApplication.repository.user.UserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class RemoveUserService {
 
-    private final Repository repository;
-    private final RemoveValidationService removeValidationService;
+    private final UserRepository repository;
 
-    public RemoveUserService(Repository repository, RemoveValidationService removeValidationService) {
-        this.repository = repository;
-        this.removeValidationService = removeValidationService;
-    }
+    public RemoveUserResponse remove(Long id) {
+        System.out.println("Received request: " + id);
 
-    public RemoveUserResponse remove(RemoveUserRequest request) {
-        System.out.println("Received request: " + request);
-        var validationResult = removeValidationService.validate(request);
-        if (!validationResult.isEmpty()) {
-            System.out.println("Validation failed, errors:");
-            validationResult.forEach(System.out::println);
-            var response = new RemoveUserResponse();
-            response.setErrors(validationResult);
-            return response;
+        var removedEntity = repository.remove(id);
+
+        if (removedEntity) {
+            System.out.println("Remove successful: " + removedEntity);
         }
-        var entity = convert(request);
-        var removedEntity = repository.remove(entity.getNickname(), entity.getPassword());
-        System.out.println("Remove successful: " + removedEntity);
 
         var response = new RemoveUserResponse();
         response.setRemovedAccount(removedEntity);
@@ -38,11 +26,4 @@ public class RemoveUserService {
         return response;
     }
 
-    private UserEntity convert(RemoveUserRequest request) {
-        var entity = new UserEntity();
-        entity.setNickname(request.getNickname());
-        entity.setPassword(request.getPassword());
-
-        return entity;
-    }
 }

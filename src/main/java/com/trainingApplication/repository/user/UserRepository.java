@@ -3,14 +3,15 @@ package com.trainingApplication.repository.user;
 import com.trainingApplication.domain.UserEntity;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface Repository {
+public interface UserRepository {
 
     UserEntity save(UserEntity userEntity);
 
     List<UserEntity> findAll();
 
-    boolean remove(String nickname, String password);
+    boolean remove(Long id);
 
     UserEntity getUserEntityByNickNameAndPassword(String nickname, String password);
 
@@ -18,7 +19,7 @@ public interface Repository {
 
     boolean logIn(Long userId);
 
-    UserEntity getUserById(Long userId);
+    Optional<UserEntity> getUserById(Long userId);
 
     UserEntity getUserByNickName(String nickname);
 

@@ -2,16 +2,16 @@ package com.trainingApplication.core.validation.authorization.verify;
 
 import com.trainingApplication.core.validation.ValidationException;
 import com.trainingApplication.dto.request.VerifyUserRequest;
-import com.trainingApplication.repository.user.Repository;
+import com.trainingApplication.repository.user.UserRepository;
 import org.springframework.stereotype.Component;
 
 @Component
 public class VerifyAttemptsAmountValidationRule implements VerifyValidationRule {
 
-    private final Repository repository;
+    private final UserRepository repository;
     private int sequence;
 
-    public VerifyAttemptsAmountValidationRule(Repository repository) {
+    public VerifyAttemptsAmountValidationRule(UserRepository repository) {
         this.repository = repository;
     }
 

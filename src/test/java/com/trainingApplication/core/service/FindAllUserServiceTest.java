@@ -8,7 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import com.trainingApplication.repository.user.Repository;
+import com.trainingApplication.repository.user.UserRepository;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 class FindAllUserServiceTest {
 
     @Mock
-    private Repository repository;
+    private UserRepository repository;
 
     @InjectMocks
     private FindAllUserService findAllUserService;

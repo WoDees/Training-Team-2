@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import com.trainingApplication.repository.user.ArrayListUserRepository;
-import com.trainingApplication.repository.user.Repository;
+import com.trainingApplication.repository.user.UserRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RegistrationUserNickNameValidationRuleTest {
 
     @Mock
-    private Repository repository = new ArrayListUserRepository();
+    private UserRepository repository = new ArrayListUserRepository();
 
     RegistrationUserNickNameValidationRule validationRule = new RegistrationUserNickNameValidationRule(repository);
 

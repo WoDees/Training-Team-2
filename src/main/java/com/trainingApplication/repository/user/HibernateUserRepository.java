@@ -1,19 +1,21 @@
 package com.trainingApplication.repository.user;
 
+import com.trainingApplication.domain.TrainingDaysEntity;
 import com.trainingApplication.domain.UserEntity;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @Transactional
-public class HibernateRepository implements Repository {
+public class HibernateUserRepository implements UserRepository {
 
     private final SessionFactory sessionFactory;
 
-    public HibernateRepository(SessionFactory sessionFactory) {
+    public HibernateUserRepository(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
 
     }
@@ -30,9 +32,10 @@ public class HibernateRepository implements Repository {
     }
 
     @Override
-    public boolean remove(String nickname, String password) {
-        var entity = getUserEntityByNickNameAndPassword(nickname, password);
-        if (sessionFactory.openSession().contains(entity.getNickname(), entity)) {
+    public boolean remove(Long id) {
+        var entity = getUserById(id);
+
+        if (sessionFactory.openSession().contains("entity", entity)) {
             sessionFactory.openSession().remove(entity);
             return true;
         }
@@ -52,7 +55,7 @@ public class HibernateRepository implements Repository {
     @Override
     public boolean logOut(Long userId) {
         var copy = getUserById(userId);
-        copy.setOnlineStatus(false);
+        copy.get().setOnlineStatus(false);
         sessionFactory.openSession().update(copy);
         return true;
     }
@@ -60,14 +63,15 @@ public class HibernateRepository implements Repository {
     @Override
     public boolean logIn(Long userId) {
         var copy = getUserById(userId);
-        copy.setOnlineStatus(true);
+        copy.get().setOnlineStatus(true);
         sessionFactory.openSession().update(copy);
         return true;
     }
 
     @Override
-    public UserEntity getUserById(Long userId) {
-        return sessionFactory.openSession().get(UserEntity.class, userId);
+    public Optional<UserEntity> getUserById(Long userId) {
+        var entity = (sessionFactory.openSession().get(UserEntity.class, userId));
+        return Optional.ofNullable(entity);
     }
 
     @Override

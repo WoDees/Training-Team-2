@@ -6,7 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import com.trainingApplication.repository.user.Repository;
+import com.trainingApplication.repository.user.UserRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -18,7 +18,7 @@ import static test_factory.TestDtoFactory.createLogOutRequest;
 class LogOutUserServiceTest {
 
     @Mock
-    private Repository repository;
+    private UserRepository repository;
 
     @InjectMocks
     private LogOutUserService logOutUserService;

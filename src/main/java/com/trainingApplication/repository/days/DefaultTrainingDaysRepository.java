@@ -2,7 +2,7 @@ package com.trainingApplication.repository.days;
 
 import com.trainingApplication.domain.TrainingDaysEntity;
 import com.trainingApplication.domain.UserEntity;
-import com.trainingApplication.repository.user.Repository;
+import com.trainingApplication.repository.user.UserRepository;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -15,7 +15,7 @@ public class DefaultTrainingDaysRepository implements TrainingDaysRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public DefaultTrainingDaysRepository(JdbcTemplate jdbcTemplate, Repository repository) {
+    public DefaultTrainingDaysRepository(JdbcTemplate jdbcTemplate, UserRepository repository) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

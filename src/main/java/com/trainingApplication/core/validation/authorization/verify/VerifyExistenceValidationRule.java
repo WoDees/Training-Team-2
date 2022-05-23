@@ -2,15 +2,15 @@ package com.trainingApplication.core.validation.authorization.verify;
 
 import com.trainingApplication.core.validation.ValidationException;
 import com.trainingApplication.dto.request.VerifyUserRequest;
-import com.trainingApplication.repository.user.Repository;
+import com.trainingApplication.repository.user.UserRepository;
 import org.springframework.stereotype.Component;
 
 @Component
 public class VerifyExistenceValidationRule implements VerifyValidationRule {
 
-    private final Repository repository;
+    private final UserRepository repository;
 
-    public VerifyExistenceValidationRule(Repository repository) {
+    public VerifyExistenceValidationRule(UserRepository repository) {
         this.repository = repository;
     }
 

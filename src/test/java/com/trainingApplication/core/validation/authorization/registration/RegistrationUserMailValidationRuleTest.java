@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import com.trainingApplication.repository.user.ArrayListUserRepository;
-import com.trainingApplication.repository.user.Repository;
+import com.trainingApplication.repository.user.UserRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -16,7 +15,7 @@ import static org.mockito.ArgumentMatchers.any;
 class RegistrationUserMailValidationRuleTest {
 
     @Mock
-    private Repository repository = new ArrayListUserRepository();
+    private UserRepository repository = new ArrayListUserRepository();
 
     RegistrationUserMailValidationRule validationRule = new RegistrationUserMailValidationRule(repository);
 
