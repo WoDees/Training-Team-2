@@ -21,7 +21,7 @@ public class RemoveUserService {
         if (removedEntity) {
             log.debug("Remove successful: {}", removedEntity);
         } else {
-            log.error("Remove unsuccessful: {}", removedEntity);
+            log.warn("Remove unsuccessful: {}", removedEntity);
         }
 
         var response = new RemoveUserResponse();

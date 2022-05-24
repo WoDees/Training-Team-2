@@ -27,8 +27,7 @@ public class AddUserService {
         log.info("Received request: {}", request);
         var validationResult = registrationValidationService.validate(request);
         if (!validationResult.isEmpty()) {
-            log.error("Validation failed, errors:");
-            validationResult.forEach(System.out::println);
+            log.warn("Validation failed, errors: {}", validationResult);
             var response = new AddUserResponse();
             response.setErrors(validationResult);
             return response;
