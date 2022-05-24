@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Find all training days</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th> Description </th>
+        <th> TrainingDate </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="day : ${days}">
+        <td><span th:text="${day.description}"> Description </span></td>
+        <td><span th:text="${day.trainingDate}"> TrainingDate </span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
