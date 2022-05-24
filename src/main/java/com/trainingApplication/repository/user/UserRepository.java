@@ -15,10 +15,6 @@ public interface UserRepository {
 
     UserEntity getUserEntityByNickNameAndPassword(String nickname, String password);
 
-    boolean logOut(Long userId);
-
-    boolean logIn(Long userId);
-
     Optional<UserEntity> getUserById(Long userId);
 
     UserEntity getUserByNickName(String nickname);

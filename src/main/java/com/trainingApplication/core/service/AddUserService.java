@@ -5,8 +5,12 @@ import com.trainingApplication.domain.UserEntity;
 import com.trainingApplication.dto.request.AddUserRequest;
 import com.trainingApplication.dto.response.AddUserResponse;
 import com.trainingApplication.repository.user.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import static java.rmi.server.LogStream.log;
+
+@Slf4j
 @Service
 public class AddUserService {
 
@@ -20,22 +24,21 @@ public class AddUserService {
     }
 
     public AddUserResponse add(AddUserRequest request) {
-        System.out.println("Received request: " + request);
+        log.info("Received request: {}", request);
         var validationResult = registrationValidationService.validate(request);
         if (!validationResult.isEmpty()) {
-            System.out.println("Validation failed, errors:");
-            validationResult.forEach(System.out::println);
+            log.warn("Validation failed, errors: {}", validationResult);
             var response = new AddUserResponse();
             response.setErrors(validationResult);
             return response;
         }
         var entity = convert(request);
         var createdEntity = repository.save(entity);
-        System.out.println("Successfully saved: " + createdEntity);
+        log.info("Successfully saved: {}", createdEntity);
         var response = new AddUserResponse();
         response.setCreatedUserId(createdEntity.getId());
         response.setOnlineStatus(createdEntity.isOnlineStatus());
-        System.out.println("Sending response: " + response);
+        log.debug("Sending response: {}", response);
         return response;
     }
 

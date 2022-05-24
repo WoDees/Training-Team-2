@@ -35,7 +35,7 @@ public class HibernateUserRepository implements UserRepository {
     public boolean remove(Long id) {
         var entity = getUserById(id);
 
-        if (sessionFactory.openSession().contains("entity", entity)) {
+        if (sessionFactory.openSession().contains("entity", entity.orElse(null))) {
             sessionFactory.openSession().remove(entity);
             return true;
         }
@@ -50,22 +50,6 @@ public class HibernateUserRepository implements UserRepository {
         query.setParameter("password", password);
         List<UserEntity> userEntities = (List<UserEntity>) query.list();
         return userEntities.stream().findFirst().orElse(null);
-    }
-
-    @Override
-    public boolean logOut(Long userId) {
-        var copy = getUserById(userId);
-        copy.get().setOnlineStatus(false);
-        sessionFactory.openSession().update(copy);
-        return true;
-    }
-
-    @Override
-    public boolean logIn(Long userId) {
-        var copy = getUserById(userId);
-        copy.get().setOnlineStatus(true);
-        sessionFactory.openSession().update(copy);
-        return true;
     }
 
     @Override
