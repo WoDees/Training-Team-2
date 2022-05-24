@@ -16,6 +16,9 @@ public class RegistrationUserNickNameValidationRule implements RegistrationValid
 
     @Override
     public void validate(AddUserRequest request) {
+        if (request.getNickname() == null) {
+            throw new ValidationException("Nickname must not be null");
+        }
         if (request.getNickname().length() < 5) {
             throw new ValidationException("User nick name length must be greater than 5, but actual nick name length is "
                     + request.getNickname().length());

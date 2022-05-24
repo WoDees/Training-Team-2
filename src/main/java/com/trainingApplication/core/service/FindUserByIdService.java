@@ -18,7 +18,7 @@ public class FindUserByIdService {
         return repository.getUserById(id)
                 .map(this::convert)
                 .map(FindByIdUserResponse::new)
-                .orElseThrow(() -> new IllegalArgumentException("Training Day with id " + id + " is not found."));
+                .orElseThrow(() -> new IllegalArgumentException("User with id " + id + " is not found."));
     }
 
     private UserEntityDTO convert(UserEntity entity) {

@@ -16,6 +16,9 @@ public class RegistrationUserMailValidationRule implements RegistrationValidatio
 
     @Override
     public void validate(AddUserRequest request) {
+        if (request.getMail() == null) {
+            throw new ValidationException("Mail must not be null");
+        }
         if (!request.getMail().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,3})$")) {
             throw new ValidationException("Incorrect mail");
         }
