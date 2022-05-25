@@ -3,7 +3,7 @@ package com.trainingApplication.core.service;
 import com.trainingApplication.core.validation.CoreError;
 import com.trainingApplication.core.validation.trainingDays.TrainingDaysValidationService;
 import com.trainingApplication.dto.response.AddTrainingDaysResponse;
-import com.trainingApplication.repository.days.TrainingDaysRepository;
+import com.trainingApplication.repository.training_day.TrainingDayRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -21,7 +21,7 @@ import static test_factory.TestTrainingDaysDtoFactory.createRequest;
 class AddTrainingDaysServiceTest {
 
     @Mock
-    private TrainingDaysRepository repository;
+    private TrainingDayRepository repository;
 
     @Mock
     private TrainingDaysValidationService trainingDaysValidationService;

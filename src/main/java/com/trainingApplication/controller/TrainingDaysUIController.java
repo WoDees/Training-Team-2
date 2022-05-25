@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
+
 @Controller
 @AllArgsConstructor
 @RequestMapping("/ui")
@@ -33,7 +35,7 @@ public class TrainingDaysUIController {
     }
 
     @PostMapping("/addTrainingDay")
-    public String addTrainingDays(@ModelAttribute AddTrainingDaysRequest day) {
+    public String addTrainingDays(@ModelAttribute @Valid AddTrainingDaysRequest day) {
         addTrainingDaysService.add(day);
         return "redirect:/ui/findAllTrainingDays";
     }

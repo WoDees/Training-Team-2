@@ -3,7 +3,7 @@ package com.trainingApplication.core.service;
 import com.trainingApplication.domain.TrainingDaysEntity;
 import com.trainingApplication.dto.TrainingDaysDTO;
 import com.trainingApplication.dto.response.FindAllTrainingDaysResponse;
-import com.trainingApplication.repository.days.TrainingDaysRepository;
+import com.trainingApplication.repository.training_day.TrainingDayRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 class FindAllAddTrainingDaysServiceTest {
 
     @Mock
-    private TrainingDaysRepository repository;
+    private TrainingDayRepository repository;
 
     @InjectMocks
     private FindAllTrainingDaysService findAllTrainingDaysService;
