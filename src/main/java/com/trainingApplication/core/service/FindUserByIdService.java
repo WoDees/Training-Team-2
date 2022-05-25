@@ -3,7 +3,7 @@ package com.trainingApplication.core.service;
 import com.trainingApplication.domain.UserEntity;
 import com.trainingApplication.dto.UserEntityDTO;
 import com.trainingApplication.dto.response.FindByIdUserResponse;
-import com.trainingApplication.repository.user.HibernateUserRepository;
+import com.trainingApplication.repository.user.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +11,10 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class FindUserByIdService {
 
-    private final HibernateUserRepository repository;
-
+    private final UserRepository repository;
 
     public FindByIdUserResponse getById(Long id) {
-        return repository.getUserById(id)
+        return repository.findById(id)
                 .map(this::convert)
                 .map(FindByIdUserResponse::new)
                 .orElseThrow(() -> new IllegalArgumentException("User with id " + id + " is not found."));
