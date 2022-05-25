@@ -9,13 +9,15 @@
     <thead>
     <tr>
         <th> Description </th>
-        <th> TrainingDate </th>
+        <th> Training date </th>
+        <th> User id </th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="day : ${days}">
         <td><span th:text="${day.description}"> Description </span></td>
-        <td><span th:text="${day.trainingDate}"> TrainingDate </span></td>
+        <td><span th:text="${day.trainingDate}"> Training date </span></td>
+        <td><span th:text="${day.userId}"> User id </span></td>
     </tr>
     </tbody>
 </table>

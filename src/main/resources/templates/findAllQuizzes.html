@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Find all Quizzes</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th> Gender</th>
+        <th> Age</th>
+        <th> Weight</th>
+        <th> Growth</th>
+        <th> Desired weight</th>
+        <th> Target</th>
+        <th> User id</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="quiz : ${quizzes}">
+        <td><span th:text="${quiz.gender}"> Gender </span></td>
+        <td><span th:text="${quiz.age}"> Age </span></td>
+        <td><span th:text="${quiz.weight}"> Weight </span></td>
+        <td><span th:text="${quiz.growth}"> Growth </span></td>
+        <td><span th:text="${quiz.desiredWeight}"> Desired weight </span></td>
+        <td><span th:text="${quiz.target}"> Target </span></td>
+        <td><span th:text="${quiz.userId}"> User id </span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

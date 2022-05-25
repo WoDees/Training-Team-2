@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-
 @Slf4j
 @RestController
 @AllArgsConstructor
@@ -27,7 +25,7 @@ public class TrainingDaysController {
     private final FindByIdTrainingDaysService findByIdTrainingDaysService;
 
     @PostMapping("/training_days")
-    public AddTrainingDaysResponse add(@RequestBody @Valid AddTrainingDaysRequest request) {
+    public AddTrainingDaysResponse add(@RequestBody AddTrainingDaysRequest request) {
         return addTrainingDaysService.add(request);
     }
 
