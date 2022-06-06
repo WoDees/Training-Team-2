@@ -3,9 +3,7 @@ package com.trainingApplication.repository.user;
 import com.trainingApplication.domain.UserEntity;
 import lombok.AllArgsConstructor;
 import org.hibernate.SessionFactory;
-import org.springframework.stereotype.Component;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,18 +14,15 @@ public class HibernateUserRepository implements UserRepository {
 
     private final SessionFactory sessionFactory;
 
-    @Override
     public UserEntity save(UserEntity userEntity) {
         sessionFactory.openSession().save(userEntity);
         return userEntity;
     }
 
-    @Override
     public List<UserEntity> findAll() {
         return sessionFactory.openSession().createQuery("SELECT u FROM UserEntity u", UserEntity.class).list();
     }
 
-    @Override
     public boolean remove(Long id) {
         var entity = getUserById(id);
 
@@ -38,7 +33,6 @@ public class HibernateUserRepository implements UserRepository {
         return false;
     }
 
-    @Override
     public UserEntity getUserEntityByNickNameAndPassword(String nickname, String password) {
         String hql = "SELECT u FROM UserEntity u WHERE nickname =:nickname AND password =:password";
         var query = sessionFactory.openSession().createQuery(hql);
@@ -48,13 +42,11 @@ public class HibernateUserRepository implements UserRepository {
         return userEntities.stream().findFirst().orElse(null);
     }
 
-    @Override
     public Optional<UserEntity> getUserById(Long userId) {
         var entity = (sessionFactory.openSession().get(UserEntity.class, userId));
         return Optional.ofNullable(entity);
     }
 
-    @Override
     public UserEntity getUserByNickName(String nickname) {
         var query = sessionFactory.openSession().createQuery(
                 "select u FROM UserEntity u where mail = :nickname");
@@ -66,7 +58,6 @@ public class HibernateUserRepository implements UserRepository {
         return null;
     }
 
-    @Override
     public boolean existsUserByNickname(String nickname) {
         var query = sessionFactory.openSession().createQuery(
                 "select u FROM UserEntity u where nickname = :nickname");
@@ -75,7 +66,6 @@ public class HibernateUserRepository implements UserRepository {
         return !userList.isEmpty();
     }
 
-    @Override
     public UserEntity getUserByMail(String mail) {
         var query = sessionFactory.openSession().createQuery(
                 "select u FROM UserEntity u where mail = :mail");
@@ -87,7 +77,6 @@ public class HibernateUserRepository implements UserRepository {
         return null;
     }
 
-    @Override
     public boolean existsUserByMail(String mail) {
         var query = sessionFactory.openSession().createQuery(
                 "select u FROM UserEntity u where mail = :mail");
@@ -96,7 +85,6 @@ public class HibernateUserRepository implements UserRepository {
         return !userList.isEmpty();
     }
 
-    @Override
     public boolean verifyUserByNickname(String nickname) {
         var query = sessionFactory.openSession().createQuery(
                 "select u FROM UserEntity u where nickname = :nickname");
@@ -105,7 +93,6 @@ public class HibernateUserRepository implements UserRepository {
         return !userList.isEmpty();
     }
 
-    @Override
     public boolean verifyUserByPassword(String password) {
         var query = sessionFactory.openSession().createQuery(
                 "select u FROM UserEntity u where password = :password");

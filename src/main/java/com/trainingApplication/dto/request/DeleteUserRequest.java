@@ -6,7 +6,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Data
-public class RemoveUserRequest {
+public class DeleteUserRequest {
 
     @NotNull
     @Min(1)
