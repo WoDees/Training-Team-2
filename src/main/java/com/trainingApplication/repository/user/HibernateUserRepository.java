@@ -1,7 +1,7 @@
 package com.trainingApplication.repository.user;
 
-import com.trainingApplication.domain.TrainingDaysEntity;
 import com.trainingApplication.domain.UserEntity;
+import lombok.AllArgsConstructor;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 
@@ -11,14 +11,10 @@ import java.util.Optional;
 
 @Component
 @Transactional
+@AllArgsConstructor
 public class HibernateUserRepository implements UserRepository {
 
     private final SessionFactory sessionFactory;
-
-    public HibernateUserRepository(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-
-    }
 
     @Override
     public UserEntity save(UserEntity userEntity) {

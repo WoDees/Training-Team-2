@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
+
 @Controller
 @AllArgsConstructor
 @RequestMapping("/ui")
@@ -33,7 +35,7 @@ public class QuizUIController {
     }
 
     @PostMapping("/addQuiz")
-    public String addQuizzes(@ModelAttribute AddQuizRequest quiz) {
+    public String addQuizzes(@ModelAttribute @Valid AddQuizRequest quiz) {
         addQuizService.addQuiz(quiz);
         return "redirect:/ui/findAllQuizzes";
     }

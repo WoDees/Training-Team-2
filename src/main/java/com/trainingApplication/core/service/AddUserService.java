@@ -8,8 +8,6 @@ import com.trainingApplication.repository.user.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import static java.rmi.server.LogStream.log;
-
 @Slf4j
 @Service
 public class AddUserService {
@@ -43,12 +41,11 @@ public class AddUserService {
     }
 
     private UserEntity convert(AddUserRequest request) {
-        UserEntity entity = new UserEntity();
+        var entity = new UserEntity();
         entity.setNickname(request.getNickname());
         entity.setMail(request.getMail());
         entity.setPassword(request.getPassword());
         entity.setOnlineStatus(true);
-
         return entity;
     }
 }
