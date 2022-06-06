@@ -1,19 +1,18 @@
 package com.trainingApplication.repository.user;
 
 import com.trainingApplication.domain.UserEntity;
+import lombok.AllArgsConstructor;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
 import java.util.Optional;
 
-public class HibernateUserRepository {
+@Component
+@Transactional
+@AllArgsConstructor
+public class HibernateUserRepository implements UserRepository {
 
     private final SessionFactory sessionFactory;
-
-    public HibernateUserRepository(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-
-    }
 
     public UserEntity save(UserEntity userEntity) {
         sessionFactory.openSession().save(userEntity);

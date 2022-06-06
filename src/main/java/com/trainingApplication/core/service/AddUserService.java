@@ -28,12 +28,11 @@ public class AddUserService {
     }
 
     private UserEntity convert(AddUserRequest request) {
-        UserEntity entity = new UserEntity();
+        var entity = new UserEntity();
         entity.setNickname(request.getNickname());
         entity.setMail(request.getMail());
         entity.setPassword(request.getPassword());
         entity.setOnlineStatus(true);
-
         return entity;
     }
 }

@@ -14,12 +14,13 @@ public class AddTrainingDaysRequest {
 
     @NotBlank
     @NotNull
-    @Range(min = 1, max = 15)
+    @Length(min = 1, max = 15)
     private String trainingDate;
     @NotBlank
     @NotNull
     @Length(min = 5, max = 50)
     private String description;
     @NotNull
+    @Range(min = 1)
     private Long userId;
 }

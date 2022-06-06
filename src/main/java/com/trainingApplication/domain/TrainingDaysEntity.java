@@ -13,9 +13,9 @@ public class TrainingDaysEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "description", nullable = false, length = 50)
+    @Column(name = "description")
     private String description;
-    @Column(name = "trainingDate", nullable = false)
+    @Column(name = "training_date")
     private String trainingDate;
 
     @Column(name = "user_id")

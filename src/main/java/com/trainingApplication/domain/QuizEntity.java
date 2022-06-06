@@ -19,20 +19,20 @@ public class QuizEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "gender", nullable = false)
+    @Column(name = "gender")
     private Long gender;
-    @Column(name = "age", nullable = false)
+    @Column(name = "age")
     private Long age;
-    @Column(name = "weight", nullable = false)
+    @Column(name = "weight")
     private Long weight;
-    @Column(name = "growth", nullable = false)
+    @Column(name = "growth")
     private Long growth;
-    @Column(name = "desired_weight", nullable = false)
+    @Column(name = "desired_weight")
     private Long desiredWeight;
-    @Column(name = "target", nullable = false)
+    @Column(name = "target")
     private String target;
 
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_id")
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private Long userId;
 }

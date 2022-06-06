@@ -13,11 +13,11 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "nickname", unique = true, nullable = false, length = 12)
+    @Column(name = "nickname")
     private String nickname;
-    @Column(name = "password", nullable = false, length = 14)
+    @Column(name = "password")
     private String password;
-    @Column(name = "mail", length = 45, unique = true, nullable = false)
+    @Column(name = "mail")
     private String mail;
     @Column(name = "onlineStatus")
     private boolean onlineStatus;
