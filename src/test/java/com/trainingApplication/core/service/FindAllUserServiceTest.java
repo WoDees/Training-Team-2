@@ -47,7 +47,7 @@ class FindAllUserServiceTest {
     }
 
     private FindAllUserResponse response() {
-        var dto = new UserEntityDTO(1L, "TEST_NICKNAME", "TEST_PASSWORD", "TEST_MAIL", true);
+        var dto = new UserEntityDTO(1L, "TEST_NICKNAME", "TEST_PASSWORD", "TEST_MAIL", true, 1L, List.of());
         return new FindAllUserResponse((List.of(dto)));
     }
 }

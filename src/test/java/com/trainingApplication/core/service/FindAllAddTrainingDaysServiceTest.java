@@ -27,7 +27,7 @@ class FindAllAddTrainingDaysServiceTest {
     @Test
     void shouldFindAllTrainingDays() {
         var returnResult = entities();
-        when(repository.findAllTrainingDays()).thenReturn(returnResult);
+        when(repository.findAll()).thenReturn(returnResult);
 
         var result = findAllTrainingDaysService.findAll();
         var expectedResult = response();
