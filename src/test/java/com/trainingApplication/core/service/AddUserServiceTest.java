@@ -1,7 +1,8 @@
 package com.trainingApplication.core.service;
 
 import com.trainingApplication.core.validation.CoreError;
-import com.trainingApplication.core.validation.authorization.registration.RegistrationValidationService;
+import com.trainingApplication.domain.UserEntity;
+import com.trainingApplication.dto.request.AddUserRequest;
 import com.trainingApplication.dto.response.AddUserResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.verify;
-import static test_factory.TestDtoFactory.*;
 
 @ExtendWith(MockitoExtension.class)
 class AddUserServiceTest {
@@ -24,22 +24,17 @@ class AddUserServiceTest {
     @Mock
     private UserRepository repository;
 
-    @Mock
-    private RegistrationValidationService validationService;
-
     @InjectMocks
     private AddUserService addUserService;
 
     @Test
     void shouldSuccessfullySaveUser() {
         var request = createAddUserRequest();
-        when(validationService.validate(request)).thenReturn(List.of());
         when(repository.save(createEntity(null))).thenReturn(createEntity(31L));
 
         var result = addUserService.add(request);
 
         verify(repository).save(any());
-        verify(validationService).validate(any());
 
         var expected = new AddUserResponse();
         expected.setErrors(null);
@@ -52,11 +47,9 @@ class AddUserServiceTest {
     @Test
     void shouldReturnError() {
         var request = createAddUserRequest();
-        when(validationService.validate(request)).thenReturn(List.of(new CoreError("TEST_ERROR")));
 
         var result = addUserService.add(request);
 
-        verify(validationService).validate(any());
         verifyNoInteractions(repository);
 
         var expected = new AddUserResponse();
@@ -65,5 +58,23 @@ class AddUserServiceTest {
         expected.setOnlineStatus(false);
 
         assertEquals(expected, result);
+    }
+
+    public static AddUserRequest createAddUserRequest() {
+        var request = new AddUserRequest();
+        request.setNickname("TEST_NICKNAME");
+        request.setPassword("TEST_PASSWORD");
+        request.setMail("TEST_MAIL");
+        return request;
+    }
+
+    public static UserEntity createEntity(Long userId) {
+        var entity = new UserEntity();
+        entity.setId(userId);
+        entity.setNickname("TEST_NICKNAME");
+        entity.setPassword("TEST_PASSWORD");
+        entity.setMail("TEST_MAIL");
+        entity.setOnlineStatus(true);
+        return entity;
     }
 }
