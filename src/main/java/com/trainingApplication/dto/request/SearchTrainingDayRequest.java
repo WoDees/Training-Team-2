@@ -6,6 +6,6 @@ import lombok.Value;
 public class SearchTrainingDayRequest {
 
     String description;
-    String trainingDate;
+    String trainingDay;
     Long userId;
 }

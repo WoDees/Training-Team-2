@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "Quiz")
+@Table(name = "quiz")
 public class QuizEntity {
 
     @Id
@@ -32,7 +32,7 @@ public class QuizEntity {
     @Column(name = "target")
     private String target;
 
-    @Column(name = "user_id")
     @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @Column(name = "user_id")
     private Long userId;
 }

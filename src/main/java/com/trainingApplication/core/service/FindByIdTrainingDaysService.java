@@ -21,6 +21,6 @@ public class FindByIdTrainingDaysService {
     }
 
     private TrainingDaysDTO convert(TrainingDaysEntity entity) {
-        return new TrainingDaysDTO(entity.getId(), entity.getUserId(), entity.getDescription(), entity.getTrainingDate());
+        return new TrainingDaysDTO(entity.getId(), entity.getUserId(), entity.getDescription(), entity.getTrainingDay());
     }
 }

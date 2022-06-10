@@ -14,8 +14,8 @@ public class AddTrainingDaysRequest {
 
     @NotBlank
     @NotNull
-    @Length(min = 1, max = 15)
-    private String trainingDate;
+    @Length(min = 1, max = 20)
+    private String trainingDay;
     @NotBlank
     @NotNull
     @Length(min = 5, max = 50)

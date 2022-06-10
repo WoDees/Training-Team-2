@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FindByIdTrainingDaysResponse {
 
-    private TrainingDaysDTO trainingDaysDTO;
+    private TrainingDaysDTO trainingDays;
 }

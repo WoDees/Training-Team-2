@@ -19,9 +19,9 @@ public class UserEntity {
     private String password;
     @Column(name = "mail")
     private String mail;
-    @Column(name = "onlineStatus")
+    @Column(name = "online_status")
     private boolean onlineStatus;
-    @Column(name = "trainingDaysCount")
+    @Column(name = "training_days_count")
     private Long trainingDaysCount;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

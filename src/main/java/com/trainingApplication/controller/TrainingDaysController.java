@@ -37,10 +37,10 @@ public class TrainingDaysController {
     }
 
     @GetMapping
-    public List<TrainingDaysDTO> findAll(@RequestParam(required = false) String trainingDate,
+    public List<TrainingDaysDTO> findAll(@RequestParam(required = false) String trainingDay,
                                          @RequestParam(required = false) String description,
                                          @RequestParam(required = false) Long userId) {
-        var request = new SearchTrainingDayRequest(trainingDate, description, userId);
+        var request = new SearchTrainingDayRequest(trainingDay, description, userId);
         return findAllTrainingDaysService.findAllBy(request);
     }
 
