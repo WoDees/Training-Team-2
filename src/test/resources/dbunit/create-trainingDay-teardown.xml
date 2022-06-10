@@ -1,0 +1,11 @@
+<dataset reset_sequences="training_days_sequence">
+    <users id="2000"
+           nickname="Admin123"
+    />
+    <training_days id="1"
+                   training_day="test day"
+                   description="test description"
+                   user_id="2000"
+    />
+
+</dataset>
