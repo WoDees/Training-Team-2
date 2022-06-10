@@ -1,0 +1,7 @@
+<dataset reset_sequences="training_days_sequence">
+    <training_days id="1000"
+                   training_day="test day"
+                   description="test description"
+    />
+
+</dataset>

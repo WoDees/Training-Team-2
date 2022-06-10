@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "trainingDays")
+@Table(name = "training_days")
 public class TrainingDaysEntity {
 
     @Id
@@ -15,10 +15,10 @@ public class TrainingDaysEntity {
     private Long id;
     @Column(name = "description")
     private String description;
-    @Column(name = "training_date")
-    private String trainingDate;
+    @Column(name = "training_day")
+    private String trainingDay;
 
-    @Column(name = "user_id")
     @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @Column(name = "user_id")
     private Long userId;
 }

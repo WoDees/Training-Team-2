@@ -1,7 +1,6 @@
 package com.trainingApplication.core.service;
 
 import com.trainingApplication.core.validation.CoreError;
-import com.trainingApplication.core.validation.trainingDays.TrainingDaysValidationService;
 import com.trainingApplication.dto.response.AddTrainingDaysResponse;
 import com.trainingApplication.repository.training_day.TrainingDayRepository;
 import org.junit.jupiter.api.Test;
@@ -23,22 +22,17 @@ class AddTrainingDaysServiceTest {
     @Mock
     private TrainingDayRepository repository;
 
-    @Mock
-    private TrainingDaysValidationService trainingDaysValidationService;
-
     @InjectMocks
     private AddTrainingDaysService addTrainingDaysService;
 
     @Test
     void shouldSuccessfullyAddCalendarDate() {
         var request = createRequest();
-        doReturn(List.of()).when(trainingDaysValidationService).validate(request);
         doReturn(createEntity(123L)).when(repository).save(createEntity(null));
 
         var actualResult = addTrainingDaysService.add(createRequest());
 
         verify(repository).save(any());
-        verify(trainingDaysValidationService).validate(any());
 
         var expectedResult = new AddTrainingDaysResponse();
         expectedResult.setErrors(null);
@@ -49,12 +43,9 @@ class AddTrainingDaysServiceTest {
 
     @Test
     void shouldReturnErrors() {
-        var request = createRequest();
-        doReturn(List.of(new CoreError("Test Error"))).when(trainingDaysValidationService).validate(request);
 
         var actualResult = addTrainingDaysService.add(createRequest());
 
-        verify(trainingDaysValidationService).validate(any());
         verifyNoInteractions(repository);
 
         var expectedResult = new AddTrainingDaysResponse();

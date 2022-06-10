@@ -32,12 +32,12 @@ public class FindAllTrainingDaysService {
 
     private List<Specification<TrainingDaysEntity>> getSearchSpecifications(SearchTrainingDayRequest request) {
         var specifications = new ArrayList<Specification<TrainingDaysEntity>>();
-        var trainingDate = request.getTrainingDate();
+        var trainingDay = request.getTrainingDay();
         var description = request.getDescription();
         var userId = request.getUserId();
 
-        if (trainingDate != null) {
-            var specification2 = new SearchTrainingDayByTrainingDateSpecification(trainingDate);
+        if (trainingDay != null) {
+            var specification2 = new SearchTrainingDayByTrainingDaySpecification(trainingDay);
             specifications.add(specification2);
         }
         if (description != null) {
@@ -56,6 +56,6 @@ public class FindAllTrainingDaysService {
     }
 
     private TrainingDaysDTO convert(TrainingDaysEntity entity) {
-        return new TrainingDaysDTO(entity.getId(), entity.getUserId(), entity.getDescription(), entity.getTrainingDate());
+        return new TrainingDaysDTO(entity.getId(), entity.getUserId(), entity.getDescription(), entity.getTrainingDay());
     }
 }

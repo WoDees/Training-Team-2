@@ -7,7 +7,7 @@
 <body>
 <h1>Add training day</h1>
 <form action="#" th:action="@{/ui/addTrainingDay}" th:object="${day}" method="post">
-    <p>Training Date: <input type="text" th:field="*{trainingDate}"/></p>
+    <p>Training Day: <input type="text" th:field="*{trainingDay}"/></p>
     <p>Description: <input type="text" th:field="*{description}"/></p>
     <p>User Id: <input type="number" th:field="*{userId}"/></p>
     <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>

@@ -40,7 +40,7 @@ class FindAllAddTrainingDaysServiceTest {
         entity.setId(1L);
         entity.setUserId(1L);
         entity.setDescription("Test description");
-        entity.setTrainingDate("20/03/2022");
+        entity.setTrainingDay("20/03/2022");
         return List.of(entity);
     }
 

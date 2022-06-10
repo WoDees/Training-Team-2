@@ -9,9 +9,9 @@ import java.util.Optional;
 
 public interface TrainingDayRepository extends JpaRepository<TrainingDaysEntity, Long>, JpaSpecificationExecutor<TrainingDaysEntity> {
 
-    List<TrainingDaysEntity> findAllByTrainingDate(String name);
+    List<TrainingDaysEntity> findAllByTrainingDay(String name);
 
-    Optional<TrainingDaysEntity> findFirstByTrainingDate(String name);
+    Optional<TrainingDaysEntity> findFirstByTrainingDay(String name);
 
     Optional<TrainingDaysEntity> findTrainingDaysById(Long id);
 }

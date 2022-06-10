@@ -10,7 +10,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 @AllArgsConstructor
-public class SearchTrainingDayByTrainingDateSpecification implements Specification<TrainingDaysEntity> {
+public class SearchTrainingDayByTrainingDaySpecification implements Specification<TrainingDaysEntity> {
 
     private final String trainingDate;
 

@@ -12,5 +12,5 @@ public class TrainingDaysDTO {
     private Long id;
     private Long userId;
     private String description;
-    private String trainingDate;
+    private String trainingDay;
 }
